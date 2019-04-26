@@ -1,4 +1,5 @@
 # Fillit - An Algorithm to put tetrominoes in a smallest square possible
+# Project Status - In progress
 
 # Brainstorming
 - [X] 1. Open the file

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:07:29 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/26 14:59:24 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/26 15:14:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ int main (void)
 
 int main (void)
 {
+/*	
 	char p11[20];
 	char p12[20];
 	char p13[20];
@@ -169,9 +170,7 @@ int main (void)
 	char p16[20];
 	char p17[20];
 	char p18[20];
-	char p19[20];
-
-	
+	char p19[20];	
 	ft_strcpy(p11, ".#..\n.#..\n##..\n....\n");
 	ft_strcpy(p12, ".#..\n##..\n.#..\n....\n");
 	ft_strcpy(p13, ".##.\n##..\n....\n....\n");
@@ -181,8 +180,17 @@ int main (void)
 	ft_strcpy(p17, "..#.\n###.\n....\n....\n");
 	ft_strcpy(p18, "###.\n..#.\n....\n....\n");
 	ft_strcpy(p19, "####\n....\n....\n....\n");
-
-	
+*/
+	printf("%s\n\n", p01);
+	printf("%s\n\n", p02);
+	printf("%s\n\n", p03);
+	printf("%s\n\n", p04);
+	printf("%s\n\n", p05);
+	printf("%s\n\n", p06);
+	printf("%s\n\n", p07);
+	printf("%s\n\n", p08);
+	printf("%s\n\n", p09);
+	printf("%s\n\n", p10);
 	printf("%s\n\n", p11);
 	printf("%s\n\n", p12);
 	printf("%s\n\n", p13);
@@ -191,7 +199,8 @@ int main (void)
 	printf("%s\n\n", p16);
 	printf("%s\n\n", p17);
 	printf("%s\n\n", p18);
-	printf("%s", p19);
+	printf("%s\n", p19);
+
 
 	return(0);
 }

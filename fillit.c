@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:39:58 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/25 19:32:21 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/25 19:46:29 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main (void)
 //	char *one_line;
 	char placeholder[buff_size];
 	//char placeholder[buff_size + 1];
-	fd1 = open("tests/corrects/valid_06", O_RDONLY);
+	fd1 = open("tests/corrects/valid_20", O_RDONLY);
 	//bytes_read = read(fd1, placeholder, buff_size);
 	while((bytes_read = read(fd1, placeholder, buff_size) > 0))
 	{

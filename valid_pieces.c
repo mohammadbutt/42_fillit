@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:07:29 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/25 21:07:22 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/26 14:41:16 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int main (void)
 	return 0;
 }
 */
-
+/*
 int main (void)
 {
 	char *p14;
@@ -108,11 +108,91 @@ int main (void)
 	p18 = "###.\n..#.\n....\n....\n";
 	p19 = "####\n....\n....\n....\n";
 
-	printf("%s", p14);
-	printf("%s", p15);
-	printf("%s", p16);
-	printf("%s", p17);
-	printf("%s", p18);
+	printf("%s\n\n", p14);
+	printf("%s\n\n", p15);
+	printf("%s\n\n", p16);
+	printf("%s\n\n", p17);
+	printf("%s\n\n", p18);
 	printf("%s", p19);
 
+	return(0);
+
 }
+*/
+/*
+int main (void)
+{
+	char p01[20];
+	char p02[20];
+	char p03[20];
+	char p04[20];
+	char p05[20];
+	char p06[20];
+	char p07[20];
+	char p08[20];
+	char p09[20];
+	char p10[20];
+
+	ft_strcpy(p01, "###.\n.#..\n....\n....\n");
+	ft_strcpy(p02, "#...\n#...\n#...\n#...\n");
+	ft_strcpy(p03, "##..\n#...\n#...\n....\n");
+	ft_strcpy(p04, "#...\n##..\n#...\n....\n");
+	ft_strcpy(p05, "#...\n#...\n##..\n....\n");
+	ft_strcpy(p06, ".#..\n##..\n#...\n....\n");
+	ft_strcpy(p07, "##..\n##..\n....\n....\n");
+	ft_strcpy(p08, "###.\n#...\n....\n....\n");
+	ft_strcpy(p09, "#...\n##..\n.#..\n....\n");
+	ft_strcpy(p10, "#...\n###.\n....\n....\n");
+
+	printf("%s\n\n", p01);
+	printf("%s\n\n", p02);
+	printf("%s\n\n", p03);
+	printf("%s\n\n", p04);
+	printf("%s\n\n", p05);
+	printf("%s\n\n", p06);
+	printf("%s\n\n", p07);
+	printf("%s\n\n", p08);
+	printf("%s\n\n", p09);
+	printf("%s\n\n", p10);
+	
+	return(0);
+}
+*/
+
+int main (void)
+{
+	char p11[20];
+	char p12[20];
+	char p13[20];
+	char p14[20];
+	char p15[20];
+	char p16[20];
+	char p17[20];
+	char p18[20];
+	char p19[20];
+
+	
+	ft_strcpy(p11, ".#..\n.#..\n##..\n....\n");
+	ft_strcpy(p12, ".#..\n##..\n.#..\n....\n");
+	ft_strcpy(p13, ".##.\n##..\n....\n....\n");
+	ft_strcpy(p14, ".#..\n###.\n....\n....\n");
+	ft_strcpy(p15, "##..\n.#..\n.#..\n....\n");
+	ft_strcpy(p16, "##..\n.##.\n....\n....\n");
+	ft_strcpy(p17, "..#.\n###.\n....\n....\n");
+	ft_strcpy(p18, "###.\n..#.\n....\n....\n");
+	ft_strcpy(p19, "####\n....\n....\n....\n");
+
+	
+	printf("%s\n\n", p11);
+	printf("%s\n\n", p12);
+	printf("%s\n\n", p13);
+	printf("%s\n\n", p14);
+	printf("%s\n\n", p15);
+	printf("%s\n\n", p16);
+	printf("%s\n\n", p17);
+	printf("%s\n\n", p18);
+	printf("%s", p19);
+
+	return(0);
+}
+

@@ -7,7 +7,7 @@
 - [X] 3. Print the file
 - [X] 4. Save 19 valid pieces in a .c file. Put the pieces at the top left position. Using `ft_strcpy()`, instead of `malloc()`, so there is no need to free allocated memory.
 - [X] 5. Migrating to valid pieces over to macros because it is a better option.
-- [X] 6. `ft_strcmp` can be used to compare pieces of the user with the valid pieces.
+- [X] 6. `ft_strcmp` can be used to compare pieces of the user with the valid pieces. It works
 - [ ] 7. How to store user pieces properly?
 - [ ] 8. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces.
 

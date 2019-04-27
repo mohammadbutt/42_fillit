@@ -12,14 +12,11 @@
 
 ```
 ###.$
-
 .#..$
-
+....$
 ....$
 
-....$
-
-And 
+Above is a valid piece. Below is an invalid piece because the last line has a space at the end.
 
 ###.$
 .#..$

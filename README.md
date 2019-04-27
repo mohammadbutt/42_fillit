@@ -25,7 +25,7 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 ```
 
 - [ ] 8. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces. Use this link https://gfredericks.com/things/polyominoes to put pieces at random places to understand how the pieces can be moved and shifted.
-- [ ] 9. Create an empty grid function, so when we enter 4 into that function it creates a grid of 4 by 4. And create a grid of double pointer/ double array, so we can use it as x and y.
+- [ ] 9. Create an empty grid function, so when we enter 4 into that function it creates a grid of 4 by 4. Linear grid works. Create a grid of double pointer/ double array, so we can use it as x and y.
 ```
 A table of 5 by 5. 
 .....

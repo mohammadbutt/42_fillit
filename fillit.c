@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:39:58 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/26 15:49:37 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/26 19:13:18 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main (void)
 	int i = 0;
 	//char placeholder[buff_size + 1];
 //	fd1 = open("tests/corrects/valid_20", O_RDONLY);
-	fd1 = open("valid_pieces/valid_01", O_RDONLY);	
+	fd1 = open("valid_pieces/valid_01_test", O_RDONLY);	
 //bytes_read = read(fd1, placeholder, buff_size);
 /*
 	while((bytes_read = read(fd1, placeholder, buff_size) > 0))
@@ -74,6 +74,7 @@ int main (void)
 		printf("\nError, piece does not match");
 	}
 
+// - to generate random tetrominoes https://gfredericks.com/things/polyominoes
 	return(0);
 
 }

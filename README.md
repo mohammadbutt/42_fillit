@@ -10,6 +10,7 @@
 - [X] 6. `ft_strcmp` can be used to compare pieces of the user with the valid pieces. It works
 - [ ] 7. How to store user pieces properly? Cannot use Buff_size of 20 because what if the user has a valid piece, but at the end there is extra space? Not true. Tested and it works. Pieces can be stored with a buff size of 20 and ft_strcmp will still be able to compare the pieces properly. `ft_strcmp` will know the difference between the following:
 
+```
 ###.$
 
 .#..$
@@ -24,5 +25,6 @@ And
 .#..$
 ....$
 .... $
+```
 
 - [ ] 8. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces. Use this link https://gfredericks.com/things/polyominoes to put pieces at random places to understand how the pieces can be moved and shifted.

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:23:55 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/26 20:03:41 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/26 20:21:23 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int main (void)
 	i = 0;
 	j = 0;
 
-	char *empty_grid[height*width];
+	char empty_grid[height][width];
 /*
 	while(height)
 	{
@@ -102,6 +102,6 @@ int main (void)
 	}
 	printf("this is i:|%d|\n", i);
 	printf("this is j:|%d|\n", j);
-	printf("%s", *empty_grid);
+	printf("%s", empty_grid[0]);
 	return(0);
 }

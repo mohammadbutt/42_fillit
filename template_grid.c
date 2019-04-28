@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 19:23:55 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/27 14:45:48 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/27 16:55:26 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int main (void)
 	int j;
 	char dot;
 
-	height = 4;
-	width = 4;
+	height = 14;
+	width = 14;
 	i = 0;
 	j = 0;
 //	dot = 0;
-	char empty_grid[height][width];
-//	char **empty_grid;
+//	char empty_grid[height][width];
+	char **empty_grid;
 	/*
 	while(height)
 	{
@@ -88,13 +88,23 @@ int main (void)
 	}
 */
 // Allocate memory to have 4 rows.	
-//	empty_grid = (char **)malloc(sizeof(char *)*(4));
+	empty_grid = (char **)malloc(sizeof(char *)*(width));
 
 //Allocate memory to have 4 characters for each row
-//	empty_grid[0] = (char *)malloc(sizeof(char)*(width + 1));
-//	empty_grid[1] = (char *)malloc(sizeof(char)*(width + 1));
-//	empty_grid[2] = (char *)malloc(sizeof(char)*(width + 1));
-//	empty_grid[3] = (char *)malloc(sizeof(char)*(width + 1));
+/*	
+	empty_grid[0] = (char *)malloc(sizeof(char)*(width + 1));
+	empty_grid[1] = (char *)malloc(sizeof(char)*(width + 1));
+	empty_grid[2] = (char *)malloc(sizeof(char)*(width + 1));
+	empty_grid[3] = (char *)malloc(sizeof(char)*(width + 1));
+*/
+
+	while(width--)
+	{
+	empty_grid[i] = (char *)malloc(sizeof(char)*(width + 1));
+	i++;
+	}
+	width = i;
+	i = 0;
 
 	while(height)
 	{
@@ -111,12 +121,13 @@ int main (void)
 		empty_grid[i][j] = '\n';
 		j = 0;
 		i++;
-		width = 4;
+		width = 14;
 		height--;
 //		printf("this is i:|%d|\n", i);
 	}
 //	printf("outside -i:|%d|\n", i);
 //	printf("outside -j:|%d|\n", j);
+/*	
 	printf("Elements we have access to in 0:\n");
 	printf("%c", empty_grid[0][0]);
 	printf("%c", empty_grid[0][1]);
@@ -161,13 +172,13 @@ int main (void)
 	printf("%c\n\n", empty_grid[3][3]);
 
 	printf("----------Replacing . with numbers----------\n");
-
-
+*/
+/*
 	empty_grid[0][0] = 'a';
 	empty_grid[0][1] = 'b';
 	empty_grid[0][2] = 'c';
 	empty_grid[0][3] = 'd';
-//	empty_grid[0][4] = 'e';
+	empty_grid[0][4] = 'e';
 	empty_grid[0][5] = 'f';
 	empty_grid[0][6] = 'g';
 	empty_grid[0][7] = 'h';
@@ -179,12 +190,13 @@ int main (void)
 	empty_grid[0][13] = 'n';
 	empty_grid[0][14] = 'o';
 	empty_grid[0][15] = 'p';
-//	empty_grid[0][16] = 'q';
-//	empty_grid[0][17] = 'q';
-//	empty_grid[0][18] = 'r';
-//	empty_grid[0][19] = 's';
-//	empty_grid[0][20] = 't';
-
+	empty_grid[0][16] = 'q';
+	empty_grid[0][17] = 'q';
+	empty_grid[0][18] = 'r';
+	empty_grid[0][19] = 's';
+	empty_grid[0][20] = 't';
+*/
+/*	
 	printf("%c", empty_grid[0][0]);
 	printf("%c", empty_grid[0][1]);
 	printf("%c", empty_grid[0][2]);
@@ -206,8 +218,8 @@ int main (void)
 	printf("?%c\n", empty_grid[0][18]);
 	printf("?%c\n", empty_grid[0][19]);
 	printf("?%c\n\n", empty_grid[0][20]);
-
-
+*/
+/*
 	printf("printing grid again\n");
 	printf("%c", empty_grid[0][0]);
 	printf("%c", empty_grid[0][1]);
@@ -234,6 +246,14 @@ int main (void)
 	printf("%c", empty_grid[3][2]);
 	printf("%c", empty_grid[3][3]);
 	printf("%c", empty_grid[3][4]);
+*/
+
+	while(i)
+	{
+		printf("%s", empty_grid[j]);
+		j++;
+		i--;
+	}
 
 /*
 	printf("Elements we have access to in 0:\n");	

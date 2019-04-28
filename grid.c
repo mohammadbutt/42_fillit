@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 14:46:13 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/27 17:03:13 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/27 18:14:20 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,42 @@
 
 char **ft_grid(int width)
 {
-	int new_width;
+//	int default_width;
 	int height;
 	int i;
 	int j;
 	char **empty_grid;
 
-	new_width = width;
+//	default_width = width;
 	i = 0;
 	j = 0;
-	height = width;
-	
-	empty_grid = (char **)malloc(sizeof(char *) * (width));
-
-	while(width)
+	height = width;	
+	empty_grid = (char **)malloc(sizeof(char *) * (width + 1));
+//	while(width--)
+	while(width != i)
 	{
-		empty_grid[i] = (char *)malloc(sizeof(char) * (width + 1));
-		i++;
-		width--;
+		empty_grid[i++] = (char *)malloc(sizeof(char) * (width + 1));
 	}
-	width = i;
+//	width = i;
 	i = 0;
 
-	while(height)
+	while(height--)
 	{
-		while(new_width)
+		while(width != j)
 		{
-			empty_grid[i][j] = '.';
-			j++;
-			new_width--;
+			empty_grid[i][j++] = '.';
+//			j++;
+//			width--;
 		}
-		empty_grid[i][j] = '\n';
+//		empty_grid[i][j++] = '\n';
+		empty_grid[i][j] = '\0';
 		j = 0;
 		i++;
-		new_width = width;
-		height--;
+//		width = default_width;
+//		height--;
 	}
+	empty_grid[i] = NULL;
+//	height = width;
 	return(empty_grid);
 }
 
@@ -59,7 +59,7 @@ int main (void)
 	int num;
 	int i;
 
-	num = 13;
+	num = 7;
 	i = 0;
 	empty_grid = ft_grid(num);
 	
@@ -67,11 +67,13 @@ int main (void)
 //	ft_putstr(empty_grid[1]);
 //	ft_putstr(empty_grid[2]);
 //	ft_putstr(empty_grid[3]);
-
+	printf("grid of %d by %d\n", num, num);
 	while(i < num)
 	{
 //		printf("%s", empty_grid[i]);
 		ft_putstr(empty_grid[i]);
+		ft_putstr("\n");
+//		free(empty_grid[i]);
 		i++;
 	}
 }

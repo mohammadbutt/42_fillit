@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 14:46:13 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/27 18:14:20 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/27 18:22:46 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char **ft_grid(int width)
 //			j++;
 //			width--;
 		}
-//		empty_grid[i][j++] = '\n';
+//		empty_grid[i][j] = '\n';
 		empty_grid[i][j] = '\0';
 		j = 0;
 		i++;
@@ -59,7 +59,7 @@ int main (void)
 	int num;
 	int i;
 
-	num = 7;
+	num = 15;
 	i = 0;
 	empty_grid = ft_grid(num);
 	

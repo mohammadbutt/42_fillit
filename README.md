@@ -35,7 +35,7 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 - [ ] 9. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces. Use this link https://gfredericks.com/things/polyominoes to put pieces at random places to understand how the pieces can be moved and shifted. We can move the whole row if it is not a #. We can move the whole column if it is not a #.
 
 # Resources:
-1. 
+1. [19 Valid Tetrominoes] (http://mathworld.wolfram.com/Tetromino.html)
 2. 
 3. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
 

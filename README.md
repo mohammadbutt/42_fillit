@@ -6,7 +6,7 @@
 - [X] 2. Read the file
 - [X] 3. Print the file
 - [X] 4. Save 19 valid pieces in a .c file. Put the pieces at the top left position. Using `ft_strcpy()`, instead of `malloc()`, so there is no need to free allocated memory.
-- [X] 5. Migrating to valid pieces over to macros because it is a better option then having to store valid pieces in two seperate functions.
+- [X] 5. Migrating to valid pieces over to macros because it is a better option then having to store valid pieces in two seperate functions. What valid pieces look like http://mathworld.wolfram.com/Tetromino.html
 - [X] 6. `ft_strcmp` can be used to compare pieces of the user with the valid pieces. It works
 - [X] 7. Created an empty grid function, so when we enter 4 into that function it creates a grid of 4 by 4. Linear grid works. But created a grid of double pointer, 2 dimensional array, so we can enter x and y coordinates, or we can go to 
 ```

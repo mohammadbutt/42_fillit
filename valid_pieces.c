@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:07:29 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/29 15:07:39 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/29 22:21:51 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,9 @@ int main (void)
 	ft_strcpy(p18, "###.\n..#.\n....\n....\n");
 	ft_strcpy(p19, "####\n....\n....\n....\n");
 */
+
+// 19 valid pieces in a single array
+/*
 	printf("P01:\n%s\n\n", p01);
 	printf("P02:\n%s\n\n", p02);
 	printf("P03:\n%s\n\n", p03);
@@ -200,6 +203,9 @@ int main (void)
 	printf("P17:\n%s\n\n", p17);
 	printf("P18:\n%s\n\n", p18);
 	printf("P19:\n%s\n", p19);
+*/
+
+	printf("p01:\n%d", p01[0]);
 
 
 	return(0);

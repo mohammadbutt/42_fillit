@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:07:29 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/26 15:49:34 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/04/29 15:07:39 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,25 +181,25 @@ int main (void)
 	ft_strcpy(p18, "###.\n..#.\n....\n....\n");
 	ft_strcpy(p19, "####\n....\n....\n....\n");
 */
-	printf("%s\n\n", p01);
-	printf("%s\n\n", p02);
-	printf("%s\n\n", p03);
-	printf("%s\n\n", p04);
-	printf("%s\n\n", p05);
-	printf("%s\n\n", p06);
-	printf("%s\n\n", p07);
-	printf("%s\n\n", p08);
-	printf("%s\n\n", p09);
-	printf("%s\n\n", p10);
-	printf("%s\n\n", p11);
-	printf("%s\n\n", p12);
-	printf("%s\n\n", p13);
-	printf("%s\n\n", p14);
-	printf("%s\n\n", p15);
-	printf("%s\n\n", p16);
-	printf("%s\n\n", p17);
-	printf("%s\n\n", p18);
-	printf("%s\n", p19);
+	printf("P01:\n%s\n\n", p01);
+	printf("P02:\n%s\n\n", p02);
+	printf("P03:\n%s\n\n", p03);
+	printf("P04:\n%s\n\n", p04);
+	printf("P05:\n%s\n\n", p05);
+	printf("P06:\n%s\n\n", p06);
+	printf("P07:\n%s\n\n", p07);
+	printf("P08:\n%s\n\n", p08);
+	printf("P09:\n%s\n\n", p09);
+	printf("P10:\n%s\n\n", p10);
+	printf("P11:\n%s\n\n", p11);
+	printf("P12:\n%s\n\n", p12);
+	printf("P13:\n%s\n\n", p13);
+	printf("P14:\n%s\n\n", p14);
+	printf("P15:\n%s\n\n", p15);
+	printf("P16:\n%s\n\n", p16);
+	printf("P17:\n%s\n\n", p17);
+	printf("P18:\n%s\n\n", p18);
+	printf("P19:\n%s\n", p19);
 
 
 	return(0);

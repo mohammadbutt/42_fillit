@@ -38,5 +38,6 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 1. [19 Valid Tetrominoes](http://mathworld.wolfram.com/Tetromino.html)
 2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
 3. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
+4. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
 
 

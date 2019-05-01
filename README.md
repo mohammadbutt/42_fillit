@@ -40,5 +40,6 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 3. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
 4. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
 5. [Another Bitwise calculator](http://bitwisecmd.com/)
+6. [Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
 
 

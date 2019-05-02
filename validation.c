@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/02 11:29:50 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/02 16:34:09 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,11 @@ int main (void)
 	return(0);
 }
 */
-
+/*
+** Error handler will quit the program if there is no new line at i[4], i[9],
+** i[14], or i[19].
+*/
+/*
 int main (void)
 {
 	int fd;
@@ -95,7 +99,7 @@ int main (void)
 	int i;
 
 	i = 0;
-	fd = open("./valid_pieces/error_01", O_RDONLY);
+	fd = open("./valid_pieces/valid_01", O_RDONLY);
 	while((bytes_read = read(fd, characters[i], 21)) >= 20)
 	{
 		if(characters[i][4] != '\n' || characters[i][9] != '\n')
@@ -120,3 +124,145 @@ int main (void)
 
 	return(0);
 }
+*/
+//using malloc to store pieces in characters
+/*
+int main (void)
+{
+	int fd;
+	int bytes_read;
+	char **characters;
+	int i;
+
+	i = 0;
+	fd = open("./valid_pieces/valid_01", O_RDONLY);
+	while((bytes_read = read (fd, characters)))
+}
+*/
+
+// breaking the above into a function below.
+// Works and gives the file that's read;
+
+char **ft_tetrominoes(int fd)
+{
+	int bytes_read;
+	char **characters;
+	int i;
+	i = 0;
+
+	characters = (char **)malloc(sizeof(char *) * (27));
+	characters[i] = (char *)malloc(sizeof(char) * (21));
+	while((bytes_read = read(fd, characters[i], 21)) >= 20)
+	{
+		if(characters[i][4] != '\n' || characters[i][9] != '\n')
+			return(0);
+		if(characters[i][14] != '\n' || characters[i][19] != '\n')
+			return(0);
+		else 
+		{
+			characters[i][20] = '\0';
+			i++;
+			characters[i] = (char *)malloc(sizeof(char) * 21);
+		}
+	}
+	free(characters[i]);
+	return(characters);
+}
+
+
+char **ft_validation_1(char **characters)
+{
+	char **stored_characters;
+	int i;
+
+	i = 0;
+
+	stored_characters = (char **)malloc(sizeof(char*) * (27));
+
+//	while(stored_characters[i])
+//	{
+//		stored_characters[i] = ft_strdup(characters[i]);
+//		i++;
+//	}
+		stored_characters[0] = ft_strdup(characters[0]);
+//	stored_characters = ft_tetrominoes(characters);
+
+	printf("Works?\n");
+	printf("%s\n", stored_characters[0]);
+
+	return(stored_characters);
+}
+int main (void)
+{
+	int fd;
+	char **characters1;
+	char **characters2;
+
+	fd = 0;
+	fd = open("./valid_pieces/valid_20", O_RDONLY);
+	characters1 = ft_tetrominoes(fd);
+	printf("in main:\n%s", characters1[0]);
+	printf("%s", characters1[1]);
+	printf("%c", characters1[0][3]);
+
+	characters2 = ft_validation_1(characters1);
+	printf("\n\n");
+	printf("printing ft_validation_1:\n");
+	printf("%s", characters2[0]);
+//	while(1)
+//	{
+
+//	}
+	return(0);
+}
+
+/*
+int main (void)
+{
+	int fd;
+	int bytes_read;
+	int i;
+	char characters[26][21];
+	int j;
+	int dots;
+	int hashtags;
+
+	i = 0;
+	j = 0;
+	hashtags = 0;
+	dots = 0;
+
+	fd = open("./valid_pieces/error_02", O_RDONLY);
+	while((bytes_read = read (fd, characters[i], 21)) >= 20)
+	{
+		characters[i][20] = '\0';
+		i++;
+	}
+
+	i = 0;
+	while(characters[i][j])
+	{
+		while(characters[i][j])
+		{	
+			(characters[i][j] == '.') && dots++;
+			(characters[i][j] == '#') && hashtags++;
+			j++;
+		}
+		if(dots != 12 && hashtags != 4)
+		{
+			printf("Error");
+			return(0);
+		}
+		printf("dots:|%d|\n", dots);
+		printf("hashtags:|%d|\n", hashtags);
+		printf("%s", characters[i]);
+		printf("\n");
+		printf("single character:|%c|", characters[i][4]);
+		i++;
+		j = 0;
+		dots = 0;
+		hashtags = 0;
+	}
+	return(0);
+}
+*/

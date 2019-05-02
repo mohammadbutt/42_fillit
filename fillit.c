@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:39:58 by mbutt             #+#    #+#             */
-/*   Updated: 2019/04/26 19:35:11 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/02 09:26:08 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main (void)
 //		printf("")
 	}
 	printf("%s\n\n", placeholder);
-	
+/*	
 	if(ft_strcmp(p01, user_piece) == 0)
 	{
 		printf("%s", user_piece);
@@ -73,7 +73,7 @@ int main (void)
 	{
 		printf("\nError, piece does not match");
 	}
-
+*/
 // - to generate random tetrominoes https://gfredericks.com/things/polyominoes
 	return(0);
 

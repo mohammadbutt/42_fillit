@@ -45,11 +45,11 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 
 # Resources:
-1. [19 Valid Tetrominoes](http://mathworld.wolfram.com/Tetromino.html)
+1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
 3. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
 4. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
 5. [Another Bitwise calculator](http://bitwisecmd.com/)
-6. [Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+6. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
 
 

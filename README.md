@@ -34,6 +34,15 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 
 - [ ] 9. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces. Use this link https://gfredericks.com/things/polyominoes to put pieces at random places to understand how the pieces can be moved and shifted. We can move the whole row if it is not a #. We can move the whole column if it is not a #.
 
+# How to read the code.
+Reading big programs can get a bit challenging. I have summed up some point below that can assisst in reading the code.
+
+1. First, the very first function that appears in the program `` void ft_exit (void) ``. The program can run fine even without this because this function only has two lines. But having created this function prints an Error on the screen and exits out of the program.
+
+2. Second function, ft_tetrominoes, reads the file and stores the tetrominoes. Tetrominoes are stored in a double pointer array. First pointer was malloced with size of 26, since the most alphabetical characters we can have are 26. Then the second pointer was malloced with a size of 20 characters because each tetromino has 20 characters(12 dots + 4 hashtags+ 4 newlines). While tetrominoes are being stored, flags are also placed to evaluate if the 4th, 9th, 14th, and 19th characters of each tetromino are a new line, '\n', or not. If one of these characters are not a new_line then the program will exit out using the ``ft_exit()``.
+
+3. 
+
 # Resources:
 1. [19 Valid Tetrominoes](http://mathworld.wolfram.com/Tetromino.html)
 2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)

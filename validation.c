@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/03 15:38:10 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/03 16:07:25 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,8 @@ void ft_exit(void)
 }
 /*
 ** First step in the project. ft_tetrominoes stores the pieces given by the user
-** in a double pointer array.
+** in a double pointer array. But it also checks if the first, second, third,
+** and fourth lines end with a new line.
 */
 char **ft_tetrominoes(int fd)
 {
@@ -218,9 +219,13 @@ int ft_dots(char **characters)
 }
 */
 /* 
-** is_it_valid returns an integer
+** dots_and_hash returns an integer. If there are not 12 . or 4 hastags, then the
+** program will print "Error" and exit out of the program. If there are 12 .
+** and 4 hashtags then the program will return 1 which means the program can
+** now be validated for phase to determine if the pieces entered by the user
+** are actually tetrominoes or not.
 */
-int is_it_valid(char **characters)
+int dots_and_hash(char **characters)
 {
 	int i;
 	int j;
@@ -250,6 +255,7 @@ int is_it_valid(char **characters)
 }
 // we have access to characters from ft_tetrominos without calling the function,
 // just keeping it commented in case we want to use it because it works well.
+/*
 char **ft_validation_1(char **characters)
 {
 	char **stored_characters;
@@ -272,6 +278,7 @@ char **ft_validation_1(char **characters)
 //	printf("This is stored characters:\n%s\n", stored_characters[0]);
 	return(stored_characters);
 }
+*/
 int main (void)
 {
 	int fd;
@@ -290,7 +297,7 @@ int main (void)
 //	printf("\n\n");
 //	printf("printing ft_validation_1:\n");
 //	printf("%s\n", characters2[0]);
-	printf("%d\n", is_it_valid(characters1));
+	printf("%d\n", dots_and_hash(characters1));
 //	printf("%d\n", ft_dots(characters2));
 //	printf("%d\n", ft_dots(characters2));
 //	while(1)

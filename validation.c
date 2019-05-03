@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/03 15:22:38 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/03 15:38:10 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ char **ft_tetrominoes(int fd)
 	int temp_bytes_read;
 	char **characters;
 	int i;
-	i = 0;
 
+	i = 0;
 	characters = (char **)malloc(sizeof(char *) * (26));
 	characters[i] = (char *)malloc(sizeof(char) * (21));
 	while((bytes_read = read(fd, characters[i], 21)) >= 20)
@@ -176,8 +176,8 @@ char **ft_tetrominoes(int fd)
 		{
 			temp_bytes_read = bytes_read;
 			characters[i][20] = '\0';
-			i++;
-			characters[i] = (char *)malloc(sizeof(char) * 21);
+//			i++;
+			characters[++i] = (char *)malloc(sizeof(char) * 21);
 		}
 	}
 	free(characters[i]); // This has to be freed
@@ -280,7 +280,7 @@ int main (void)
 	int dots;
 
 	fd = 0;
-	fd = open("./valid_pieces/error_01", O_RDONLY);
+	fd = open("./valid_pieces/valid_01", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 //	printf("in main:\n%s", characters1[0]);
 //	printf("%s", characters1[1]);

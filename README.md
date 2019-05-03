@@ -39,9 +39,10 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 1. First, the very first function that appears in the program `` void ft_exit (void) ``. The program can run fine even without this because this function only has two lines. But having created this function prints an Error on the screen and exits out of the program.
 
-2. Second function, ft_tetrominoes, reads the file and stores the tetrominoes. Tetrominoes are stored in a double pointer array. First pointer was malloced with size of 26, since the most alphabetical characters we can have are 26. Then the second pointer was malloced with a size of 20 characters because each tetromino has 20 characters(12 dots + 4 hashtags+ 4 newlines). While tetrominoes are being stored, flags are also placed to evaluate if the 4th, 9th, 14th, and 19th characters of each tetromino are a new line, '\n', or not. If one of these characters are not a new_line then the program will exit out using the ``ft_exit()``.
+2. Second function, ``char **ft_tetrominoes(int fd)``, reads the file and stores the tetrominoes. Tetrominoes are stored in a double pointer array. First pointer was malloced with size of 26, since the most alphabetical characters we can have are 26. Then the second pointer was malloced with a size of 20 characters because each tetromino has 20 characters(12 dots + 4 hashtags+ 4 newlines). While tetrominoes are being stored, flags are also placed to evaluate if the 4th, 9th, 14th, and 19th characters of each tetromino are a new line, '\n', or not. If one of these characters are not a new_line then the program will exit out using the ``ft_exit()``.
 
-3. 
+3. Third function, ``int dots_and_hash(char ** characters)``, takes the stored the tetrominoes and checks if there are 12 dots and 4 hashtags or not. If there are not 12 dots or 4 hashtags then the program will exit out via ``ft_exit()``. If there are 12 dots and 4 hashtags then the program will return 1, which means now the stored pieces can be further assessed to determine if it a valid tetromino or not. Because there are could be 4 hashtags in all four corners and 12 dots in the middle, and the program will still return 1.
+
 
 # Resources:
 1. [19 Valid Tetrominoes](http://mathworld.wolfram.com/Tetromino.html)

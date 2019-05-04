@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/04 15:43:28 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/04 16:25:04 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,29 +257,27 @@ int dots_and_hash(char **characters)
 /*
 ** is_it_valid function is the last function in determining if the stored
 ** pieces are valid or not.
+** is_it_valid function takes the stored pieces, i, j and hash.
+** i, j, and hash are placed within the function to save lines inside the
+** function.
+** It is important to set i, j, and hash at 0 in the main when this function
+** gets called.
 */
 
-int is_it_valid(char **characters)
+int is_it_valid(char **characters, int i, int j, int hash)
 {
-	int i;
-	int j;
-	int hash;
+//	int i;
+//	int j;
+//	int hash;
 
-	i = 0;
-	j = 0;
-	while(characters[i][j])
+//	i = 0;
+//	j = 0;
+	while(characters[i][j] && j >= 0)
 	{
-		hash = 0;
 		while(j < 20)
 		{
 			if (characters[i][j] == '#')
 			{
-			/*	
-				((characters[i][j+1] == '#') && ((j+1) < 20)) && hash++;
-				((characters[i][j+5] == '#') && ((j+5) < 20)) && hash++;
-				((characters[i][j-1] == '#') && ((j-1) >= 0)) && hash++;
-				((characters[i][j-5] == '#') && ((j-5) >= 0)) && hash++;
-			*/
 				(characters[i][j+1] == '#') && hash++;
 				(characters[i][j+5] == '#') && hash++;
 				(characters[i][j-1] == '#') && hash++;
@@ -293,6 +291,7 @@ int is_it_valid(char **characters)
 		}
 		i++;
 		j = 0;
+		hash = 0;
 	}
 	printf("\nis_it_valid succesful\n");
 	return(1);
@@ -406,7 +405,7 @@ int main (void)
 //	printf("printing ft_validation_1:\n");
 //	printf("%s\n", characters2[0]);
 	printf("%d\n", dots_and_hash(characters1));
-	printf("%d\n", is_it_valid(characters1));
+	printf("%d\n", is_it_valid(characters1, 0, 0, 0));
 //	printf("%d\n", ft_dots(characters2));
 //	printf("%d\n", ft_dots(characters2));
 //	while(1)

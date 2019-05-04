@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/03 16:07:25 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/04 15:43:28 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,8 +251,115 @@ int dots_and_hash(char **characters)
 		i++;
 		j = 0;
 	}
+	printf("\ndots_and_hash succesful\n");
 	return(1);
 }
+/*
+** is_it_valid function is the last function in determining if the stored
+** pieces are valid or not.
+*/
+
+int is_it_valid(char **characters)
+{
+	int i;
+	int j;
+	int hash;
+
+	i = 0;
+	j = 0;
+	while(characters[i][j])
+	{
+		hash = 0;
+		while(j < 20)
+		{
+			if (characters[i][j] == '#')
+			{
+			/*	
+				((characters[i][j+1] == '#') && ((j+1) < 20)) && hash++;
+				((characters[i][j+5] == '#') && ((j+5) < 20)) && hash++;
+				((characters[i][j-1] == '#') && ((j-1) >= 0)) && hash++;
+				((characters[i][j-5] == '#') && ((j-5) >= 0)) && hash++;
+			*/
+				(characters[i][j+1] == '#') && hash++;
+				(characters[i][j+5] == '#') && hash++;
+				(characters[i][j-1] == '#') && hash++;
+				(characters[i][j-5] == '#') && hash++;
+			}
+			j++;
+			if(j == 20 && (hash == 6 || hash == 8))
+				break ;
+			if( j == 20 && (hash != 6 || hash != 8))
+				ft_exit();
+		}
+		i++;
+		j = 0;
+	}
+	printf("\nis_it_valid succesful\n");
+	return(1);
+}
+/*
+int is_it_valid_one(char **characters)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	j = 0;
+	count = 0;
+
+	while(characters[i][j])
+	{
+		while(characters[i][j])
+		{
+			if(characters[i][j] == '#')
+			{
+				if (characters[i][j+1] != '#' || characters[i][j+5] != '#')
+					ft_exit();
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return(1);
+}
+*/
+/*
+int x_y_coordinates_1(char **characters)
+{
+	int i;
+	int j;
+	int k;
+	int l;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+	coordinates = (int **) malloc(sizeof(int *) * (26));
+	coordinates[k] = (int *)malloc(sizeof(int) * (8));
+
+	while(characters[i][j])
+	{
+		while(characters[i][j])
+		{
+			if(characters[i][j] == '#')
+			{
+				coordinates[k][l] = (j%5);
+				l++;
+				coordinates[k][l] = (j/5);
+				l++;
+			}
+			j++;
+		}
+		i++;
+		j = 0;
+		k = 0;
+	}
+
+}
+*/
 // we have access to characters from ft_tetrominos without calling the function,
 // just keeping it commented in case we want to use it because it works well.
 /*
@@ -287,8 +394,9 @@ int main (void)
 	int dots;
 
 	fd = 0;
-	fd = open("./valid_pieces/valid_01", O_RDONLY);
+	fd = open("./valid_pieces/valid_22", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
+
 //	printf("in main:\n%s", characters1[0]);
 //	printf("%s", characters1[1]);
 //	printf("%c", characters1[0][3]);
@@ -298,6 +406,7 @@ int main (void)
 //	printf("printing ft_validation_1:\n");
 //	printf("%s\n", characters2[0]);
 	printf("%d\n", dots_and_hash(characters1));
+	printf("%d\n", is_it_valid(characters1));
 //	printf("%d\n", ft_dots(characters2));
 //	printf("%d\n", ft_dots(characters2));
 //	while(1)

@@ -53,7 +53,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>#</td>
     <td>#</td>
     <td>#</td>
-  <tr>
+  </tr>
 </table>
 
 # Resources:

@@ -85,6 +85,18 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 5. Function, `int **x_y_coordinates(char **characters)` converts the stored tetrominoes in x and y coordinates. Memory is allocated using malloc for the double pointer for a size of 26. Unlike the string where we allocate the memory of 21, in this case we only allocate memory for a size of 9, because we are only getting coordinates for x and y. To get the x coordinate, we take the position of a tetromino and do modulous 5. To get the y coordinate, we take the position of a tetromino and divide that by 5.
 
+Taking above figure, below is what the tranformation will look like once we convert the hastags into coordinates:
+
+<table>
+  <tr>
+    <td>0,0</td>
+    <td>1,0</td>
+    <td>2,0</td>
+    <td>3,0</td>
+    <td>\n</td>
+  </tr>
+</table>
+
 # Resources:
 1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)

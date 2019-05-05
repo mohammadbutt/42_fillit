@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/04 16:25:04 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/04 19:25:57 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,9 @@ char **ft_tetrominoes(int fd)
 		}
 	}
 	free(characters[i]); // This has to be freed
-	if (temp_bytes_read == 21)
+//	if (temp_bytes_read == 21)
+//		ft_exit();
+	if (temp_bytes_read != 20)
 		ft_exit();
 	return(characters);
 }
@@ -325,7 +327,7 @@ int is_it_valid_one(char **characters)
 }
 */
 /*
-int x_y_coordinates_1(char **characters)
+int **x_y_coordinates_1(char **characters)
 {
 	int i;
 	int j;
@@ -393,7 +395,8 @@ int main (void)
 	int dots;
 
 	fd = 0;
-	fd = open("./valid_pieces/valid_22", O_RDONLY);
+//	fd = open("./valid_pieces/error_02", O_RDONLY);
+	fd = open("./tests/corrects/valid_21", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 
 //	printf("in main:\n%s", characters1[0]);

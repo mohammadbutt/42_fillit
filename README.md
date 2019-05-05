@@ -42,45 +42,45 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 2. Second function, ``char **ft_tetrominoes(int fd)``, reads the file and stores the tetrominoes. Tetrominoes are stored in a double pointer array. First pointer was malloced with size of 26, since the most alphabetical characters we can have are 26. Then the second pointer was malloced with a size of 20 characters because each tetromino has 20 characters(12 dots + 4 hashtags+ 4 newlines). While tetrominoes are being stored, flags are also placed to evaluate if the 4th, 9th, 14th, and 19th characters of each tetromino are a new line, '\n', or not. If one of these characters are not a new_line then the program will exit out using the ``ft_exit()``.
 
 3. Third function, ``int dots_and_hash(char ** characters)``, takes the stored the tetrominoes and checks if there are 12 dots and 4 hashtags or not. If there are not 12 dots or 4 hashtags then the program will exit out via ``ft_exit()``. If there are 12 dots and 4 hashtags then the program will return 1, which means now the stored pieces can be further assessed to determine if it a valid tetromino or not. Because there are could be 4 hashtags in all four corners and 12 dots in the middle, and the program will still return 1.
-
-<table>
-  <tr>
-    <td>#</td>
-    <td>#</td>
-    <td>#</td>
-    <td>#</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-
+---
 4. Function, `int is_it_valid(char **characters, int i, int j, int hash)`, is the last stage in validating if a tetromino is actually valid or not. Suppose if x at the 0th position is a #, then we simply check if x+1, or x+5, or x-1, or x-5 is a hastag. If x+1, x+5, x-1, x-5 is a hashtag then we add it all up each time. If total of this function generates 6 or 8 we can be assured that is an actual tetromino.
+
+<table>
+  <tr>
+    <td>#</td>
+    <td>#</td>
+    <td>#</td>
+    <td>#</td>
+    <td>\n</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>\n</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>\n</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>\n</td>
+  </tr>
+</table>
 
 5. Function, `int **x_y_coordinates(char **characters)` converts the stored tetrominoes in x and y coordinates. Memory is allocated using malloc for the double pointer for a size of 26. Unlike the string where we allocate the memory of 21, in this case we only allocate memory for a size of 9, because we are only getting coordinates for x and y. To get the x coordinate, we take the position of a tetromino and do modulous 5. To get the y coordinate, we take the position of a tetromino and divide that by 5.
 

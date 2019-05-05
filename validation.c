@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/05 13:36:59 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/05 13:53:56 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,12 +248,12 @@ int dots_and_hash(char **characters)
 		}
 		if(dots != 12 || hashtags != 4)
 			ft_exit();
-		printf("dots:|%d|\n", dots); // Line will be removed
-		printf("hashtags:|%d|\n\n", hashtags); // Line will be removed
+//		printf("dots:|%d|\n", dots); // Line will be removed
+//		printf("hashtags:|%d|\n\n", hashtags); // Line will be removed
 		i++;
 		j = 0;
 	}
-	printf("\ndots_and_hash succesful\n");
+//	printf("\ndots_and_hash succesful\n");
 	return(1);
 }
 /*
@@ -295,7 +295,7 @@ int is_it_valid(char **characters, int i, int j, int hash)
 		j = 0;
 		hash = 0;
 	}
-	printf("\nis_it_valid succesful\n");
+//	printf("\nis_it_valid succesful\n");
 	return(1);
 }
 /*
@@ -406,7 +406,7 @@ int main (void)
 
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_00", O_RDONLY);
+	fd = open("./tests/corrects/valid_06", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 //	array = x_y_coordinates()
 
@@ -418,10 +418,13 @@ int main (void)
 //	printf("\n\n");
 //	printf("printing ft_validation_1:\n");
 //	printf("%s\n", characters2[0]);
-	printf("%d\n", dots_and_hash(characters1));
-	printf("%d\n\n", is_it_valid(characters1, 0, 0, 0));
-	printf("--------------------Validation Succesful\n");
-	printf("Printing coordinates--------------------\n");
+//	printf("%d\n", dots_and_hash(characters1));
+//	printf("%d\n\n", is_it_valid(characters1, 0, 0, 0));
+
+	dots_and_hash(characters1);
+	is_it_valid(characters1, 0, 0, 0);
+//	printf("--------------------Validation Succesful\n");
+	printf("------------Printing coordinates------------\n");
 
 	int i = 0;
 

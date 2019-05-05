@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/05 13:53:56 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/05 14:07:03 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,7 +424,7 @@ int main (void)
 	dots_and_hash(characters1);
 	is_it_valid(characters1, 0, 0, 0);
 //	printf("--------------------Validation Succesful\n");
-	printf("------------Printing coordinates------------\n");
+	printf("---Printing coordinates---\n");
 
 	int i = 0;
 
@@ -438,7 +438,7 @@ int main (void)
 		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][4]));
 		printf("%d}\n", (x_y_coordinates(characters1)[i][5]));
 		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][6]));
-		printf("%d}\n\n\n", (x_y_coordinates(characters1)[i][7]));
+		printf("%d}\n\n", (x_y_coordinates(characters1)[i][7]));
 
 //		printf("x,y: {%d, ", (x_y_coordinates(characters1)[1][0]));
 //		printf("%d}\n", (x_y_coordinates(characters1)[1][1]));

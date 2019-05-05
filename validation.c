@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/04 21:44:54 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/04 21:52:41 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,13 +345,13 @@ int **x_y_coordinates(char **characters)
 	coordinates[k] = (int *)malloc(sizeof(int) * (8));
 	while(characters[i][j])
 	{
-		while(j < 20)
+		while(j <= 20)
 		{
-			if (characters[i][j] == '.' || characters[i][j] == '\n')
+			if (characters[i][j] != '#')
 			{
 				j++;
 			}
-			else if(characters[i][j] == '#' && j <= 20)
+			if(characters[i][j] == '#')// && j <= 20)
 			{
 				coordinates[k][l] = j%5;
 				l++;
@@ -412,7 +412,7 @@ int main (void)
 	int **array;
 
 	fd = 0;
-	fd = open("./valid_pieces/valid_11", O_RDONLY);
+	fd = open("./valid_pieces/valid_06", O_RDONLY);
 //	fd = open("./tests/corrects/valid_20", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 //	array = x_y_coordinates()

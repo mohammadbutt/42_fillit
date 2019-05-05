@@ -43,6 +43,10 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 3. Third function, ``int dots_and_hash(char ** characters)``, takes the stored the tetrominoes and checks if there are 12 dots and 4 hashtags or not. If there are not 12 dots or 4 hashtags then the program will exit out via ``ft_exit()``. If there are 12 dots and 4 hashtags then the program will return 1, which means now the stored pieces can be further assessed to determine if it a valid tetromino or not. Because there are could be 4 hashtags in all four corners and 12 dots in the middle, and the program will still return 1.
 
+4. Function, `int is_it_valid(char **characters, int i, int j, int hash)`, is the last stage in validating if a tetromino is actually valid or not. Suppose if x is a #, then we simply check one character ahead of it if that's also a #, 5 characters ahead of it if that's a #, one character before is a # and 5th character before the current character is a #. And we add up each time the hashtags are there. If total of this function generates 6 or 8 we can be assured that is an actual tetromino.
+
+5. Function, `int **x_y_coordinates(char **characters)` converts the stored tetrominoes in x and y coordinates. Memory is allocated using malloc for the double pointer for a size of 26. Unlike the string where we allocate the memory of 21, in this case we only allocate memory for a size of 9, because we are only getting coordinates for x and y. To get the x coordinate, we take the position of a tetromino and do modulous 5. To get the y coordinate, we take the position of a tetromino and divide that by 5.
+
 
 # Resources:
 1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)

@@ -55,7 +55,6 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>#</td>
   </tr>
 </table>
-
 <table>
   <tr>
     <td>o</td>
@@ -64,7 +63,22 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>o</td>
   </tr>
 </table>
-
+<table>
+  <tr>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+  </tr>
+</table>
 # Resources:
 1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)

@@ -89,10 +89,10 @@ Taking the above figure, below is what the tranformation will look like once we 
 
 <table>
   <tr>
-    <td>0%5(x = 0), 0/5(y = 0)</td>
-    <td>1%1(x = 1), 0/5(y = 0)</td>
-    <td>2%5(x = 2), 0/5(y = 0)</td>
-    <td>3%5(x = 3), 0/5(y = 0)</td>
+    <td>x = 0, y = 0</td>
+    <td>x = 1, y = 0</td>
+    <td>x = 2, y = 0</td>
+    <td>x = 3, y = 0</td>
     <td>\n</td>
   </tr>
 </table>

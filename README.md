@@ -54,7 +54,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>#</td>
     <td>#</td>
   <tr>
-<table>
+</table>
 
 # Resources:
 1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)

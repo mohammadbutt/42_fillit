@@ -85,10 +85,9 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 5. Function, `int **x_y_coordinates(char **characters)` converts the stored tetrominoes in x and y coordinates. Memory is allocated using malloc for the double pointer for a size of 26. Unlike the string where we allocate the memory of 21, in this case we only allocate memory for a size of 9, because we are only getting coordinates for x and y. To get the x coordinate, we take the position of a tetromino and do modulous 5. To get the y coordinate, we take the position of a tetromino and divide that by 5.
 
-<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/snapshots/hashes.png">
-Taking the above figure, below is what the tranformation will look like once we convert the hastags into coordinates:
+Below on the right is what the tranformation will look like once we convert the hastags into coordinates:
 
-<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/snapshots/hashes_to_coords.png">
+<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/snapshots/hashes_to_corords_1.png">
 <table>
   <tr>
     <td>x = 0, y = 0</td>

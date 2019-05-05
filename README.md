@@ -53,6 +53,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>#</td>
     <td>#</td>
     <td>#</td>
+    <td>\n</td>
   </tr>
 </table>
 <table>
@@ -61,6 +62,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>o</td>
     <td>o</td>
     <td>o</td>
+    <td>\n</td>
   </tr>
 </table>
 <table>
@@ -69,6 +71,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>o</td>
     <td>o</td>
     <td>o</td>
+    <td>\n</td>
   </tr>
 </table>
 <table>
@@ -77,6 +80,7 @@ Reading big programs can get a bit challenging. I have summed up some point belo
     <td>o</td>
     <td>o</td>
     <td>o</td>
+    <td>\n</td>
   </tr>
 </table>
 # Resources:

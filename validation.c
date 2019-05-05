@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/04 19:25:57 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/04 21:44:54 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,41 +326,55 @@ int is_it_valid_one(char **characters)
 	return(1);
 }
 */
-/*
-int **x_y_coordinates_1(char **characters)
+
+int **x_y_coordinates(char **characters)
 {
 	int i;
 	int j;
 	int k;
 	int l;
+	int **coordinates;
 
 	i = 0;
 	j = 0;
 	k = 0;
 	l = 0;
+
+//	printf("\n\n\nDoes it come here\n\n\n");
 	coordinates = (int **) malloc(sizeof(int *) * (26));
 	coordinates[k] = (int *)malloc(sizeof(int) * (8));
-
 	while(characters[i][j])
 	{
-		while(characters[i][j])
+		while(j < 20)
 		{
-			if(characters[i][j] == '#')
+			if (characters[i][j] == '.' || characters[i][j] == '\n')
 			{
-				coordinates[k][l] = (j%5);
+				j++;
+			}
+			else if(characters[i][j] == '#' && j <= 20)
+			{
+				coordinates[k][l] = j%5;
 				l++;
-				coordinates[k][l] = (j/5);
+				coordinates[k][l] = j/5;
 				l++;
+//				j++;
 			}
 			j++;
 		}
+//		coordinates[k][l] = '\0';
 		i++;
 		j = 0;
-		k = 0;
+		k++;
+		l = 0;
+		coordinates[k] = (int *)malloc(sizeof(int) * (8));
 	}
 
+//	printf("coordinates:|%d|",coordinates[0][0]);
+
+	return(coordinates);
+
 }
-*/
+
 // we have access to characters from ft_tetrominos without calling the function,
 // just keeping it commented in case we want to use it because it works well.
 /*
@@ -392,12 +406,16 @@ int main (void)
 	int fd;
 	char **characters1;
 	char **characters2;
+//	int **x_y_coordinates;
 	int dots;
 
+	int **array;
+
 	fd = 0;
-//	fd = open("./valid_pieces/error_02", O_RDONLY);
-	fd = open("./tests/corrects/valid_21", O_RDONLY);
+	fd = open("./valid_pieces/valid_11", O_RDONLY);
+//	fd = open("./tests/corrects/valid_20", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
+//	array = x_y_coordinates()
 
 //	printf("in main:\n%s", characters1[0]);
 //	printf("%s", characters1[1]);
@@ -408,7 +426,23 @@ int main (void)
 //	printf("printing ft_validation_1:\n");
 //	printf("%s\n", characters2[0]);
 	printf("%d\n", dots_and_hash(characters1));
-	printf("%d\n", is_it_valid(characters1, 0, 0, 0));
+	printf("%d\n\n", is_it_valid(characters1, 0, 0, 0));
+	printf("--------------------Validation Succesful\n");
+	printf("Printing coordinates--------------------\n");
+
+	printf("x:|%d|\n", (x_y_coordinates(characters1)[0][0]));
+	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][1]));
+	printf("x:|%d|\n", (x_y_coordinates(characters1)[0][2]));
+	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][3]));
+	printf("x:|%d|\n", (x_y_coordinates(characters1)[0][4]));
+	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][5]));
+	printf("x:|%d|\n", (x_y_coordinates(characters1)[0][6]));
+	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][7]));
+//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][8]));
+//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][9]));
+//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][300]));
+
+
 //	printf("%d\n", ft_dots(characters2));
 //	printf("%d\n", ft_dots(characters2));
 //	while(1)

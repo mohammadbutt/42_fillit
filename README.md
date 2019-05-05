@@ -58,10 +58,10 @@ Reading big programs can get a bit challenging. I have summed up some point belo
 
 <table>
   <tr>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
-    <td>.</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
+    <td>o</td>
   </tr>
 </table>
 

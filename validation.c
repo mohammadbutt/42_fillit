@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/05 14:07:03 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/05 22:30:27 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,24 +327,23 @@ int is_it_valid_one(char **characters)
 }
 */
 
-int **x_y_coordinates(char **characters)
+int **x_y_coordinates(char **characters, int i, int j, int k, int l)
 {
-	int i;
-	int j;
-	int k;
-	int l;
+//	int i;
+//	int j;
+//	int k;
+//	int l;
 	int **coordinates;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
+//	i = 0;
+//	j = 0;
+//	k = 0;
+//	l = 0;
 
 	coordinates = (int **) malloc(sizeof(int *) * (26));
 	coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	while(characters[i][j])
 	{
-//		while(j < 20)
 		while(characters[i][j] != '\0')
 		{
 			if(characters[i][j] == '#')// && j <= 20)
@@ -353,7 +352,6 @@ int **x_y_coordinates(char **characters)
 				l++;
 				coordinates[k][l] = j/5;
 				l++;
-//				j++;
 			}
 			j++;
 		}
@@ -363,10 +361,57 @@ int **x_y_coordinates(char **characters)
 		l = 0;
 		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	}
-	free(coordinates[k]); // This needs to be freed after.
+//	free(coordinates[k]); // This needs to be freed after.
+	coordinates[k] = NULL;
 //	printf("coordinates:|%d|",coordinates[0][0]);
 	return(coordinates);
 }
+
+int **shift_xy_coordinates(int **coordinates)
+{
+	int x;
+	int y;
+	int k;
+	int l;
+
+	x = 4;
+	y = 4;
+	k = 0;
+	l = 0;
+	while(coordinates[k] != NULL)
+//	while(coordinates[k][l] != '\0')
+//	while(coordinates[k])
+	{
+		while(coordinates[k][l] != '\0')
+//		while(l <= 8)
+		{
+			if (coordinates[k][l] < x)
+				x = coordinates[k][l];
+			l++;
+			if (coordinates[k][l] < y)
+				y = coordinates[k][l];
+			l++;
+		}
+		l = 0;
+//		while(l <= 8)	
+		while(coordinates[k][l] != '\0')
+		{
+			if (coordinates[k][l] != 0)
+				coordinates[k][l] = coordinates[k][l] - x;
+			l++;
+			if(coordinates[k][l] != 0)
+				coordinates[k][l] = coordinates[k][l] - y;
+			l++;
+		}
+		l = 0;
+		x = 4;
+		y = 4;
+		k++;
+	}
+	return(coordinates);
+	
+}
+
 
 // we have access to characters from ft_tetrominos without calling the function,
 // just keeping it commented in case we want to use it because it works well.
@@ -406,7 +451,7 @@ int main (void)
 
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_06", O_RDONLY);
+	fd = open("./tests/corrects/valid_18", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 //	array = x_y_coordinates()
 
@@ -428,27 +473,33 @@ int main (void)
 
 	int i = 0;
 
-	while(i >= 0)
+//	while(i >= 0)
+//	while((x_y_coordinates(characters1, 0, 0, 0, 0)[i] != NULL))
+//	{		
+//		printf("x,y: {%d, ", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][0]));
+//		printf("%d}\n", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][1]));
+//		printf("x,y: {%d, ", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][2]));
+//		printf("%d}\n", (x_y_coordinates(characters1, 0, 0, 0, 0 )[i][3]));
+//		printf("x,y: {%d, ", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][4]));
+//		printf("%d}\n", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][5]));
+//		printf("x,y: {%d, ", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][6]));
+//		printf("%d}\n\n\n", (x_y_coordinates(characters1, 0, 0, 0, 0)[i][7]));
+//		i++;
+//	}
+	i = 0;
+
+	printf("printing shifted coordinates\n\n");
+	while(shift_xy_coordinates(&x_y_coordinates(characters1, 0, 0, 0, 0)[i]) != NULL )
 	{
+		printf("x,y: {%d, ", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][0]));
+		printf("%d}\n", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][1]));
+		printf("x,y: {%d, ", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][2]));
+		printf("%d}\n", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][3]));
+		printf("x,y: {%d, ", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][4]));
+		printf("%d}\n", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][5]));
+		printf("x,y: {%d, ", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][6]));
+		printf("%d}\n\n\n", (shift_xy_coordinates(x_y_coordinates(characters1, 0, 0, 0, 0))[i][7]));
 		
-		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][0]));
-		printf("%d}\n", (x_y_coordinates(characters1)[i][1]));
-		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][2]));
-		printf("%d}\n", (x_y_coordinates(characters1)[i][3]));
-		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][4]));
-		printf("%d}\n", (x_y_coordinates(characters1)[i][5]));
-		printf("x,y: {%d, ", (x_y_coordinates(characters1)[i][6]));
-		printf("%d}\n\n", (x_y_coordinates(characters1)[i][7]));
-
-//		printf("x,y: {%d, ", (x_y_coordinates(characters1)[1][0]));
-//		printf("%d}\n", (x_y_coordinates(characters1)[1][1]));
-//		printf("x,y: {%d, ", (x_y_coordinates(characters1)[1][2]));
-//		printf("%d}\n", (x_y_coordinates(characters1)[1][3]));
-//		printf("x,y: {%d, ", (x_y_coordinates(characters1)[1][4]));
-//		printf("%d}\n", (x_y_coordinates(characters1)[1][5]));
-//		printf("x,y: {%d, ", (x_y_coordinates(characters1)[1][6]));
-//		printf("%d}\n\n\n", (x_y_coordinates(characters1)[1][7]));
-
 		i++;
 	}
 //	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][8]));

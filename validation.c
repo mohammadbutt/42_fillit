@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/06 15:02:51 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/06 21:38:18 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,7 @@ int is_it_valid(char **characters, int i, int j, int hash)
 //	i = 0;
 //	j = 0;
 //	hash = 0;
-	while(characters[i][j] && j >= 0)
+	while(characters[i][j] )//&& j >= 0)
 	{
 		while(j < 20)
 		{
@@ -375,38 +375,51 @@ int **shift_xy_coordinates(int **coordinates)
 	int k;
 	int l;
 
-	x = 4;
-	y = 4;
+	x = 3;
+	y = 3;
 	k = 0;
 	l = 0;
-	while(coordinates[k] != NULL)
+//	while(coordinates[k] != NULL)
 //	while(coordinates[k][l] != '\0')
-//	while(coordinates[k])
+//	while(coordinates[k][l])
+//	printf("\nthis is k:|%d|\n", coordinates[k][1]);
+	while(coordinates[k] != NULL)
 	{
-		while(coordinates[k][l] != '\0')
-//		while(l <= 8)
+//		printf("Comes here\n");
+//		while(coordinates[k][l] != '\0')
+		while(l <= 7)
 		{
-			if (coordinates[k][l] < x)
+//			printf("Hello\n");
+			if (coordinates[k][l] <= x)
 				x = coordinates[k][l];
 			l++;
-			if (coordinates[k][l] < y)
+			if (coordinates[k][l] <= y)
 				y = coordinates[k][l];
 			l++;
+
+//			printf("\nk:|%d|", k);
+//			printf("\nl:|%d|", l);
 		}
 		l = 0;
-//		while(l <= 8)	
-		while(coordinates[k][l] != '\0')
+//		printf("\nx min: |%d|\n", x);
+//		printf("y min: |%d|\n", y);
+//		while(coordinates[k][l] != '\0')
+		while(l <= 7)	
+//		while(coordinates[k][l] != '\0')
 		{
-			if (coordinates[k][l] != 0)
-				coordinates[k][l] = coordinates[k][l] - x;
+//			if (coordinates[k][l] != 0)
+			coordinates[k][l] = coordinates[k][l] - x;
 			l++;
-			if(coordinates[k][l] != 0)
-				coordinates[k][l] = coordinates[k][l] - y;
+//			if(coordinates[k][l] != 0)
+			coordinates[k][l] = coordinates[k][l] - y;
 			l++;
 		}
 		l = 0;
-		x = 4;
-		y = 4;
+//		printf("\nprinting x min: |%x|\n", x);
+//		printf("printing y min: |%d|\n", y);
+
+		x = 3;
+		y = 3;
 		k++;
 	}
 	return(coordinates);
@@ -452,7 +465,7 @@ int main (void)
 
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_18", O_RDONLY);
+	fd = open("./tests/corrects/valid_20", O_RDONLY);
 	characters1 = ft_tetrominoes(fd);
 //	array = x_y_coordinates()
 

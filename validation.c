@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/06 22:05:13 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/07 14:20:38 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -370,8 +370,8 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 
 int **shift_xy_coordinates(int **coordinates)
 {
-	int x;
-	int y;
+	int x_min;
+	int y_min;
 	int k;
 	int l;
 
@@ -379,21 +379,21 @@ int **shift_xy_coordinates(int **coordinates)
 	while(coordinates[k] != NULL)
 	{
 		l = 0;
-		x = 3;
-		y = 3;
+		x_min = 3;
+		y_min = 3;
 		while(l <= 7)
 		{
-			(coordinates[k][l] <= x) && (x = coordinates[k][l]);
+			(coordinates[k][l] <= x_min) && (x_min = coordinates[k][l]);
 			l++;
-			(coordinates[k][l] <= y) && (y = coordinates[k][l]);
+			(coordinates[k][l] <= y_min) && (y_min = coordinates[k][l]);
 			l++;
 		}
 		l = 0;
 		while(l <= 7)	
 		{
-			coordinates[k][l] = coordinates[k][l] - x;
+			coordinates[k][l] = coordinates[k][l] - x_min;
 			l++;
-			coordinates[k][l] = coordinates[k][l] - y;
+			coordinates[k][l] = coordinates[k][l] - y_min;
 			l++;
 		}
 		k++;

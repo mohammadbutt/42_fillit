@@ -35,6 +35,12 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 - [X] 9. Validate pieces through various stages. Phase 1, is 4th, 9th, 14, and 19th character a new line. Phase 2, count if there are 12 dots and 4 hashtags. Phase 3, if the current piece is a hastag then is +1, +5, -1, and -5 a hashtag, if it is then count ++.
 - [X] 10. Turn actual tetrominoes into x and y coordinates.
 - [X] 11. Shift x and y coordinates to the top left. Find x_min and y_min then subtract them from the actual coordinates to move them to the top left.
+- [ ] 12. Create a grid/ board.
+- [ ] 13. Determine the minimum size of the board.
+- [ ] 14. Turn coordinates into alphabets. 0th element would be A, 1st element would be B.
+- [ ] 15. Backtracking / recursive backtracking/ dancing links(Knuth's X Algorithm).
+- [ ] 16. When placing alphabetical tetrominoes on the board, tetrominoes cannot collide/be on top of each other, and tetrominoes cannot be placed outside the board.
+- [ ] 17. 
 
 ---
 # How to read the code.

@@ -16,7 +16,7 @@ A table of 4 by 4.
 ....
 ....
 ````
-- [ ] 8. How to store user pieces properly? Cannot use Buff_size of 20 because what if the user has a valid piece, but at the end there is extra space? Not true. Tested and it works. Pieces can be stored with a buff size of 20 and ft_strcmp will still be able to compare the pieces properly. `ft_strcmp` will know the difference between the following:
+- [X] 8. Store pieces correctly. How to store user pieces properly? Cannot use Buff_size of 20 because what if the user has a valid piece, but at the end there is extra space? Not true. Tested and it works. Pieces can be stored with a buff size of 20 and ft_strcmp will still be able to compare the pieces properly. `ft_strcmp` will know the difference between the following:
 
 ```
 ###.$
@@ -32,7 +32,10 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 .... $
 ```
 
-- [ ] 9. Move the pieces of a given file to our desired location which is to the top left. Use x, y coordinates to move the pieces. Use this link https://gfredericks.com/things/polyominoes to put pieces at random places to understand how the pieces can be moved and shifted. We can move the whole row if it is not a #. We can move the whole column if it is not a #.
+- [X] 9. Validate pieces through various stages. Phase 1, is 4th, 9th, 14, and 19th character a new line. Phase 2, count if there are 12 dots and 4 hashtags. Phase 3, if the current piece is a hastag then is +1, +5, -1, and -5 a hashtag, if it is then count ++.
+- [X] 10. Turn actual tetrominoes into x and y coordinates.
+- [X] 11. Shift x and y coordinates to the top left. Find x_min and y_min then subtract them from the actual coordinates to move them to the top left.
+- [X] 12. 
 
 ---
 # How to read the code.

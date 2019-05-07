@@ -35,7 +35,6 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 - [X] 9. Validate pieces through various stages. Phase 1, is 4th, 9th, 14, and 19th character a new line. Phase 2, count if there are 12 dots and 4 hashtags. Phase 3, if the current piece is a hastag then is +1, +5, -1, and -5 a hashtag, if it is then count ++.
 - [X] 10. Turn actual tetrominoes into x and y coordinates.
 - [X] 11. Shift x and y coordinates to the top left. Find x_min and y_min then subtract them from the actual coordinates to move them to the top left.
-- [X] 12. 
 
 ---
 # How to read the code.

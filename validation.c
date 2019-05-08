@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/07 21:54:27 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/08 12:58:58 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ char **ft_tetrominoes(int fd)
 		}
 	}
 	free(characters[i]); // This has to be freed
+//	characters[i] = NULL;
 	if (temp_bytes_read != 20)
 		ft_exit();
 	return(characters);
@@ -399,6 +400,34 @@ int **shift_xy_coordinates(int **coordinates)
 	return(coordinates);
 }
 /*
+int **shift_xy_coordinates2(int **coordinates)
+{
+	int i;
+	int j;
+	int **shifted_coordinates;
+
+	i = 0;
+	j = 0;
+	shifted_coordinates = (int **)malloc(sizeof(int *) * (26));
+	shifted_coordinates[i] = (int *)malloc(sizeof(int) * (9));
+
+	while(coordinates[i][j])
+	{
+		while(coordinates[i][j] != '\0')
+		{
+			shifted_coordinates[i][j] = coordinates[i][j];
+			j++;
+		}
+		i++;
+		j = 0;
+		shifted_coordinates[i] = (int *)malloc(sizeof(int) * (9));
+	}
+
+	shifted_coordinates[i] = NULL;
+	return(shifted_coordinates);
+}
+*/
+/*
 char **coordinates_to_alphabets(int **coordinates)
 {
 	int i;
@@ -516,6 +545,14 @@ int main (void)
 	is_it_valid(characters1, 0, 0, 0);
 //	printf("--------------------Validation Succesful\n");
 	
+	printf("-------Printing Tetrominoes-------\n");
+	while((characters1)[i] != NULL)
+	{
+		printf("%s\n", (characters1)[i]);
+		i++;
+	}
+
+	i = 0;
 	
 	printf("-------Printing coordinates-------\n");
 	while((xy_coordinates(characters1, 0, 0, 0)[i] != NULL))
@@ -546,6 +583,23 @@ int main (void)
 		
 		i++;
 	}
+	i = 0;
+	printf("---Printing shifted coordinates2---\n\n");
+//	while(shift_xy_coordinates2(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i])) != NULL )
+//	{
+//		printf("x,y: {%d, ", (shift_xy_coordinates2(xy_coordinates(characters1, 0, 0, 0))[i][0]));
+//		printf("%d}      ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][1])));
+//		printf("x,y: {%d, ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][2])));
+//		printf("%d}      ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][3])));
+//		printf("x,y: {%d, ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][4])));
+//		printf("%d}      ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][5])));
+//		printf("x,y: {%d, ", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][6])));
+//		printf("%d}\n\n", (shift_xy_coordinates2(shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][7])));
+//		
+//		i++;
+//	}
+
+
 
 	i = 0;
 	

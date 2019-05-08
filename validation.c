@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/07 14:20:38 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/07 21:54:27 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,13 +177,10 @@ char **ft_tetrominoes(int fd)
 		{
 			temp_bytes_read = bytes_read;
 			characters[i][20] = '\0';
-//			i++;
 			characters[++i] = (char *)malloc(sizeof(char) * 21);
 		}
 	}
 	free(characters[i]); // This has to be freed
-//	if (temp_bytes_read == 21)
-//		ft_exit();
 	if (temp_bytes_read != 20)
 		ft_exit();
 	return(characters);
@@ -398,9 +395,63 @@ int **shift_xy_coordinates(int **coordinates)
 		}
 		k++;
 	}
+	coordinates[k] = NULL;
 	return(coordinates);
 }
+/*
+char **coordinates_to_alphabets(int **coordinates)
+{
+	int i;
+	int j;
+	int k;
+	int l;
+	char alpha;
 
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+
+	alpha = (char **) malloc(sizeof(char *) * (27));
+	alpha[i] = (char *) malloc(sizeof(char) * (9));
+
+	while(coordinates[k] != NULL)
+	{
+		while(l <= 7)
+		{
+			alpha[i][j] = coordinates[k][l]
+		}
+	}
+}
+*/
+
+char **ft_grid(int width)
+{
+	int height;
+	int i;
+	int j;
+	char **empty_grid;
+
+	i = 0;
+	j = 0;
+	height = width;
+	empty_grid = (char **)malloc(sizeof(char *) * (width + 1));
+
+	while(width != i)
+		empty_grid[i++] = (char *)malloc(sizeof(char) * (width + 1));
+	i = 0;
+
+	while(height--)
+	{
+		while(width != j)
+			empty_grid[i][j++] = '.';
+		empty_grid[i][j] = '\0';
+		j = 0;
+		i++;
+	}
+	empty_grid[i] = NULL;
+	return(empty_grid);
+}
 
 // we have access to characters from ft_tetrominos without calling the function,
 // just keeping it commented in case we want to use it because it works well.
@@ -432,15 +483,21 @@ int main (void)
 {
 	int fd;
 	char **characters1;
-	char **characters2;
-//	int **x_y_coordinates;
-	int dots;
 
-	int **array;
+	char **empty_grid;
+	int board_size;
+	int i;
+
+	board_size = 4;
+	i = 0;
+	empty_grid = ft_grid(board_size);
 
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_21", O_RDONLY);
+//	fd = open("./tests/corrects/valid_21", O_RDONLY);
+	fd = open("./tests/corrects/valid_02", O_RDONLY);
+	if (fd == -1)
+		printf("Wrong file name or path\n");
 	characters1 = ft_tetrominoes(fd);
 //	array = x_y_coordinates()
 
@@ -458,11 +515,9 @@ int main (void)
 	dots_and_hash(characters1);
 	is_it_valid(characters1, 0, 0, 0);
 //	printf("--------------------Validation Succesful\n");
-	printf("---Printing coordinates---\n");
-
-	int i = 0;
-
-//	while(i >= 0)
+	
+	
+	printf("-------Printing coordinates-------\n");
 	while((xy_coordinates(characters1, 0, 0, 0)[i] != NULL))
 	{		
 		printf("x,y: {%d, ", (xy_coordinates(characters1, 0, 0, 0)[i][0]));
@@ -477,7 +532,7 @@ int main (void)
 	}
 	i = 0;
 
-	printf("printing shifted coordinates\n\n");
+	printf("---Printing shifted coordinates---\n\n");
 	while(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i]) != NULL )
 	{
 		printf("x,y: {%d, ", (shift_xy_coordinates(xy_coordinates(characters1, 0, 0, 0))[i][0]));
@@ -492,17 +547,16 @@ int main (void)
 		i++;
 	}
 
-//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][8]));
-//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][9]));
-//	printf("y:|%d|\n\n", (x_y_coordinates(characters1)[0][300]));
+	i = 0;
+	
+	printf("----------Printing board----------\n");
+	while(i < board_size)
+	{
+		ft_putstr(empty_grid[i]);
+		ft_putstr("\n");
+		i++;
+	}
 
-
-//	printf("%d\n", ft_dots(characters2));
-//	printf("%d\n", ft_dots(characters2));
-//	while(1)
-//	{
-
-//	}
 	return(0);
 }
 

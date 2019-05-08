@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 14:46:13 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/07 13:44:35 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/07 21:54:59 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,19 @@ char **ft_grid(int width)
 int main (void)
 {
 	char **empty_grid;
-	int num;
+	int board_size;
 	int i;
 
-	num = 2;
+	board_size = 4;
 	i = 0;
-	empty_grid = ft_grid(num);
+	empty_grid = ft_grid(board_size);
 	
 //	ft_putstr(empty_grid[0]);
 //	ft_putstr(empty_grid[1]);
 //	ft_putstr(empty_grid[2]);
 //	ft_putstr(empty_grid[3]);
-	printf("grid of %d by %d\n", num, num);
-	while(i < num)
+	printf("grid of %d by %d\n", board_size, board_size);
+	while(i < board_size)
 	{
 //		printf("%s", empty_grid[i]);
 		ft_putstr(empty_grid[i]);

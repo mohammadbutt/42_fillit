@@ -1,6 +1,8 @@
 # Project Status - In Progress
 # Fillit - An Algorithm to put tetrominoes in a smallest square possible
 
+# Compiling the program
+``` gcc validation.c -I. ./libft/libft.a ```
 # Brainstorming
 - [X] 1. Open the file
 - [X] 2. Read the file

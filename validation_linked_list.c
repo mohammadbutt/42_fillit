@@ -1,147 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   validation_linked_list.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/29 14:07:14 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/08 12:58:58 by mbutt            ###   ########.fr       */
+/*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
+/*   Updated: 2019/05/08 13:08:10 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-// Reads a files and prints the last piece successfuly
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	char characters_read[21];
-	fd = open("./valid_pieces/valid_20", O_RDONLY);
 
-	while((bytes_read = read(fd, characters_read, 21)) >= 20)
-	{
-		characters_read[20] = '\0';
-	}
 
-	printf("%s", characters_read);
-	printf("%c", characters_read[1]);
-
-	return(0);
-}
-*/
-/*
-// Reads a file and shows first two pieces
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	char characters_read[2][21];
-	int i;
-
-	i = 0;
-	fd = open("./valid_pieces/valid_20", O_RDONLY);
-
-	while((bytes_read = read(fd, characters_read[i], 21)) >= 20)
-	{
-		characters_read[i][20] = '\0';
-		i++;
-	}
-	printf("%s", characters_read[0]);
-	printf("%s", characters_read[1]);
-	printf("%c", characters_read[1][2]);
-
-	return(0);
-}
-*/
-
-/* 
-**Because we can only have 26 pieces at most, we can use characters[26].
-** characters[26][21] will allocate memory for 26 pieces.
-** Each piece of 26 can store upto 21 characters.
-*/
-/*
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	char characters_read[26][21];
-	int i;
-
-	i = 0;
-
-	fd = open("./valid_pieces/valid_20", O_RDONLY);
-
-	while((bytes_read = read (fd, characters_read[i], 21)) >= 20)
-	{
-		characters_read[i][20] = '\0';
-		i++;
-	}
-	printf("%s", characters_read[0]);
-	printf("%s", characters_read[1]);
-	printf("%c", characters_read[1][2]);
-
-	return(0);
-}
-*/
 /*
 ** Error handler will quit the program if there is no new line at i[4], i[9],
 ** i[14], or i[19].
 */
-/*
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	char characters[26][21];
-	int i;
-
-	i = 0;
-	fd = open("./valid_pieces/valid_01", O_RDONLY);
-	while((bytes_read = read(fd, characters[i], 21)) >= 20)
-	{
-		if(characters[i][4] != '\n' || characters[i][9] != '\n')
-		{
-			printf("Error 1");
-			return(0);
-		}
-		if(characters[i][14] != '\n' || characters[i][19] != '\n')
-		{
-			printf("Error 2");
-			return(0);
-		}
-		else
-		{
-			characters[i][20] = '\0';
-			i++;
-		}
-	}
-	printf("%s", characters[0]);
-	printf("%s", characters[1]);
-	printf("%c", characters[1][2]);
-
-	return(0);
-}
-*/
-//using malloc to store pieces in characters
-/*
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	char **characters;
-	int i;
-
-	i = 0;
-	fd = open("./valid_pieces/valid_01", O_RDONLY);
-	while((bytes_read = read (fd, characters)))
-}
-*/
-
-// breaking the above into a function below.
-// Works and gives the file that's read;
 
 /*
 ** To print the Error message and exit. This function is created just to save an
@@ -187,37 +63,7 @@ char **ft_tetrominoes(int fd)
 	return(characters);
 }
 // ft_tetrominos can now be used to determine if the pieces are valid or not
-/*
-*/
-/*
-int ft_dots(char **characters)
-{
-	static int i_universal;
-	int j;
-	int dots;
-	int fd;
-	char **stored_characters;
-	if(!i_universal)
-		i_universal = 0;
-	j = 0;
-	dots = 0;
-	stored_characters = (char **)malloc(sizeof(char *) * (27));
-	stored_characters[i_universal] = (char *)malloc(sizeof(char *) * (21));
-	
-	stored_characters[i_universal] = ft_strdup(characters[i_universal]);
-//	stored_characters[i] = ft_tetrominoes(fd)[i];
-//	i++;
-	while(characters[i_universal][j])
-	{
-		if(characters[i_universal][j] == '.')
-			dots++;
-		j++;
-	}
-	i_universal++;
-	printf("\ndots:|%d|\n", dots);
-	return(dots);
-}
-*/
+
 /* 
 ** dots_and_hash returns an integer. If there are not 12 . or 4 hastags, then the
 ** program will print "Error" and exit out of the program. If there are 12 .
@@ -297,34 +143,6 @@ int is_it_valid(char **characters, int i, int j, int hash)
 //	printf("\nis_it_valid succesful\n");
 	return(1);
 }
-/*
-int is_it_valid_one(char **characters)
-{
-	int i;
-	int j;
-	int count;
-
-	i = 0;
-	j = 0;
-	count = 0;
-
-	while(characters[i][j])
-	{
-		while(characters[i][j])
-		{
-			if(characters[i][j] == '#')
-			{
-				if (characters[i][j+1] != '#' || characters[i][j+5] != '#')
-					ft_exit();
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return(1);
-}
-*/
 
 int **xy_coordinates(char **characters, int i, int j, int k)
 {

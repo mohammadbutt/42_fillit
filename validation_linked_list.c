@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/08 20:14:08 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/08 21:00:42 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,30 +219,42 @@ int **shift_xy_coordinates(int **coordinates)
 	return(coordinates);
 }
 
-node *create(int data, node *next)
+//node *create(int data, node *next)
+t_tetro *create(char *characters, t_tetro *next)
 {
-	node *new_node;
-   new_node = (node *)malloc(sizeof(node));
-	if(new_node == NULL)
+//	node *new_node;
+   t_tetro *new_node;
+
+//	new_node = (node *)malloc(sizeof(node));
+	new_node = (t_tetro *)malloc(sizeof(t_tetro));	
+   if(new_node == NULL)
 	{
 		printf("Error creating a new node.\n");
 		ft_exit();
 	}
-	new_node->data = data;
-	new_node->data = next;
+//	new_node->data = data;
+//	new_node->data = next;
+	new_node->characters = characters;
+	new_node->characters = next;	
 
 	return (new_node);
 }
 
-node *append(node *head, int data)
+//node *append(node *head, int data)
+t_tetro *append(t_tetro *head, char *characters)
 {
-	node *cursor;
-	node *new_node;
+//	node *cursor;
+//	node *new_node;
 	
+	t_tetro *cursor;
+	t_tetro *new_node;
+
 	cursor = head;
 	while(cursor->next != NULL)
 		cursor = cursor->next;
-	*new_node = create(data, NULL);
+//	*new_node = create(data, NULL);
+	*new_node = *create(characters, NULL);
+
 	cursor->next = new_node;
 
 	return(head);

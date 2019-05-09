@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 14:06:27 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 14:37:33 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,6 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 	}
 //	free(coordinates[k]); // This needs to be freed after.
 	coordinates[k] = NULL;
-//	printf("coordinates:|%d|",coordinates[0][0]);
 	return(coordinates);
 }
 
@@ -191,8 +190,10 @@ int **shift_xy_coordinates(int **coordinates)
 	int y_min;
 	int k;
 	int l;
+	int **shifted_coordinates;
 
 	k = 0;
+	shifted_coordinates = (int **)malloc(sizeof(int *) * (26));
 	while(coordinates[k] != NULL)
 	{
 		l = 0;
@@ -206,17 +207,18 @@ int **shift_xy_coordinates(int **coordinates)
 			l++;
 		}
 		l = 0;
+		shifted_coordinates[k] = (int *)malloc(sizeof(int) * (9));
 		while(l <= 7)	
 		{
-			coordinates[k][l] = coordinates[k][l] - x_min;
+			shifted_coordinates[k][l] = coordinates[k][l] - x_min;
 			l++;
-			coordinates[k][l] = coordinates[k][l] - y_min;
+			shifted_coordinates[k][l] = coordinates[k][l] - y_min;
 			l++;
 		}
 		k++;
 	}
-	coordinates[k] = NULL;
-	return(coordinates);
+	shifted_coordinates[k] = NULL;	
+	return(shifted_coordinates);
 }
 
 t_tetro *create(char *characters)
@@ -357,7 +359,7 @@ int main (void)
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
 //	fd = open("./tests/corrects/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_02", O_RDONLY);
+	fd = open("./tests/corrects/valid_09", O_RDONLY);
 	if (fd == -1)
 		printf("Wrong file name or path\n");
 	characters1 = ft_tetrominoes(fd);
@@ -402,7 +404,7 @@ int main (void)
 	}
 	i = 0;
 
-/*
+
 	printf("---Printing shifted coordinates---\n\n");
 	while(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i]) != NULL )
 	{
@@ -420,7 +422,7 @@ int main (void)
 	i = 0;
 	printf("---Printing shifted coordinates2---\n\n");
 
-*/	
+	
 //	while(shift_xy_coordinates2(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i])) != NULL )
 //	{
 //		printf("x,y: {%d, ", (shift_xy_coordinates2(xy_coordinates(characters1, 0, 0, 0))[i][0]));

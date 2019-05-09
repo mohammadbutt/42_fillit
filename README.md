@@ -109,7 +109,7 @@ Below on the right is what the tranformation will look like once we convert the 
 </table>
 
 # Resources:
-1. [C Tutorials on linked list](http://www.zentut.com/c-tutorial/c-linked-list/)
+1. [C Tutorials on Linked List](http://www.zentut.com/c-tutorial/c-linked-list/)
 2. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 3. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
 4. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)

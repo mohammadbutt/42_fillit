@@ -109,12 +109,12 @@ Below on the right is what the tranformation will look like once we convert the 
 </table>
 
 # Resources:
-0. [C Tutorials on linked list](http://www.zentut.com/c-tutorial/c-linked-list/)
-1. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
-2. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
-3. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
-4. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
-5. [Another Bitwise calculator](http://bitwisecmd.com/)
-6. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+1. [C Tutorials on linked list](http://www.zentut.com/c-tutorial/c-linked-list/)
+2. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
+3. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
+4. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
+5. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
+6. [Another Bitwise calculator](http://bitwisecmd.com/)
+7. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
 
 

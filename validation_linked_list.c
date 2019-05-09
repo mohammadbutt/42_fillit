@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 15:55:55 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 16:34:53 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,47 @@
 ** Error handler will quit the program if there is no new line at i[4], i[9],
 ** i[14], or i[19].
 */
+
+t_tetro *create(char *characters)
+{
+   t_tetro *new_node;
+
+	new_node = (t_tetro *)malloc(sizeof(t_tetro));
+   if(new_node == NULL)
+	{
+		printf("Error creating a new node.\n");
+		ft_exit();
+	}
+
+	new_node->characters = characters;
+	new_node->next = NULL;
+
+	return (new_node);
+}
+
+t_tetro *append(t_tetro *head, char *characters)
+{
+	t_tetro *cursor;
+	t_tetro *new_node;
+
+	cursor = head;
+	while(cursor->next != NULL)
+		cursor = cursor->next;
+	new_node = create(characters);
+
+	cursor->next = new_node;
+
+	return(head);
+}
+
+void print_data(t_tetro *pname)
+{
+	while (pname)
+	{
+		printf("%s\n", pname->characters);
+		pname = pname->next;
+	}
+}
 
 /*
 ** To print the Error message and exit. This function is created just to save an
@@ -214,77 +255,10 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 		}
 		k++;
 	}
-	shifted_coordinates[k] = NULL;	
+	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
 
-t_tetro *create(char *characters)
-{
-   t_tetro *new_node;
-
-	new_node = (t_tetro *)malloc(sizeof(t_tetro));	
-   if(new_node == NULL)
-	{
-		printf("Error creating a new node.\n");
-		ft_exit();
-	}
-
-	new_node->characters = characters;
-	new_node->next = NULL;
-
-	return (new_node);
-}
-
-t_tetro *append(t_tetro *head, char *characters)
-{	
-	t_tetro *cursor;
-	t_tetro *new_node;
-
-	cursor = head;
-	while(cursor->next != NULL)
-		cursor = cursor->next;
-	new_node = create(characters);
-
-	cursor->next = new_node;
-
-	return(head);
-}
-void print_data(t_tetro *pname)
-{
-	while (pname)
-	{
-		printf("%s\n", pname->characters);
-		pname = pname->next;
-	}
-}
-/*
-int **shift_xy_coordinates2(int **coordinates)
-{
-	int i;
-	int j;
-	int **shifted_coordinates;
-
-	i = 0;
-	j = 0;
-	shifted_coordinates = (int **)malloc(sizeof(int *) * (26));
-	shifted_coordinates[i] = (int *)malloc(sizeof(int) * (9));
-
-	while(coordinates[i][j])
-	{
-		while(coordinates[i][j] != '\0')
-		{
-			shifted_coordinates[i][j] = coordinates[i][j];
-			j++;
-		}
-		i++;
-		j = 0;
-		shifted_coordinates[i] = (int *)malloc(sizeof(int) * (9));
-	}
-
-	shifted_coordinates[i] = NULL;
-	return(shifted_coordinates);
-}
-*/
 /*
 char **coordinates_to_alphabets(int **coordinates)
 {
@@ -403,8 +377,7 @@ int main (void)
 		printf("x,y: {%d, ", (shifted_coordinates)[i][4]);
 		printf("%d}      ", (shifted_coordinates)[i][5]);
 		printf("x,y: {%d, ", (shifted_coordinates)[i][6]);
-		printf("%d}\n\n", (shifted_coordinates)[i][7]);
-		
+		printf("%d}\n\n", (shifted_coordinates)[i][7]);	
 		i++;
 	}
 	i = 0;

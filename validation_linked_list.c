@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/08 21:00:42 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 14:06:27 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,47 +219,45 @@ int **shift_xy_coordinates(int **coordinates)
 	return(coordinates);
 }
 
-//node *create(int data, node *next)
-t_tetro *create(char *characters, t_tetro *next)
+t_tetro *create(char *characters)
 {
-//	node *new_node;
    t_tetro *new_node;
 
-//	new_node = (node *)malloc(sizeof(node));
 	new_node = (t_tetro *)malloc(sizeof(t_tetro));	
    if(new_node == NULL)
 	{
 		printf("Error creating a new node.\n");
 		ft_exit();
 	}
-//	new_node->data = data;
-//	new_node->data = next;
+
 	new_node->characters = characters;
-	new_node->characters = next;	
+	new_node->next = NULL;
 
 	return (new_node);
 }
 
-//node *append(node *head, int data)
 t_tetro *append(t_tetro *head, char *characters)
-{
-//	node *cursor;
-//	node *new_node;
-	
+{	
 	t_tetro *cursor;
 	t_tetro *new_node;
 
 	cursor = head;
 	while(cursor->next != NULL)
 		cursor = cursor->next;
-//	*new_node = create(data, NULL);
-	*new_node = *create(characters, NULL);
+	new_node = create(characters);
 
 	cursor->next = new_node;
 
 	return(head);
 }
-
+void print_data(t_tetro *pname)
+{
+	while (pname)
+	{
+		printf("%s\n", pname->characters);
+		pname = pname->next;
+	}
+}
 /*
 int **shift_xy_coordinates2(int **coordinates)
 {
@@ -314,12 +312,6 @@ char **coordinates_to_alphabets(int **coordinates)
 	}
 }
 */
-/*
-t_tetro		*ft_new(char *characters)
-{
-	characters = (t_tetro *)malloc(sizeof(t_tetro)); // we allocate memory
-}
-*/
 
 char **ft_grid(int width)
 {
@@ -349,32 +341,6 @@ char **ft_grid(int width)
 	return(empty_grid);
 }
 
-// we have access to characters from ft_tetrominos without calling the function,
-// just keeping it commented in case we want to use it because it works well.
-/*
-char **ft_validation_1(char **characters)
-{
-	char **stored_characters;
-	int i;
-
-	i = 0;
-
-	stored_characters = (char **)malloc(sizeof(char*) * (26));
-//	while(stored_characters[i])
-//	{
-//		stored_characters[i] = ft_strdup(characters[i]);
-//		i++;
-//	}
-		stored_characters[0] = ft_strdup(characters[0]);
-//	stored_characters = ft_tetrominoes(characters);
-
-//	printf("Works?\n");
-//	printf("This is characters:\n%s\n", characters[0]);
-//	printf("This is also characters:\n%s\n", characters[1]);
-//	printf("This is stored characters:\n%s\n", stored_characters[0]);
-	return(stored_characters);
-}
-*/
 int main (void)
 {
 	int fd;
@@ -436,6 +402,7 @@ int main (void)
 	}
 	i = 0;
 
+/*
 	printf("---Printing shifted coordinates---\n\n");
 	while(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i]) != NULL )
 	{
@@ -452,6 +419,8 @@ int main (void)
 	}
 	i = 0;
 	printf("---Printing shifted coordinates2---\n\n");
+
+*/	
 //	while(shift_xy_coordinates2(shift_xy_coordinates(&xy_coordinates(characters1, 0, 0, 0)[i])) != NULL )
 //	{
 //		printf("x,y: {%d, ", (shift_xy_coordinates2(xy_coordinates(characters1, 0, 0, 0))[i][0]));
@@ -466,8 +435,6 @@ int main (void)
 //		i++;
 //	}
 
-
-
 	i = 0;
 	
 	printf("----------Printing board----------\n");
@@ -478,56 +445,12 @@ int main (void)
 		i++;
 	}
 
+//Printing linked list	
+	t_tetro *pointer_2;
+	pointer_2 = create("Testing");
+	pointer_2 = append(pointer_2, "this thing");
+	print_data(pointer_2);
+
 	return(0);
 }
 
-/*
-int main (void)
-{
-	int fd;
-	int bytes_read;
-	int i;
-	char characters[26][21];
-	int j;
-	int dots;
-	int hashtags;
-
-	i = 0;
-	j = 0;
-	hashtags = 0;
-	dots = 0;
-
-	fd = open("./valid_pieces/error_02", O_RDONLY);
-	while((bytes_read = read (fd, characters[i], 21)) >= 20)
-	{
-		characters[i][20] = '\0';
-		i++;
-	}
-
-	i = 0;
-	while(characters[i][j])
-	{
-		while(characters[i][j])
-		{	
-			(characters[i][j] == '.') && dots++;
-			(characters[i][j] == '#') && hashtags++;
-			j++;
-		}
-		if(dots != 12 && hashtags != 4)
-		{
-			printf("Error");
-			return(0);
-		}
-		printf("dots:|%d|\n", dots);
-		printf("hashtags:|%d|\n", hashtags);
-		printf("%s", characters[i]);
-		printf("\n");
-		printf("single character:|%c|", characters[i][4]);
-		i++;
-		j = 0;
-		dots = 0;
-		hashtags = 0;
-	}
-	return(0);
-}
-*/

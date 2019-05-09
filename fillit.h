@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 14:06:31 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 15:32:19 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_tetrominoes(int fd);
 int		dot_and_hash(char **characters);
 int		is_it_valid(char **characters, int i, int j, int hash);
 int		**xy_coordinates(char **characters, int i, int j, int k);
-int		**shift_xy_coordinates(int **coordinates);
+int		**shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k);
 char	**ft_grid(int width);
 
 

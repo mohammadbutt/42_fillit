@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/08 13:08:10 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/08 20:14:08 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 ** To print the Error message and exit. This function is created just to save an
 ** extra line.
 */
+
 void ft_exit(void)
 {
 	ft_putstr("Error\n");
@@ -217,6 +218,36 @@ int **shift_xy_coordinates(int **coordinates)
 	coordinates[k] = NULL;
 	return(coordinates);
 }
+
+node *create(int data, node *next)
+{
+	node *new_node;
+   new_node = (node *)malloc(sizeof(node));
+	if(new_node == NULL)
+	{
+		printf("Error creating a new node.\n");
+		ft_exit();
+	}
+	new_node->data = data;
+	new_node->data = next;
+
+	return (new_node);
+}
+
+node *append(node *head, int data)
+{
+	node *cursor;
+	node *new_node;
+	
+	cursor = head;
+	while(cursor->next != NULL)
+		cursor = cursor->next;
+	*new_node = create(data, NULL);
+	cursor->next = new_node;
+
+	return(head);
+}
+
 /*
 int **shift_xy_coordinates2(int **coordinates)
 {
@@ -269,6 +300,12 @@ char **coordinates_to_alphabets(int **coordinates)
 			alpha[i][j] = coordinates[k][l]
 		}
 	}
+}
+*/
+/*
+t_tetro		*ft_new(char *characters)
+{
+	characters = (t_tetro *)malloc(sizeof(t_tetro)); // we allocate memory
 }
 */
 

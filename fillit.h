@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/03 18:02:17 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/08 16:11:24 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define p18 "###.\n..#.\n....\n....\n" 0+1+2+7   = 10
 # define p19 "####\n....\n....\n....\n" 0+1+2+3   = 6
 */
-
+/*
 # define p01 (int[8]) {0,0, 	1,0, 	2,0, 	1,1}
 # define p02 (int[8]) {0,0, 	0,1, 	0,2, 	0,3}
 # define p03 (int[8]) {0,0, 	1,0,	0,1,	0,2}
@@ -62,12 +62,16 @@
 # define p17 (int[8]) {2,0,		0,1,	1,1,	2,1}
 # define p18 (int[8]) {0,0,		1,0,	2,0,	2,1}
 # define p19 (int[8]) {0,0,		1,0,	2,0,	3,0}
-/*
-typedef struct s_tetris
-{
-	char characters[26][21];
-}		t_tetris;
 */
+typedef struct s_tetro
+{
+	char *characters;
+	char c; // carry alphabets
+	struct s_tetro *next;
+}		t_tetro;
+
+t_tetro **ft_new(char **characters);
+
 char	**ft_grid(int);
 
 #endif

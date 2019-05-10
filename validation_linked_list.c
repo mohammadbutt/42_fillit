@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 16:34:53 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 18:51:21 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** i[14], or i[19].
 */
 
-t_tetro *create(char *characters)
+t_tetro *create(void *characters)
 {
    t_tetro *new_node;
 
@@ -36,7 +36,7 @@ t_tetro *create(char *characters)
 	return (new_node);
 }
 
-t_tetro *append(t_tetro *head, char *characters)
+t_tetro *append(t_tetro *head, void *characters)
 {
 	t_tetro *cursor;
 	t_tetro *new_node;
@@ -104,6 +104,9 @@ char **ft_tetrominoes(int fd)
 		ft_exit();
 	return(characters);
 }
+
+//How to store tetrominoes into a struct
+
 // ft_tetrominos can now be used to determine if the pieces are valid or not
 
 /* 
@@ -222,6 +225,15 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 	return(coordinates);
 }
 
+int ft_variable_reset(int *x_min, int *y_min, int *l)
+{
+	*x_min = 3;
+	*y_min = 3;
+	*l = 0;
+
+	return(0);
+}
+
 int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 {
 //	int x_min;
@@ -234,9 +246,10 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates = (int **)malloc(sizeof(int *) * (26));
 	while(coordinates[k] != NULL)
 	{
-		l = 0;
-		x_min = 3;
-		y_min = 3;
+//		l = 0;
+//		x_min = 3;
+//		y_min = 3;
+		ft_variable_reset(&x_min, &y_min, &l);
 		while(l <= 7)
 		{
 			(coordinates[k][l] <= x_min) && (x_min = coordinates[k][l]);
@@ -258,6 +271,28 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
+
+t_tetro *create_tetro_to_struct(int **shifted_coordinates)
+{
+	t_tetro *new_node;
+	t_tetro *head;
+	new_node = head;
+	int i;
+
+	i = 0;
+
+	while(shifted_coordinates[i] != NULL)
+	{
+		new_node->characters = create(shifted_coordinates[0]);
+//		new_node->next = NULL;
+		new_node->next = new_node;
+		i++;
+	}
+
+	return(0);
+//	return(new_node);
+}
+
 
 /*
 char **coordinates_to_alphabets(int **coordinates)
@@ -390,10 +425,17 @@ int main (void)
 		i++;
 	}
 
-//Printing linked list	
+//Printing linked list
+/*
 	t_tetro *pointer_2;
 	pointer_2 = create("Testing");
 	pointer_2 = append(pointer_2, "this thing");
+	print_data(pointer_2);
+*/
+
+	t_tetro *pointer_2;
+	pointer_2 = create(shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	print_data(pointer_2);
 
 	return(0);

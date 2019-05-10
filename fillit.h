@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 16:34:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/09 18:51:18 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 ** Put protptypes here if any
 */
 void 	ft_exit(void);
+int		ft_variable_reset(int *x_min, int *y_min, int *l);
 char	**ft_tetrominoes(int fd);
 int		dot_and_hash(char **characters);
 int		is_it_valid(char **characters, int i, int j, int hash);
@@ -36,16 +37,13 @@ char	**ft_grid(int width);
 */
 typedef struct s_tetro
 {
-	char *characters;
-	char c; // carry alphabets
+	void *characters;
+	char c; 				/*carries alphabets*/
 	struct s_tetro *next;
 }		t_tetro;
 
-t_tetro 	**ft_new(char **characters);
-
-
-t_tetro		*create(char *characters);
-t_tetro		*append(t_tetro *head, char *characters);
+t_tetro		*create(void *characters);
+t_tetro		*append(t_tetro *head, void *characters);
 void		print_data(t_tetro *pname);
 
 #endif

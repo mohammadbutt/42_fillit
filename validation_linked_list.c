@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 18:51:21 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/10 18:52:50 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,15 +155,24 @@ int dots_and_hash(char **characters)
 ** gets called.
 */
 
-int is_it_valid(char **characters, int i, int j, int hash)
+int initialize_valid(int *i, int *j, int *hash)
 {
-//	int i;
-//	int j;
-//	int hash;
+	i = 0;
+	j = 0;
+	hash = 0;
+	return(0);
+}
+
+int is_it_valid(char **characters)
+{
+	int i;
+	int j;
+	int hash;
 
 //	i = 0;
 //	j = 0;
 //	hash = 0;
+	initialize_valid(&i, &j, &hash);
 	while(characters[i][j] )//&& j >= 0)
 	{
 		while(j < 20)
@@ -185,8 +194,17 @@ int is_it_valid(char **characters, int i, int j, int hash)
 		j = 0;
 		hash = 0;
 	}
-//	printf("\nis_it_valid succesful\n");
 	return(1);
+}
+
+int initialize_xy_coordinates(int *i, int *j, int *k, int *l)
+{
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+
+	return(0);
 }
 
 int **xy_coordinates(char **characters, int i, int j, int k)
@@ -200,12 +218,15 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 //	i = 0;
 //	j = 0;
 //	k = 0;
+//	l = 0;
+	
+	initialize_xy_coordinates(&i, &j, &k, &l);
 
 	coordinates = (int **) malloc(sizeof(int *) * (26));
 	coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	while(characters[i][j])
 	{
-		l = 0;
+//		l = 0;
 		while(characters[i][j] != '\0')
 		{
 			if(characters[i][j] == '#')// && j <= 20)
@@ -217,6 +238,7 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 		}
 		i++;
 		j = 0;
+		l = 0;
 		k++;
 		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	}
@@ -272,7 +294,7 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	return(shifted_coordinates);
 }
 
-t_tetro *create_tetro_to_struct(int **shifted_coordinates)
+t_tetro *tetro_to_struct(int **shifted_coordinates)
 {
 	t_tetro *new_node;
 	t_tetro *head;
@@ -283,14 +305,13 @@ t_tetro *create_tetro_to_struct(int **shifted_coordinates)
 
 	while(shifted_coordinates[i] != NULL)
 	{
-		new_node->characters = create(shifted_coordinates[0]);
+		new_node->characters = create(shifted_coordinates[i]);
 //		new_node->next = NULL;
 		new_node->next = new_node;
 		i++;
 	}
-
-	return(0);
-//	return(new_node);
+	return(new_node);
+//	return(0);
 }
 
 
@@ -373,7 +394,7 @@ int main (void)
 	characters1 = ft_tetrominoes(fd);
 
 	dots_and_hash(characters1);
-	is_it_valid(characters1, 0, 0, 0);
+	is_it_valid(characters1);//, 0, 0, 0);
 	
 	printf("-------Printing Tetrominoes-------\n");
 	while((characters1)[i] != NULL)
@@ -433,11 +454,32 @@ int main (void)
 	print_data(pointer_2);
 */
 
+//	t_tetro *pointer_2;
+//	pointer_2 = create()
+
+
+
+
+// Returns blanks lines
+/*	
 	t_tetro *pointer_2;
 	pointer_2 = create(shifted_coordinates[0]);
-	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[1]);
 	print_data(pointer_2);
+*/
 
+/*	
+ // Gives bus error
+	t_tetro *pointer_2;
+	pointer_2 = create(tetro_to_struct(&shifted_coordinates[0]));
+//	pointer_2 = append(pointer_2,(tetro_to_struct(&shifted_coordinates[1])));
+	print_data(pointer_2);
+*/
+/*
+	t_tetro *pointer_2;
+	pointer_2 = tetro_to_struct(shifted_coordinates[0]);
+	pointer
+*/
 	return(0);
 }
 

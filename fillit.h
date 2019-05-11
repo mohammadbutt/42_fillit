@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/09 18:51:18 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/10 18:50:49 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@
 ** Put protptypes here if any
 */
 void 	ft_exit(void);
-int		ft_variable_reset(int *x_min, int *y_min, int *l);
+//int		ft_variable_reset(int *x_min, int *y_min, int *l);
 char	**ft_tetrominoes(int fd);
-int		dot_and_hash(char **characters);
-int		is_it_valid(char **characters, int i, int j, int hash);
+int		dots_and_hash(char **characters);
+int		initialize_valid(int *i, int *j, int *hash);
+int		is_it_valid(char **characters);
+int		initialize_xy_coordinates(int *i, int *j, int *k, int *l);
 int		**xy_coordinates(char **characters, int i, int j, int k);
+int		ft_variable_reset(int *xmin, int *y_min, int *l);
 int		**shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k);
 char	**ft_grid(int width);
 
@@ -45,5 +48,6 @@ typedef struct s_tetro
 t_tetro		*create(void *characters);
 t_tetro		*append(t_tetro *head, void *characters);
 void		print_data(t_tetro *pname);
+t_tetro		*tetro_to_struct(int **shifted_coordinates);
 
 #endif

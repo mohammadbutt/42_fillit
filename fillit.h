@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/10 18:50:49 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/10 21:05:24 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	**ft_grid(int width);
 typedef struct s_tetro
 {
 	void *characters;
+//	void coordinates;
 	char c; 				/*carries alphabets*/
 	struct s_tetro *next;
 }		t_tetro;
@@ -48,6 +49,10 @@ typedef struct s_tetro
 t_tetro		*create(void *characters);
 t_tetro		*append(t_tetro *head, void *characters);
 void		print_data(t_tetro *pname);
+
+//t_tetro		create(void coordinates);
+//t_tetro		append(t_tetro *head, void coordinates);
+int			print_data_coord(t_tetro *pname);
 t_tetro		*tetro_to_struct(int **shifted_coordinates);
 
 #endif

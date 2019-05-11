@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/10 18:52:50 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/10 21:05:20 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_tetro *create(void *characters)
 	}
 
 	new_node->characters = characters;
+	new_node->c = 'A';
 	new_node->next = NULL;
 
 	return (new_node);
@@ -60,6 +61,20 @@ void print_data(t_tetro *pname)
 	}
 }
 
+/*int print_data_coord(t_tetro *pname)
+{
+	int i;
+	i = 0;
+	while(pname)
+	{
+		printf("%d\n", pname->characters[i]);
+		i++;
+		pname = pname->next;
+	}
+
+	return(0);
+}
+*/
 /*
 ** To print the Error message and exit. This function is created just to save an
 ** extra line.
@@ -445,6 +460,7 @@ int main (void)
 		ft_putstr("\n");
 		i++;
 	}
+	printf("\n");
 
 //Printing linked list
 /*
@@ -453,15 +469,45 @@ int main (void)
 	pointer_2 = append(pointer_2, "this thing");
 	print_data(pointer_2);
 */
+/* // Storing strings in variables and using them.	
+	char string1[8] = "Testing";
+	char string2[12] = "this thing";
 
-//	t_tetro *pointer_2;
-//	pointer_2 = create()
+	t_tetro *pointer_2;
+	pointer_2 = create(string1);
+	pointer_2 = append(pointer_2, string2);
+	print_data(pointer_2);
+*/
+/* // printing from struct
+	printf("-------printing from struct-------\n");
+	t_tetro *pointer_2;
+	pointer_2 = create(characters1[0]);
+	pointer_2 = append(pointer_2, characters1[1]);
+	pointer_2 = append(pointer_2, characters1[2]);
+	pointer_2 = append(pointer_2, characters1[3]);
+	print_data(pointer_2);
+*/
 
-
+//printing shifted coordinates
+	printf("\n---printing shifted coordinates from struct----\n");
+	t_tetro *pointer_2;
+//	int a[] = {0,1,2,3};
+	pointer_2 = create(shifted_coordinates[0]);
+	printf("char c: %c\n", pointer_2->c);
+	int *b = pointer_2->characters;
+	printf("test: %d\n", b[3]);
+	/*pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);*/
+	//print_data_coord(pointer_2);
 
 
 // Returns blanks lines
-/*	
+/*
 	t_tetro *pointer_2;
 	pointer_2 = create(shifted_coordinates[0]);
 	pointer_2 = append(pointer_2, shifted_coordinates[1]);

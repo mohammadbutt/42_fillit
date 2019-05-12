@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/10 21:05:20 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/11 20:22:27 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** i[14], or i[19].
 */
 
-t_tetro *create(void *characters)
+t_tetro *create(void *struct_tetro)
 {
    t_tetro *new_node;
 
@@ -30,14 +30,14 @@ t_tetro *create(void *characters)
 		ft_exit();
 	}
 
-	new_node->characters = characters;
-	new_node->c = 'A';
+	new_node->struct_tetro = struct_tetro;
+	new_node->struct_c = 'A';
 	new_node->next = NULL;
 
 	return (new_node);
 }
 
-t_tetro *append(t_tetro *head, void *characters)
+t_tetro *append(t_tetro *head, void *struct_tetro)
 {
 	t_tetro *cursor;
 	t_tetro *new_node;
@@ -45,36 +45,33 @@ t_tetro *append(t_tetro *head, void *characters)
 	cursor = head;
 	while(cursor->next != NULL)
 		cursor = cursor->next;
-	new_node = create(characters);
+	new_node = create(struct_tetro);
 
 	cursor->next = new_node;
 
 	return(head);
 }
 
-void print_data(t_tetro *pname)
+void print_data(t_tetro *struct_pointer)
 {
-	while (pname)
+	while (struct_pointer)
 	{
-		printf("%s\n", pname->characters);
-		pname = pname->next;
+		printf("%s\n", struct_pointer->struct_tetro);
+		struct_pointer = struct_pointer->next;
 	}
 }
 
-/*int print_data_coord(t_tetro *pname)
+int print_data_coord(t_tetro *struct_pointer)
 {
-	int i;
-	i = 0;
-	while(pname)
+	while(struct_pointer)
 	{
-		printf("%d\n", pname->characters[i]);
-		i++;
-		pname = pname->next;
+		printf("%d\n", struct_pointer->struct_coordinates[0]);
+//		i++;
+		struct_pointer = struct_pointer->next;
 	}
-
 	return(0);
 }
-*/
+
 /*
 ** To print the Error message and exit. This function is created just to save an
 ** extra line.
@@ -308,7 +305,7 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
-
+/*
 t_tetro *tetro_to_struct(int **shifted_coordinates)
 {
 	t_tetro *new_node;
@@ -320,13 +317,36 @@ t_tetro *tetro_to_struct(int **shifted_coordinates)
 
 	while(shifted_coordinates[i] != NULL)
 	{
-		new_node->characters = create(shifted_coordinates[i]);
+		new_node->struct_tetro = create(shifted_coordinates[i]);
 //		new_node->next = NULL;
 		new_node->next = new_node;
 		i++;
 	}
 	return(new_node);
 //	return(0);
+}
+*/
+
+/*
+// works -- stores tetrominoes from double array to struct
+t_tetro *tetro_to_struct(char **characters)
+{
+	t_tetro *pointer_2;
+	int i;
+	i = 1;
+	pointer_2 = create(characters[0]);
+	while(i <= 26 && characters[i])
+//	while(i <= 3)	
+	{
+		pointer_2 = append(pointer_2, characters[i]);
+		i++;
+	}
+	return(pointer_2);
+}
+*/
+t_tetro	*coordd_to_struct(int **shifted_coordinates)
+{
+
 }
 
 
@@ -478,8 +498,16 @@ int main (void)
 	pointer_2 = append(pointer_2, string2);
 	print_data(pointer_2);
 */
-/* // printing from struct
-	printf("-------printing from struct-------\n");
+	// printing tetrominoes from struct function
+	printf("---printing terominoes from struct function---\n");
+	t_tetro *pointer_2;
+	pointer_2 = tetro_to_struct(characters1);
+//		*tetro_to_struct;
+	print_data(pointer_2);
+
+/*
+   	// printing from struct
+	printf("---printing tetrominoes from struct---\n");
 	t_tetro *pointer_2;
 	pointer_2 = create(characters1[0]);
 	pointer_2 = append(pointer_2, characters1[1]);
@@ -487,24 +515,28 @@ int main (void)
 	pointer_2 = append(pointer_2, characters1[3]);
 	print_data(pointer_2);
 */
-
+/*
 //printing shifted coordinates
 	printf("\n---printing shifted coordinates from struct----\n");
 	t_tetro *pointer_2;
 //	int a[] = {0,1,2,3};
 	pointer_2 = create(shifted_coordinates[0]);
-	printf("char c: %c\n", pointer_2->c);
-	int *b = pointer_2->characters;
+	printf("char c: %c\n", pointer_2->struct_c);
+	int *b = pointer_2->struct_characters;
 	printf("test: %d\n", b[3]);
-	/*pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	print_data_coord(pointer_2);
+*/
+/*
 	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	pointer_2 = append(pointer_2, shifted_coordinates[0]);
-	pointer_2 = append(pointer_2, shifted_coordinates[0]);*/
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
 	//print_data_coord(pointer_2);
-
+	
+*/
 
 // Returns blanks lines
 /*

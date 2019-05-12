@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/10 21:05:24 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/11 20:13:10 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,20 @@ char	**ft_grid(int width);
 */
 typedef struct s_tetro
 {
-	void *characters;
-//	void coordinates;
-	char c; 				/*carries alphabets*/
-	struct s_tetro *next;
-}		t_tetro;
+	void 	*struct_tetro;
+	int		*struct_coordinates;
+	char 	struct_c; 				/*carries alphabets*/
+	struct 	s_tetro *next;
+}			t_tetro;
 
-t_tetro		*create(void *characters);
-t_tetro		*append(t_tetro *head, void *characters);
-void		print_data(t_tetro *pname);
-
+t_tetro		*create(void *struct_tetro);
+t_tetro		*append(t_tetro *head, void *struct_tetro);
+void		print_data(t_tetro *struct_pointer);
+t_tetro		*tetro_to_struct(char **characters);
 //t_tetro		create(void coordinates);
 //t_tetro		append(t_tetro *head, void coordinates);
-int			print_data_coord(t_tetro *pname);
-t_tetro		*tetro_to_struct(int **shifted_coordinates);
+int				print_data_coord(t_tetro *struct_pointer);
+t_tetro		*tetro_to_struct(char **characters);
+t_tetro		*coord_to_struct(int **shifted_coordinates);
 
 #endif

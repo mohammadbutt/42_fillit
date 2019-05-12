@@ -1,83 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_linked_list.c                           :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 14:19:06 by mbutt            ###   ########.fr       */
+/*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
+/*   Updated: 2019/05/12 14:29:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-
-
 /*
-** Error handler will quit the program if there is no new line at i[4], i[9],
-** i[14], or i[19].
-*/
-/*
-t_tetro *create(void *struct_tetro)
-{
-   t_tetro *new_node;
-
-	new_node = (t_tetro *)malloc(sizeof(t_tetro));
-   if(new_node == NULL)
-	{
-		printf("Error creating a new node.\n");
-		ft_exit();
-	}
-
-	new_node->struct_tetro = struct_tetro;
-	new_node->struct_c = 'A';
-	new_node->next = NULL;
-
-	return (new_node);
-}
-*/
-/*
-t_tetro *append(t_tetro *head, void *struct_tetro)
-{
-	t_tetro *cursor;
-	t_tetro *new_node;
-
-	cursor = head;
-	while(cursor->next != NULL)
-		cursor = cursor->next;
-	new_node = create(struct_tetro);
-
-	cursor->next = new_node;
-
-	return(head);
-}
-*/
-/*
-void print_data(t_tetro *struct_pointer)
-{
-	while (struct_pointer)
-	{
-		printf("%s\n", struct_pointer->struct_tetro);
-		struct_pointer = struct_pointer->next;
-	}
-}
-*/
-/*
-int print_data_coord(t_tetro *struct_pointer)
-{
-	while(struct_pointer)
-	{
-		printf("%d\n", struct_pointer->struct_coordinates[1]);
-//		i++;
-		struct_pointer = struct_pointer->next;
-	}
-	return(0);
-}
-*/
-/*
-** To print the Error message and exit. This function is created just to save an
-** extra line.
+** To print the Error message and exit if the tetrominoes are not valid at any
+** stage.
 */
 
 void ft_exit(void)
@@ -120,10 +57,6 @@ char **ft_tetrominoes(int fd)
 	return(characters);
 }
 
-//How to store tetrominoes into a struct
-
-// ft_tetrominos can now be used to determine if the pieces are valid or not
-
 /* 
 ** dots_and_hash returns an integer. If there are not 12 . or 4 hastags, then the
 ** program will print "Error" and exit out of the program. If there are 12 .
@@ -152,8 +85,6 @@ int dots_and_hash(char **characters)
 		}
 		if(dots != 12 || hashtags != 4)
 			ft_exit();
-//		printf("dots:|%d|\n", dots); // Line will be removed
-//		printf("hashtags:|%d|\n\n", hashtags); // Line will be removed
 		i++;
 		j = 0;
 	}
@@ -308,41 +239,6 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
-
-// works -- stores tetrominoes from double array to struct
-/*
-t_tetro *tetro_to_struct(char **characters)
-{
-	t_tetro *pointer_2;
-	int i;
-
-	i = 1;
-	pointer_2 = create(characters[0]);
-//	while(i <= 26 && characters[i])
-	while(i <= 3)	
-	{
-		pointer_2 = append(pointer_2, characters[i]);
-		i++;
-	}
-	return(pointer_2);
-}
-*/
-/*
-t_tetro	*coord_to_struct(int **shifted_coordinates)
-{
-	t_tetro *pointer_2;
-	int i;
-
-	i = 1;
-	pointer_2 = create(shifted_coordinates[0]);
-	while(i <= 5)
-	{
-		pointer_2 = append(pointer_2, shifted_coordinates[i]);
-		i++;
-	}
-	return(pointer_2);
-}
-*/
 
 /*
 char **coordinates_to_alphabets(int **coordinates)

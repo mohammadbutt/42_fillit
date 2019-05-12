@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 13:07:56 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/11 20:22:27 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 14:19:06 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Error handler will quit the program if there is no new line at i[4], i[9],
 ** i[14], or i[19].
 */
-
+/*
 t_tetro *create(void *struct_tetro)
 {
    t_tetro *new_node;
@@ -36,7 +36,8 @@ t_tetro *create(void *struct_tetro)
 
 	return (new_node);
 }
-
+*/
+/*
 t_tetro *append(t_tetro *head, void *struct_tetro)
 {
 	t_tetro *cursor;
@@ -51,7 +52,8 @@ t_tetro *append(t_tetro *head, void *struct_tetro)
 
 	return(head);
 }
-
+*/
+/*
 void print_data(t_tetro *struct_pointer)
 {
 	while (struct_pointer)
@@ -60,18 +62,19 @@ void print_data(t_tetro *struct_pointer)
 		struct_pointer = struct_pointer->next;
 	}
 }
-
+*/
+/*
 int print_data_coord(t_tetro *struct_pointer)
 {
 	while(struct_pointer)
 	{
-		printf("%d\n", struct_pointer->struct_coordinates[0]);
+		printf("%d\n", struct_pointer->struct_coordinates[1]);
 //		i++;
 		struct_pointer = struct_pointer->next;
 	}
 	return(0);
 }
-
+*/
 /*
 ** To print the Error message and exit. This function is created just to save an
 ** extra line.
@@ -305,38 +308,18 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
-/*
-t_tetro *tetro_to_struct(int **shifted_coordinates)
-{
-	t_tetro *new_node;
-	t_tetro *head;
-	new_node = head;
-	int i;
 
-	i = 0;
-
-	while(shifted_coordinates[i] != NULL)
-	{
-		new_node->struct_tetro = create(shifted_coordinates[i]);
-//		new_node->next = NULL;
-		new_node->next = new_node;
-		i++;
-	}
-	return(new_node);
-//	return(0);
-}
-*/
-
-/*
 // works -- stores tetrominoes from double array to struct
+/*
 t_tetro *tetro_to_struct(char **characters)
 {
 	t_tetro *pointer_2;
 	int i;
+
 	i = 1;
 	pointer_2 = create(characters[0]);
-	while(i <= 26 && characters[i])
-//	while(i <= 3)	
+//	while(i <= 26 && characters[i])
+	while(i <= 3)	
 	{
 		pointer_2 = append(pointer_2, characters[i]);
 		i++;
@@ -344,11 +327,22 @@ t_tetro *tetro_to_struct(char **characters)
 	return(pointer_2);
 }
 */
-t_tetro	*coordd_to_struct(int **shifted_coordinates)
+/*
+t_tetro	*coord_to_struct(int **shifted_coordinates)
 {
+	t_tetro *pointer_2;
+	int i;
 
+	i = 1;
+	pointer_2 = create(shifted_coordinates[0]);
+	while(i <= 5)
+	{
+		pointer_2 = append(pointer_2, shifted_coordinates[i]);
+		i++;
+	}
+	return(pointer_2);
 }
-
+*/
 
 /*
 char **coordinates_to_alphabets(int **coordinates)
@@ -498,13 +492,20 @@ int main (void)
 	pointer_2 = append(pointer_2, string2);
 	print_data(pointer_2);
 */
-	// printing tetrominoes from struct function
-	printf("---printing terominoes from struct function---\n");
+
+	// printing tetrominoes from tetro_to_struct function
+	printf("---printing terominoes from tetro_to_struct function---\n");
 	t_tetro *pointer_2;
 	pointer_2 = tetro_to_struct(characters1);
-//		*tetro_to_struct;
 	print_data(pointer_2);
 
+/*	
+	// printing shifted coordinates from coord_to_struct function
+	printf("---printing coodinates from coord_to_struct function---\n");
+	t_tetro *pointer_2;
+	pointer_2 = coord_to_struct(shifted_coordinates);
+	print_data_coord(pointer_2);
+*/
 /*
    	// printing from struct
 	printf("---printing tetrominoes from struct---\n");

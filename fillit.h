@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/11 21:03:51 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 17:36:14 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		initialize_xy_coordinates(int *i, int *j, int *k, int *l);
 int		**xy_coordinates(char **characters, int i, int j, int k);
 int		ft_variable_reset(int *xmin, int *y_min, int *l);
 int		**shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k);
+int		tetro_count(char **characters);
 char	**ft_grid(int width);
 
 
@@ -49,11 +50,10 @@ typedef struct s_tetro
 t_tetro		*create(void *struct_tetro);
 t_tetro		*append(t_tetro *head, void *struct_tetro);
 void		print_data(t_tetro *struct_pointer);
-t_tetro		*tetro_to_struct(char **characters);
-//t_tetro		create(void coordinates);
-//t_tetro		append(t_tetro *head, void coordinates);
-int				print_data_coord(t_tetro *struct_pointer);
-t_tetro		*tetro_to_struct(char **characters);
+int			print_data_coord(t_tetro *struct_pointer);
+int			struct_element_count(t_tetro *head);
+//int			print_data_coord(t_tetro *struct_pointer);
+t_tetro		*tetro_to_struct(char **characters, int tetro_count);
 t_tetro		*coord_to_struct(int **shifted_coordinates);
 
 #endif

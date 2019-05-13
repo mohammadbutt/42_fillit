@@ -6,21 +6,21 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 14:29:10 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 17:36:09 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Creating a linked list structure and allocating memory to it
+** Creating a linked list structure called new_node and allocating memory to it
 */
 
 t_tetro *create(void *struct_tetro)
 {
    t_tetro *new_node;
-
-	new_node = (t_tetro *)malloc(sizeof(t_tetro));
+   
+   new_node = (t_tetro *)malloc(sizeof(t_tetro));
    if(new_node == NULL)
 	{
 		printf("Error creating a new node.\n");
@@ -46,7 +46,6 @@ t_tetro *append(t_tetro *head, void *struct_tetro)
 	while(cursor->next != NULL)
 		cursor = cursor->next;
 	new_node = create(struct_tetro);
-
 	cursor->next = new_node;
 
 	return(head);
@@ -67,6 +66,7 @@ void print_data(t_tetro *struct_pointer)
 /*
 ** DOES NOT WORK. STILL WORKING ON IT. Prints shifted coordinates
 */
+/*
 int print_data_coord(t_tetro *struct_pointer)
 {
 	while(struct_pointer)
@@ -77,12 +77,32 @@ int print_data_coord(t_tetro *struct_pointer)
 	}
 	return(0);
 }
+*/
+
+/*
+** Created a function that counts the numbers of elements that are being
+** stored in a linked list.
+*/
+int struct_element_count(t_tetro *head)
+{
+	t_tetro *cursor;
+	cursor = head;
+	int number_of_elements;
+	number_of_elements = 0;
+	while(cursor != NULL)
+	{
+		number_of_elements++;
+		cursor = cursor->next;
+	}
+	return(number_of_elements);
+}
 
 /*
 ** Takes tetrominoes that are stored in a 2D-array and stores them in a
 ** linked list data structure
 */
-t_tetro *tetro_to_struct(char **characters)
+
+t_tetro *tetro_to_struct(char **characters, int tetro_count)
 {
 	t_tetro *pointer_2;
 	int i;
@@ -90,7 +110,8 @@ t_tetro *tetro_to_struct(char **characters)
 	i = 1;
 	pointer_2 = create(characters[0]);
 //	while(i <= 26 && characters[i])
-	while(i <= 3)
+//	while(i <= 3)
+	while(i < tetro_count)
 	{
 		pointer_2 = append(pointer_2, characters[i]);
 		i++;

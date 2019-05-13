@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 14:29:30 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 17:36:20 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,21 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 	shifted_coordinates[k] = NULL;	//Is this necessary?
 	return(shifted_coordinates);
 }
+/*
+** Function that counts the number of tetrominoes that are stored
+** in a 2D-array.
+*/
+
+int tetro_count(char **coordinates)
+{
+	int i; 
+
+	i = 0;
+	if(coordinates[i])
+		while(coordinates[i] != NULL)
+			i++;
+	return(i-1);
+}
 
 /*
 char **coordinates_to_alphabets(int **coordinates)
@@ -312,8 +327,8 @@ int main (void)
 
 	fd = 0;
 //	fd = open("./valid_pieces/valid_21", O_RDONLY);
-//	fd = open("./tests/corrects/valid_21", O_RDONLY);
-	fd = open("./tests/corrects/valid_05", O_RDONLY);
+//	fd = open("./tests/fails/error_02", O_RDONLY);
+	fd = open("./tests/corrects/valid_06", O_RDONLY);
 	if (fd == -1)
 		printf("Wrong file name or path\n");
 	characters1 = ft_tetrominoes(fd);
@@ -327,9 +342,12 @@ int main (void)
 		printf("%s\n", (characters1)[i]);
 		i++;
 	}
+//-----------------------------------------------------------
+	printf("---Printing number of tetrominoes---\n");
+	printf("%d\n", tetro_count(characters1));
 
+//-----------------------------------------------------------
 	i = 0;
-
 	coordinates = xy_coordinates(characters1, 0, 0, 0);
 	printf("-------Printing coordinates-------\n");
 	while(coordinates[i]!= NULL)
@@ -390,10 +408,17 @@ int main (void)
 */
 
 	// printing tetrominoes from tetro_to_struct function
+	// printing struct_element_count
 	printf("---printing terominoes from tetro_to_struct function---\n");
 	t_tetro *pointer_2;
-	pointer_2 = tetro_to_struct(characters1);
+	int 	pointer_3;
+	pointer_2 = tetro_to_struct(characters1, tetro_count(characters1));
+	pointer_3 = struct_element_count(pointer_2);
 	print_data(pointer_2);
+	printf("\n");
+
+	printf("%d", pointer_3);
+//	print_data(pointer_3);
 
 /*	
 	// printing shifted coordinates from coord_to_struct function

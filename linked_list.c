@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 18:44:26 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 20:25:14 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,20 @@ void print_data(t_tetro *struct_pointer)
 int print_data_coord(t_tetro *struct_pointer)
 {
 	int i;
-	i = 0;
 	int *pointer_2;
 
+	i = 0;
 	while(struct_pointer)
 	{
-		i = 0;
-		printf("before print\n");
 		pointer_2 = struct_pointer->struct_tetro;
 		while(i < 8)
 		{
-			printf("%d\n", pointer_2[i]);
+			printf("%d, ", pointer_2[i]);
 			i++;
 		}
+		i = 0;
 		printf("%c\n", struct_pointer->struct_c);
 		struct_pointer = struct_pointer->next;
-		
-		printf("loop\n");
 	}
 	return(0);
 }
@@ -139,38 +136,29 @@ t_tetro *tetro_to_struct(char **characters, int tetro_count)
 t_tetro	*coord_to_struct(int **shifted_coordinates, int tetro_count)
 {
 	t_tetro *pointer_2;
-	int i;
-	int j = 0;
+	int 	i;
+//	int 	j;//
+//	int 	*pointer;
+
 	i = 1;
-	
-	int *pointer = shifted_coordinates[0];
-
-	pointer_2 = create(pointer);
-
-//	while(j < 8)
-//	{
-//		printf("%d\n", pointer[j]);
-//		j++;
-//	}
-
-//	while(i <= 5)
-//	while(i <= 3)
-	
+//	j = 0;//
+//	pointer = shifted_coordinates[0];
+//	pointer_2 = create(pointer);
+	pointer_2 = create(shifted_coordinates[0]);
 	while(i < tetro_count)
 	{
 		pointer_2 = append(pointer_2, shifted_coordinates[i]);
-		printf("this is i:|%d|\n", i);
 		i++;
 	}
 
 	
-	pointer = pointer_2->next->struct_tetro;
+//	pointer = pointer_2->next->struct_tetro;//
 
-	while(j < 8)
-	{
-		printf("%d\n", pointer[j]);
-		j++;
-	}
+//	while(j < 8)//
+///	{//
+//		printf("%d\n", pointer[j]);//
+//		j++;//
+//	}//
 
 
 	return(pointer_2);

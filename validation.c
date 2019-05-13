@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 17:36:20 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 18:44:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,6 +320,7 @@ int main (void)
 	int i;
 	int **shifted_coordinates;
 	int **coordinates;
+	int t_count;
 
 	board_size = 4;
 	i = 0;
@@ -362,9 +363,8 @@ int main (void)
 		printf("%d}\n\n", (coordinates)[i][7]);
 		i++;
 	}
+//-------------------------------------------------------------
 	i = 0;
-
-
 	shifted_coordinates = shift_xy_coordinates(coordinates, 3, 3, 0);
 	printf("---Printing shifted coordinates---\n\n");
 	while(shifted_coordinates[i] != NULL)
@@ -379,8 +379,9 @@ int main (void)
 		printf("%d}\n\n", (shifted_coordinates)[i][7]);	
 		i++;
 	}
+
+//--------------------------------------------------------------	
 	i = 0;
-	
 	printf("----------Printing board----------\n");
 	while(i < board_size)
 	{
@@ -407,9 +408,10 @@ int main (void)
 	print_data(pointer_2);
 */
 
+/*	
 	// printing tetrominoes from tetro_to_struct function
 	// printing struct_element_count
-	printf("---printing terominoes from tetro_to_struct function---\n");
+	printf("---printing terominoes from tetro_to_struct function and count---\n");
 	t_tetro *pointer_2;
 	int 	pointer_3;
 	pointer_2 = tetro_to_struct(characters1, tetro_count(characters1));
@@ -419,14 +421,27 @@ int main (void)
 
 	printf("%d", pointer_3);
 //	print_data(pointer_3);
-
-/*	
+*/
+	
 	// printing shifted coordinates from coord_to_struct function
 	printf("---printing coodinates from coord_to_struct function---\n");
+	t_count = tetro_count(characters1);
 	t_tetro *pointer_2;
-	pointer_2 = coord_to_struct(shifted_coordinates);
-	print_data_coord(pointer_2);
+	pointer_2 = coord_to_struct(shifted_coordinates, t_count);
+/*
+	int *pointer_3;
+	i = 0;
+	pointer_3 = pointer_2->next->struct_tetro;
+	printf("\n\n");
+	while(i < 8)
+	{
+		printf("%d\n", pointer_3[i]);
+		i++;
+	}
 */
+	print_data_coord(pointer_2);
+//	print_data(pointer_2);
+//	print_data_coord(pointer_2);
 /*
    	// printing from struct
 	printf("---printing tetrominoes from struct---\n");

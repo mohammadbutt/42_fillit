@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 17:36:09 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/12 18:44:26 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,31 @@ void print_data(t_tetro *struct_pointer)
 /*
 ** DOES NOT WORK. STILL WORKING ON IT. Prints shifted coordinates
 */
-/*
+
 int print_data_coord(t_tetro *struct_pointer)
 {
+	int i;
+	i = 0;
+	int *pointer_2;
+
 	while(struct_pointer)
 	{
-		printf("%d\n", struct_pointer->struct_coordinates[1]);
-//		i++;
+		i = 0;
+		printf("before print\n");
+		pointer_2 = struct_pointer->struct_tetro;
+		while(i < 8)
+		{
+			printf("%d\n", pointer_2[i]);
+			i++;
+		}
+		printf("%c\n", struct_pointer->struct_c);
 		struct_pointer = struct_pointer->next;
+		
+		printf("loop\n");
 	}
 	return(0);
 }
-*/
+
 
 /*
 ** Created a function that counts the numbers of elements that are being
@@ -123,18 +136,43 @@ t_tetro *tetro_to_struct(char **characters, int tetro_count)
 ** Taking coordinates of the shifted pieces that are currentlyin a 2D-array,
 ** and storing them in a linked list structure
 */
-t_tetro	*coord_to_struct(int **shifted_coordinates)
+t_tetro	*coord_to_struct(int **shifted_coordinates, int tetro_count)
 {
 	t_tetro *pointer_2;
 	int i;
-
+	int j = 0;
 	i = 1;
-	pointer_2 = create(shifted_coordinates[0]);
-	while(i <= 5)
+	
+	int *pointer = shifted_coordinates[0];
+
+	pointer_2 = create(pointer);
+
+//	while(j < 8)
+//	{
+//		printf("%d\n", pointer[j]);
+//		j++;
+//	}
+
+//	while(i <= 5)
+//	while(i <= 3)
+	
+	while(i < tetro_count)
 	{
 		pointer_2 = append(pointer_2, shifted_coordinates[i]);
+		printf("this is i:|%d|\n", i);
 		i++;
 	}
+
+	
+	pointer = pointer_2->next->struct_tetro;
+
+	while(j < 8)
+	{
+		printf("%d\n", pointer[j]);
+		j++;
+	}
+
+
 	return(pointer_2);
 }
 

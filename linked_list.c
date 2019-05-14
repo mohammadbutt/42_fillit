@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 20:25:14 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/13 19:50:34 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int print_data_coord(t_tetro *struct_pointer)
 	while(struct_pointer)
 	{
 		pointer_2 = struct_pointer->struct_tetro;
-		while(i < 8)
+		while(i <= 7)
 		{
 			printf("%d, ", pointer_2[i]);
 			i++;

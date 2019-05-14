@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/12 20:25:07 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/13 20:38:16 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char **ft_tetrominoes(int fd)
 	int i;
 
 	i = 0;
-	characters = (char **)malloc(sizeof(char *) * (26));
+	characters = (char **)malloc(sizeof(char *) * (27));
 	characters[i] = (char *)malloc(sizeof(char) * (21));
 	while((bytes_read = read(fd, characters[i], 21)) >= 20)
 	{
@@ -168,11 +168,12 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 	
 	initialize_xy_coordinates(&i, &j, &k, &l);
 
-	coordinates = (int **) malloc(sizeof(int *) * (26));
-	coordinates[k] = (int *)malloc(sizeof(int) * (9));
+	coordinates = (int **) malloc(sizeof(int *) * (27));
+//	coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	while(characters[i][j])
 	{
 //		l = 0;
+		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 		while(characters[i][j] != '\0')
 		{
 			if(characters[i][j] == '#')// && j <= 20)
@@ -186,7 +187,7 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 		j = 0;
 		l = 0;
 		k++;
-		coordinates[k] = (int *)malloc(sizeof(int) * (9));
+//		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 	}
 //	free(coordinates[k]); // This needs to be freed after.
 	coordinates[k] = NULL;
@@ -207,11 +208,13 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 //	int x_min;
 //	int y_min;
 //	int k;
+	char c;
 	int l;
 	int **shifted_coordinates;
-
+	
+	c = 'A';
 //	k = 0;
-	shifted_coordinates = (int **)malloc(sizeof(int *) * (26));
+	shifted_coordinates = (int **)malloc(sizeof(int *) * (27));
 	while(coordinates[k] != NULL)
 	{
 //		l = 0;
@@ -226,7 +229,7 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 			l++;
 		}
 		l = 0;
-		shifted_coordinates[k] = (int *)malloc(sizeof(int) * (9));
+		shifted_coordinates[k] = (int *)malloc(sizeof(int) * (10));
 		while(l <= 7)	
 		{
 			shifted_coordinates[k][l] = coordinates[k][l] - x_min;
@@ -234,6 +237,9 @@ int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 			shifted_coordinates[k][l] = coordinates[k][l] - y_min;
 			l++;
 		}
+		shifted_coordinates[k][l] = c;
+		c++;
+		l++;
 		k++;
 	}
 	shifted_coordinates[k] = NULL;	//Is this necessary?
@@ -310,6 +316,96 @@ char **ft_grid(int width)
 	return(empty_grid);
 }
 
+/*
+** Function swap x and y.
+*/
+
+void ft_swap(int *x, int *y)
+{
+	int temp_x;
+	temp_x = *x;
+	*x = *y;
+	*y = temp_x;
+}
+
+int **swap_xy_coord(int **shifted_coordinates)
+{
+	int temp;
+	int k;
+	int l;
+	int **new_shifted_coord;
+
+	temp = 0;
+	k = 0;
+	l = 0;
+	new_shifted_coord = (int **)malloc(sizeof(int *) * 27);
+	new_shifted_coord[k] = (int *)malloc(sizeof(int) * 10);
+
+	while(shifted_coordinates[k] != NULL)
+	{
+		while(l <= 8)
+		{
+			new_shifted_coord[k][l] = shifted_coordinates[k][l];
+			l++;
+		}
+		l = 0;
+		k++;
+		new_shifted_coord[k] = (int *)malloc(sizeof(int) * 10);
+	}
+	new_shifted_coord[k] = NULL;
+	k = 0;
+	while(new_shifted_coord[k] != NULL)
+	{
+		ft_swap(&new_shifted_coord[k][0], &new_shifted_coord[k][1]);
+		ft_swap(&new_shifted_coord[k][2], &new_shifted_coord[k][3]);
+		ft_swap(&new_shifted_coord[k][4], &new_shifted_coord[k][5]);
+		ft_swap(&new_shifted_coord[k][6], &new_shifted_coord[k][7]);
+		k++;
+	}
+//	new_shifted_coord[k] = NULL; 
+	return(new_shifted_coord);
+}
+
+/*
+** Function coord_to_alpha takes coordinates that are shifted to the top left,
+** and an empty grid. Then the function places alphabets onto the empty_grid
+** at the shifted_coordinates location.
+*/
+
+//char **alpha_on_grid(int *new_shifted_coord, char **empty_grid)
+char **alpha_on_grid(int *shifted_coordinates, char **empty_grid)
+{
+	int i;
+	int j;
+	char c;
+
+	i = 0;
+	j = 0;
+	c = 'A';
+// We are not creating a new grid. We are using the old grid called, empty_grid.
+// Otherwise we will not be able to detect collision on the board.
+// And we are only placing one tetromino onto the grid right now.
+
+	while(i <= 7)
+	{
+//		empty_grid[new_shifted_coord[i+1]][new_shifted_coord[i]] = new_shifted_coord[8];
+		empty_grid[shifted_coordinates[i+1]][shifted_coordinates[i]] = shifted_coordinates[8];
+		i = i + 2;
+	}
+	return(empty_grid);
+}
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------MAIN--------------------------------
 int main (void)
 {
 	int fd;
@@ -321,6 +417,10 @@ int main (void)
 	int **shifted_coordinates;
 	int **coordinates;
 	int t_count;
+	int **swap_coord;
+
+	char **alpha_grid;
+
 
 	board_size = 4;
 	i = 0;
@@ -376,20 +476,97 @@ int main (void)
 		printf("x,y: {%d, ", (shifted_coordinates)[i][4]);
 		printf("%d}      ", (shifted_coordinates)[i][5]);
 		printf("x,y: {%d, ", (shifted_coordinates)[i][6]);
-		printf("%d}\n\n", (shifted_coordinates)[i][7]);	
+		printf("%d}", (shifted_coordinates)[i][7]);
+		printf("%c\n\n", (shifted_coordinates)[i][8]);
 		i++;
 	}
+//--------------------------------------------------------------
+
+	i = 0;
+	swap_coord = swap_xy_coord(shifted_coordinates);
+	printf("----------Printing swapped x and y-----------------\n");
+	while(shifted_coordinates[i] != NULL)
+	{
+		printf("y,x: {%d, ", (swap_coord)[i][0]);
+		printf("%d}      ", (swap_coord)[i][1]);
+		printf("y,x: {%d, ", (swap_coord)[i][2]);
+		printf("%d}      ", (swap_coord)[i][3]);
+		printf("y,x: {%d, ", (swap_coord)[i][4]);
+		printf("%d}      ", (swap_coord)[i][5]);
+		printf("y,x: {%d, ", (swap_coord)[i][6]);
+		printf("%d}", (swap_coord)[i][7]);
+		printf("%c\n\n", (swap_coord)[i][8]);
+		i++;
+	}
+
 
 //--------------------------------------------------------------	
 	i = 0;
 	printf("----------Printing board----------\n");
 	while(i < board_size)
 	{
-		ft_putstr(empty_grid[i]);
-		ft_putstr("\n");
+//		ft_putstr(empty_grid[i]);
+//		ft_putstr("\n");
+		printf("%s", empty_grid[i]);
+		printf("\n");
+		i++;
+	}
+	i = 0;
+	printf("\n\n");
+/*
+	char c = 'a';
+	int j = 0;
+
+	while(i <= 3)
+	{
+		while(j <= 3)
+		{
+			empty_grid[i][j] = c;
+			c++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	i = 0;
+	while(i < board_size)
+	{
+//		ft_putstr(empty_grid[i]);
+//		ft_putstr("\n");
+		printf("%s", empty_grid[i]);
+		printf("\n");
 		i++;
 	}
 	printf("\n");
+*/
+	alpha_grid = alpha_on_grid(shifted_coordinates[2], empty_grid);
+
+	printf("%c\n", empty_grid[0][0]);
+	printf("%c\n", empty_grid[1][0]);
+	printf("%c", empty_grid[2][0]);
+	printf("%c", empty_grid[2][1]);
+	printf("\n\n");
+	printf("---new test---\n");
+//	printf("%c", empty_grid[*swap_coord[0]][*swap_coord[1]]);
+//	printf("%c\n", empty_grid[*swap_coord[2]][*swap_coord[3]]);
+//	printf("%c", empty_grid[*swap_coord[4]][*swap_coord[5]]);
+
+	printf("\nalpha_grid\n\n");
+
+
+
+	printf("%s\n", alpha_grid[0]);
+	printf("%s\n", alpha_grid[1]);
+	printf("%s\n", alpha_grid[2]);
+	printf("%s\n", alpha_grid[3]);
+
+
+
+//	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
+//	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
+//	printf("%c\n", empty_grid[swap_coord[6]][swap_coord[7]]);
+
+
 
 //Printing linked list
 /*

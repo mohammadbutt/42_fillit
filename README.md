@@ -42,7 +42,7 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 - [X] 14. Turn coordinates into alphabets. 0th element would be A, 1st element would be B. Alphabets are stored in a double array, 9th element of each array is an alphabet. A tetromino will look like this, {1, 1, 1, 1, 0, 0, 0, 0, 'A'}.
 - [ ] 15. Create a collision function that will check against the board and pieces. Tetrominoes cannot collide/be on top of each other. And tetrominoes cannot be placed outside the board.
 - [ ] 16. Create a clean piece function, which will be utilized when we do backtracking.
-- [ ] 17. Backtracking / recursive backtracking/ dancing links(Knuth's X Algorithm).
+- [ ] 17. Backtracking / recursive backtracking/ dancing links(Knuth's X Algorithm). This is when the size of the board will be increased.
 
 ---
 # How to read the code.

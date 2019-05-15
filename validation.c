@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/14 18:00:22 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/14 20:50:00 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -436,11 +436,30 @@ int	*xy_shift(int *shift, int x, int y)
 /*
 ** Function that detects collision with the pieces and the board size.
 ** Pieces cannot land on top of each other and the pieces cannot be placed outside
-** the board or grid.
+** the board/grid.
+** Function returns 0 if there's no collision, or 1 if it detects collision.
 ** Function 1 - Collision with the pieces.
 ** Function 2 - Collision with the board.
 */
 
+int detect_collision(char **empty_grid, int *tetro)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	
+	while(empty_grid[i] != NULL)
+	{
+		if(empty_grid[i][j] != '.')
+		{
+			j++;
+		}
+	}
+
+
+}
 
 
 
@@ -578,7 +597,7 @@ int main (void)
 	}
 	printf("\n");
 */
-	alpha_grid = alpha_on_grid(shifted_coordinates[1], empty_grid);
+	alpha_grid = alpha_on_grid(shifted_coordinates[0], empty_grid);
 
 	printf("%c\n", empty_grid[0][0]);
 	printf("%c\n", empty_grid[1][0]);
@@ -608,7 +627,7 @@ int main (void)
 	
 //	int shift[] = {0,0,1,0,0,1,1,1, 'A'};
 //	int 
-	int *shift = xy_shift(shifted_coordinates[0], 0, 1);
+	int *shift = xy_shift(shifted_coordinates[1], 0, 2);
 	char **test = alpha_on_grid(shift, empty_grid);
 	
 	ft_print(test);

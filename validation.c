@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/14 17:40:22 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/14 18:00:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,7 +414,10 @@ void **ft_print(char **empty_grid)
 
 	return(0);
 }
-
+/*
+** Function that will shift the x and y.
+** We will shift x or y when pieces collide and we want to move them.
+*/
 int	*xy_shift(int *shift, int x, int y)
 {
 	int i;
@@ -430,7 +433,13 @@ int	*xy_shift(int *shift, int x, int y)
 	return(shift);
 }
 
-
+/*
+** Function that detects collision with the pieces and the board size.
+** Pieces cannot land on top of each other and the pieces cannot be placed outside
+** the board or grid.
+** Function 1 - Collision with the pieces.
+** Function 2 - Collision with the board.
+*/
 
 
 

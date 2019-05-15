@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/14 20:50:00 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/15 14:46:01 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,19 @@ int is_it_valid(char **characters)
 	return(1);
 }
 
+/*
+** Above functions are done validating a tetromino. If a tetromino piece
+** made it this far then the tetromino is valid.
+*/
+
+/*
+** Tuning tetrominoes into coordinates.
+** Index of a tetromino % 5 gives x.
+** Same index of the tetromino / 5 gives y.
+** We modulo and divide by 5 because each line has 5 elements from 0 to 19.
+** For instance 15th place % 5 is 0, And 15th place / 5 is 3. This gives us
+** x = 0 and y 3.
+*/
 int initialize_xy_coordinates(int *i, int *j, int *k, int *l)
 {
 	i = 0;
@@ -202,6 +215,12 @@ int ft_variable_reset(int *x_min, int *y_min, int *l)
 
 	return(0);
 }
+
+/*
+** Coordinates are shifted to the top left location.
+** x_min and y_min are calucluated first and then subtracted from
+** the original coordinates.
+*/
 
 int **shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k)
 {
@@ -286,6 +305,10 @@ char **coordinates_to_alphabets(int **coordinates)
 		}
 	}
 }
+*/
+
+/*
+** Function that takes the size and generates a grid.
 */
 
 char **ft_grid(int width)
@@ -382,9 +405,6 @@ char **alpha_on_grid(int *shifted_coordinates, char **empty_grid)
 	i = 0;
 	j = 0;
 	c = 'A';
-// We are not creating a new grid. We are using the old grid called, empty_grid.
-// Otherwise we will not be able to detect collision on the board.
-// And we are only placing one tetromino onto the grid right now.
 
 	while(i <= 7)
 	{
@@ -415,51 +435,65 @@ void **ft_print(char **empty_grid)
 	return(0);
 }
 /*
-** Function that will shift the x and y.
-** We will shift x or y when pieces collide and we want to move them.
+** Function that will shift the tetromino by x and y. Adding 1 to x will move
+** the tetromino to the right by 1 place. And adding 1 to y will move the
+** the tetromino down by 1 place.
+** Tetrominoes will be shifted when the pieces collide with each other.
 */
-int	*xy_shift(int *shift, int x, int y)
+//int		*shift_tetro(int *current_position, int x, int y )
+int			*shift_tetro(int *shifted_coordinates, int x, int y)
 {
 	int i;
 	
 	i = 0;
 	while(i <= 7)
 	{
-		shift[i] = shift[i] + x;
+//		current_position[i] = current_position[i] + x;
+		shifted_coordinates[i] = shifted_coordinates[i] + x;
 		i++;
-		shift[i] = shift[i] + y;
+//		current_position[i] = current_position[i] + y;
+		shifted_coordinates[i] = shifted_coordinates[i] + y;
 		i++;
 	}
-	return(shift);
+	return(shifted_coordinates);
+	//	return(current_position);
 }
 
 /*
-** Function that detects collision with the pieces and the board size.
+** Functions that detect collision with the pieces and the board size.
 ** Pieces cannot land on top of each other and the pieces cannot be placed outside
 ** the board/grid.
-** Function returns 0 if there's no collision, or 1 if it detects collision.
+** Functions return 0 if there's no collision, or 1 if it detects collision.
 ** Function 1 - Collision with the pieces.
 ** Function 2 - Collision with the board.
-*/
-
-int detect_collision(char **empty_grid, int *tetro)
+*/ 
+int box_collision(int *shifted_coordinates, int board_size)
 {
+	int x_max;
+	int y_max;
 	int i;
-	int j;
 
+	x_max = 0;
+	y_max = 0;
 	i = 0;
-	j = 0;
 	
-	while(empty_grid[i] != NULL)
+	while(i<= 7)
 	{
-		if(empty_grid[i][j] != '.')
-		{
-			j++;
-		}
+		if(shifted_coordinates[i] >= x_max)
+			x_max = shifted_coordinates[i];
+		i++;
+		if(shifted_coordinates[i] >= y_max)
+			y_max = shifted_coordinates[i];
+		i++;
 	}
+	printf("\nx_max:|%d|\n", x_max);
+	printf("y_max:|%d|\n", y_max);
 
-
+	if(x_max >= board_size || y_max >= board_size)
+		return(1);
+	return(0);
 }
+
 
 
 
@@ -623,15 +657,15 @@ int main (void)
 	ft_print(empty_grid);
 
 	printf("\n---printing shifted x and y---\n");
-
-	
-//	int shift[] = {0,0,1,0,0,1,1,1, 'A'};
-//	int 
-	int *shift = xy_shift(shifted_coordinates[1], 0, 2);
-	char **test = alpha_on_grid(shift, empty_grid);
-	
+ 
+	int *new_position = shift_tetro(shifted_coordinates[2], 2, 0);
+	char **test = alpha_on_grid(new_position, empty_grid);
+	new_position = shift_tetro(shifted_coordinates[1], 0, 3);
+	test = alpha_on_grid(new_position, empty_grid);
 	ft_print(test);
 
+	printf("board_size:|%d|\n", board_size);
+	printf("%d\n", box_collision(shifted_coordinates[1], board_size));
 //	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
 //	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
 //	printf("%c\n", empty_grid[swap_coord[6]][swap_coord[7]]);

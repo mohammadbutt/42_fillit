@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/14 20:50:04 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/15 14:39:44 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int		**swap_xy_coord(int **shifted_coordinates);
 char	**alpha_on_grid(int *shifted_coordinates, char **empty_grid);
 //void	**ft_print(int board_size, char **empty_grid);
 void	**ft_print(char **empty_grid);
-int		*xy_shift(int *shift, int x, int y);
-int		detect_collision(char **empty_grid, int *tetro);
+//int		*xy_shift(int *shift, int x, int y);
+//int		*shift_tetro(int *current_position, int x, int y);
+int		*shift_tetro(int *shifted_coordinates, int x, int y);
+int		box_collision(int *shifted_coordinates, int board_size);
 
 // -- 19 valid pieces in a single array
 

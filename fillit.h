@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/13 20:38:05 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/14 16:38:41 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ char	**ft_grid(int width);
 void	ft_swap(int *x, int *y);
 int		**swap_xy_coord(int **shifted_coordinates);
 char	**alpha_on_grid(int *shifted_coordinates, char **empty_grid);
-void	**grid_w_alpha(int size, char **empty_grid);
-
+//void	**ft_print(int board_size, char **empty_grid);
+void	**ft_print(char **empty_grid);
+int		*xy_shift(int *shift, int x, int y);
 
 // -- 19 valid pieces in a single array
 

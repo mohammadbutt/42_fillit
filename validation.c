@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/13 20:38:16 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/14 17:40:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,10 +395,40 @@ char **alpha_on_grid(int *shifted_coordinates, char **empty_grid)
 	return(empty_grid);
 }
 
+/*
+** Function that prints the alphabets placed onto the grid.
+*/
 
+//void **ft_print(char **empty_grid)
+void **ft_print(char **empty_grid)
+{
+	int i;
+	i = 0;
+	
+	while(empty_grid[i] != NULL)
+	{
+		ft_putstr(empty_grid[i]);
+		write(1, "\n", 1);
+		i++;
+	}
 
+	return(0);
+}
 
-
+int	*xy_shift(int *shift, int x, int y)
+{
+	int i;
+	
+	i = 0;
+	while(i <= 7)
+	{
+		shift[i] = shift[i] + x;
+		i++;
+		shift[i] = shift[i] + y;
+		i++;
+	}
+	return(shift);
+}
 
 
 
@@ -539,7 +569,7 @@ int main (void)
 	}
 	printf("\n");
 */
-	alpha_grid = alpha_on_grid(shifted_coordinates[2], empty_grid);
+	alpha_grid = alpha_on_grid(shifted_coordinates[1], empty_grid);
 
 	printf("%c\n", empty_grid[0][0]);
 	printf("%c\n", empty_grid[1][0]);
@@ -561,6 +591,18 @@ int main (void)
 	printf("%s\n", alpha_grid[3]);
 
 
+	printf("\nprinting the print function\n");
+	ft_print(empty_grid);
+
+	printf("\n---printing shifted x and y---\n");
+
+	
+//	int shift[] = {0,0,1,0,0,1,1,1, 'A'};
+//	int 
+	int *shift = xy_shift(shifted_coordinates[0], 0, 1);
+	char **test = alpha_on_grid(shift, empty_grid);
+	
+	ft_print(test);
 
 //	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
 //	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);

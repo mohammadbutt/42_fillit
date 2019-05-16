@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/15 17:22:06 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/15 20:31:52 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		box_collision(int *shifted_coordinates, int board_size);
 int		tetro_collision(char **empty_grid, int *shifted_coordinates);
 int		collision(char **empty_grid, int *shifted_coordinates, int board_size);
 void	clear_tetro(char **empty_grid, int *shifted_coordinates);
+int		duplicate_coordinates(int *dest, int *shifted_coordinates);
 
 // -- 19 valid pieces in a single array
 

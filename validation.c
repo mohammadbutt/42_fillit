@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/15 17:22:02 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/15 20:31:47 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -529,7 +529,7 @@ int collision(char **empty_grid, int *shifted_coordinates, int board_size)
 
 /*
 ** clear_tetro function will clear the tetromino piece if it was not placed
-** properly for some reason. 
+** properly, if it landed onto the existing piece or it was placed outside the board. 
 */
 
 void clear_tetro(char **empty_grid, int *shifted_coordinates)
@@ -545,11 +545,20 @@ void clear_tetro(char **empty_grid, int *shifted_coordinates)
 }
 
 /*
-** Clearing grid. Grid will be cleared out if no solution is reached during
-** backtracking. Clearning the grid allows the backtracking algorithm to start
-** fresh again by placing the first tetromino on the board again, but this time
-** a different piece will be placed on the board.
+** A function that duplicate coordinates before starting backtracking
 */
+int		duplicate_coordinates(int *dest, int *shifted_coordinates)
+{
+	int i;
+	i = 0;
+
+	while(i <= 7)
+	{
+		dest[i] = source[i];
+		i++;
+	}
+	return(0)
+}
 
 //-------------------------MAIN--------------------------------
 int main (void)

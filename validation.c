@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/15 14:46:01 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/15 17:22:02 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,42 +460,96 @@ int			*shift_tetro(int *shifted_coordinates, int x, int y)
 }
 
 /*
-** Functions that detect collision with the pieces and the board size.
-** Pieces cannot land on top of each other and the pieces cannot be placed outside
-** the board/grid.
+** Functions that detect collision with the board size first and then pieces.
+** Pieces cannot land on top of each other and the pieces cannot be placed
+** outside the board/grid.
 ** Functions return 0 if there's no collision, or 1 if it detects collision.
 ** Function 1 - Collision with the pieces.
 ** Function 2 - Collision with the board.
 */ 
 int box_collision(int *shifted_coordinates, int board_size)
 {
-	int x_max;
-	int y_max;
+	int max;
 	int i;
 
-	x_max = 0;
-	y_max = 0;
+	max = 0;
 	i = 0;
 	
 	while(i<= 7)
 	{
-		if(shifted_coordinates[i] >= x_max)
-			x_max = shifted_coordinates[i];
-		i++;
-		if(shifted_coordinates[i] >= y_max)
-			y_max = shifted_coordinates[i];
+		(shifted_coordinates[i] >= max) && (max = shifted_coordinates[i]);
 		i++;
 	}
-	printf("\nx_max:|%d|\n", x_max);
-	printf("y_max:|%d|\n", y_max);
+	printf("\nx_max:|%d|\n", max);// this can be removed
+	printf("y_max:|%d|\n", max); // this can be removed
 
-	if(x_max >= board_size || y_max >= board_size)
+	if(max >= board_size)
 		return(1);
 	return(0);
 }
 
+int tetro_collision(char **empty_grid, int *shifted_coordinates)
+{
+	int i;
+	i = 0;
 
+	while(i <=7)
+	{
+		if(empty_grid[shifted_coordinates[i+1]][shifted_coordinates[i]] != '.')
+			return(1);
+		i = i +2;
+	}
+	return(0);
+}
 
+int collision(char **empty_grid, int *shifted_coordinates, int board_size)
+{
+	int max;
+	int i;
+
+	max = 0;
+	i = 0;
+
+	while(i <= 7)
+	{
+		(shifted_coordinates[i] >= max) && (max =shifted_coordinates[i]);
+		i++;
+	}
+	if (max >= board_size)
+		return (1);
+	i = 0;
+	while(i <= 7)
+	{
+		if(empty_grid[shifted_coordinates[i+1]][shifted_coordinates[i]] != '.')
+			return(1);
+		i = i+2;
+	}
+	return(0);
+}
+
+/*
+** clear_tetro function will clear the tetromino piece if it was not placed
+** properly for some reason. 
+*/
+
+void clear_tetro(char **empty_grid, int *shifted_coordinates)
+{
+	int i;
+	i = 0;
+
+	while(i <= 7)
+	{
+		empty_grid[shifted_coordinates[i+1]][shifted_coordinates[i]] = '.';
+		i = i + 2;
+	}
+}
+
+/*
+** Clearing grid. Grid will be cleared out if no solution is reached during
+** backtracking. Clearning the grid allows the backtracking algorithm to start
+** fresh again by placing the first tetromino on the board again, but this time
+** a different piece will be placed on the board.
+*/
 
 //-------------------------MAIN--------------------------------
 int main (void)
@@ -657,7 +711,7 @@ int main (void)
 	ft_print(empty_grid);
 
 	printf("\n---printing shifted x and y---\n");
- 
+
 	int *new_position = shift_tetro(shifted_coordinates[2], 2, 0);
 	char **test = alpha_on_grid(new_position, empty_grid);
 	new_position = shift_tetro(shifted_coordinates[1], 0, 3);
@@ -666,6 +720,9 @@ int main (void)
 
 	printf("board_size:|%d|\n", board_size);
 	printf("%d\n", box_collision(shifted_coordinates[1], board_size));
+
+	clear_tetro(test, shifted_coordinates[2]);
+	ft_print(test);
 //	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
 //	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
 //	printf("%c\n", empty_grid[swap_coord[6]][swap_coord[7]]);

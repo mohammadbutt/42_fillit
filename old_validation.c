@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/17 12:05:49 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 12:04:21 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -755,6 +755,281 @@ int solve_driver(fd)
 
 
 }
+
+
+//-------------------------MAIN--------------------------------
+
+int main (void)
+{
+	int fd;
+	char **characters1;
+
+	char **empty_grid;
+	int board_size;
+	int i;
+	int **shifted_coordinates;
+	int **coordinates;
+	int t_count;
+	int **swap_coord;
+
+	char **alpha_grid;
+
+
+	board_size = 4;
+	i = 0;
+	empty_grid = ft_grid(board_size);
+
+	fd = 0;
+//	fd = open("./valid_pieces/valid_21", O_RDONLY);
+//	fd = open("./tests/fails/error_02", O_RDONLY);
+	fd = open("./tests/corrects/valid_06", O_RDONLY);
+	if (fd == -1)
+		printf("Wrong file name or path\n");
+	characters1 = ft_tetrominoes(fd);
+
+	dots_and_hash(characters1);
+	is_it_valid(characters1);//, 0, 0, 0);
+	
+	printf("-------Printing Tetrominoes-------\n");
+	while((characters1)[i] != NULL)
+	{
+		printf("%s\n", (characters1)[i]);
+		i++;
+	}
+//-----------------------------------------------------------
+	printf("---Printing number of tetrominoes---\n");
+	printf("%d\n", tetro_count(characters1));
+
+//-----------------------------------------------------------
+	i = 0;
+	coordinates = xy_coordinates(characters1, 0, 0, 0);
+	printf("-------Printing coordinates-------\n");
+	while(coordinates[i]!= NULL)
+	{		
+		printf("x,y: {%d, ", (coordinates)[i][0]);
+		printf("%d}      ", (coordinates)[i][1]);
+		printf("x,y: {%d, ", (coordinates)[i][2]);
+		printf("%d}      ", (coordinates)[i][3]);
+		printf("x,y: {%d, ", (coordinates)[i][4]);
+		printf("%d}      ", (coordinates)[i][5]);
+		printf("x,y: {%d, ", (coordinates)[i][6]);
+		printf("%d}\n\n", (coordinates)[i][7]);
+		i++;
+	}
+//-------------------------------------------------------------
+	i = 0;
+	shifted_coordinates = shift_xy_coordinates(coordinates, 3, 3, 0);
+	printf("---Printing shifted coordinates---\n\n");
+	while(shifted_coordinates[i] != NULL)
+	{
+		printf("x,y: {%d, ", (shifted_coordinates)[i][0]);
+		printf("%d}      ", (shifted_coordinates)[i][1]);
+		printf("x,y: {%d, ", (shifted_coordinates)[i][2]);
+		printf("%d}      ", (shifted_coordinates)[i][3]);
+		printf("x,y: {%d, ", (shifted_coordinates)[i][4]);
+		printf("%d}      ", (shifted_coordinates)[i][5]);
+		printf("x,y: {%d, ", (shifted_coordinates)[i][6]);
+		printf("%d}", (shifted_coordinates)[i][7]);
+		printf("%c\n\n", (shifted_coordinates)[i][8]);
+		i++;
+	}
+//--------------------------------------------------------------
+
+	i = 0;
+	swap_coord = swap_xy_coord(shifted_coordinates);
+	printf("----------Printing swapped x and y-----------------\n");
+	while(shifted_coordinates[i] != NULL)
+	{
+		printf("y,x: {%d, ", (swap_coord)[i][0]);
+		printf("%d}      ", (swap_coord)[i][1]);
+		printf("y,x: {%d, ", (swap_coord)[i][2]);
+		printf("%d}      ", (swap_coord)[i][3]);
+		printf("y,x: {%d, ", (swap_coord)[i][4]);
+		printf("%d}      ", (swap_coord)[i][5]);
+		printf("y,x: {%d, ", (swap_coord)[i][6]);
+		printf("%d}", (swap_coord)[i][7]);
+		printf("%c\n\n", (swap_coord)[i][8]);
+		i++;
+	}
+
+
+//--------------------------------------------------------------	
+	i = 0;
+	printf("----------Printing board----------\n");
+	while(i < board_size)
+	{
+//		ft_putstr(empty_grid[i]);
+//		ft_putstr("\n");
+		printf("%s", empty_grid[i]);
+		printf("\n");
+		i++;
+	}
+	i = 0;
+	printf("\n\n");
+
+	alpha_grid = alpha_on_grid(shifted_coordinates[0], empty_grid);
+
+	printf("%c\n", empty_grid[0][0]);
+	printf("%c\n", empty_grid[1][0]);
+	printf("%c", empty_grid[2][0]);
+	printf("%c", empty_grid[2][1]);
+	printf("\n\n");
+	printf("---new test---\n");
+
+	printf("\nalpha_grid\n\n");
+
+	printf("%s\n", alpha_grid[0]);
+	printf("%s\n", alpha_grid[1]);
+	printf("%s\n", alpha_grid[2]);
+	printf("%s\n", alpha_grid[3]);
+
+
+	printf("\nprinting the print function\n");
+	ft_print(empty_grid);
+
+	printf("\n---printing shifted x and y---\n");
+
+	int *new_position = shift_tetro(shifted_coordinates[2], 2, 0);
+	char **test = alpha_on_grid(new_position, empty_grid);
+	new_position = shift_tetro(shifted_coordinates[1], 0, 3);
+	test = alpha_on_grid(new_position, empty_grid);
+
+	ft_print(test);
+
+	printf("board_size:|%d|\n", board_size);
+	printf("%d\n", box_collision(shifted_coordinates[1], board_size));
+
+	clear_tetro(test, shifted_coordinates[2]);
+
+	ft_print(test);
+
+
+//	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
+//	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
+//	printf("%c\n", empty_grid[swap_coord[6]][swap_coord[7]]);
+
+
+
+//Printing linked list
+/*
+	t_tetro *pointer_2;
+	pointer_2 = create("Testing");
+	pointer_2 = append(pointer_2, "this thing");
+	print_data(pointer_2);
+*/
+/* // Storing strings in variables and using them.	
+	char string1[8] = "Testing";
+	char string2[12] = "this thing";
+
+	t_tetro *pointer_2;
+	pointer_2 = create(string1);
+	pointer_2 = append(pointer_2, string2);
+	print_data(pointer_2);
+*/
+
+/*	
+	// printing tetrominoes from tetro_to_struct function
+	// printing struct_element_count
+	printf("---printing terominoes from tetro_to_struct function and count---\n");
+	t_tetro *pointer_2;
+	int 	pointer_3;
+	pointer_2 = tetro_to_struct(characters1, tetro_count(characters1));
+	pointer_3 = struct_element_count(pointer_2);
+	print_data(pointer_2);
+	printf("\n");
+
+	printf("%d", pointer_3);
+//	print_data(pointer_3);
+*/
+	
+	// printing shifted coordinates from coord_to_struct function
+/*	
+	printf("---printing coodinates from coord_to_struct function---\n");
+	t_count = tetro_count(characters1);
+	t_tetro *pointer_2;
+	pointer_2 = coord_to_struct(shifted_coordinates, t_count);
+*/
+/*
+	int *pointer_3;
+	i = 0;
+	pointer_3 = pointer_2->next->struct_tetro;
+	printf("\n\n");
+	while(i < 8)
+	{
+		printf("%d\n", pointer_3[i]);
+		i++;
+	}
+	print_data_coord(pointer_2);
+*/
+	printf("\n-------Solving tetro---------\n");
+	board_size = 4;
+
+//	solve_tetro(empty_grid, shifted_coordinates, board_size);
+
+//	place_next_piece(*shifted_coordinates, empty_grid, board_size, 0);
+//	fill_board(*shifted_coordinates, empty_grid, board_size, 0);
+//	place_next_piece(*shifted_coordinates, empty_grid, board_size);
+//	fill_board(*shifted_coordinates, empty_grid, board_size);
+
+//	print_data(pointer_2);
+//	print_data_coord(pointer_2);
+/*
+   	// printing from struct
+	printf("---printing tetrominoes from struct---\n");
+	t_tetro *pointer_2;
+	pointer_2 = create(characters1[0]);
+	pointer_2 = append(pointer_2, characters1[1]);
+	pointer_2 = append(pointer_2, characters1[2]);
+	pointer_2 = append(pointer_2, characters1[3]);
+	print_data(pointer_2);
+*/
+/*
+//printing shifted coordinates
+	printf("\n---printing shifted coordinates from struct----\n");
+	t_tetro *pointer_2;
+//	int a[] = {0,1,2,3};
+	pointer_2 = create(shifted_coordinates[0]);
+	printf("char c: %c\n", pointer_2->struct_c);
+	int *b = pointer_2->struct_characters;
+	printf("test: %d\n", b[3]);
+	print_data_coord(pointer_2);
+*/
+/*
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[0]);
+	//print_data_coord(pointer_2);
+	
+*/
+
+// Returns blanks lines
+/*
+	t_tetro *pointer_2;
+	pointer_2 = create(shifted_coordinates[0]);
+	pointer_2 = append(pointer_2, shifted_coordinates[1]);
+	print_data(pointer_2);
+*/
+
+/*	
+ // Gives bus error
+	t_tetro *pointer_2;
+	pointer_2 = create(tetro_to_struct(&shifted_coordinates[0]));
+//	pointer_2 = append(pointer_2,(tetro_to_struct(&shifted_coordinates[1])));
+	print_data(pointer_2);
+*/
+/*
+	t_tetro *pointer_2;
+	pointer_2 = tetro_to_struct(shifted_coordinates[0]);
+	pointer
+*/
+	return(0);
+//	return(EXIT_SUCCESS);
+}
+
 
 //-------------------------------MAIN-------------------------
 

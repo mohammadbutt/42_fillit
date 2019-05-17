@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/16 21:11:29 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 11:45:41 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 /* 
 ** Put protptypes here if any
 */
+/*
+** Storing tetrominoes and validating
+*/
 void 	ft_exit(void);
 //int		ft_variable_reset(int *x_min, int *y_min, int *l);
 char	**ft_tetrominoes(int fd);
@@ -36,6 +39,12 @@ int		initialize_xy_coordinates(int *i, int *j, int *k, int *l);
 int		**xy_coordinates(char **characters, int i, int j, int k);
 int		ft_variable_reset(int *xmin, int *y_min, int *l);
 int		**shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k);
+
+/*
+** Creating grid, placing tetrominoes in the form of alphabets
+** on the board, clearing tetrominoes from grid, detecting collision
+**, and duplicating coordinates
+*/
 int		tetro_count(char **characters);
 char	**ft_grid(int width);
 void	ft_swap(int *x, int *y);
@@ -56,7 +65,11 @@ int 	place_next_piece(int *shifted_coordinates, char **empty_grid, int board_siz
 //int	fill_board(int *shifted_coordinates, char **empty_grid, int board_size, int i);
 int		fill_board(int *shifted_cooridnates, char **empty_grid, int board_size);
 char 	**solve_tetro(char **empty_grid, int **shifted_coordinates, int board_size);
-int 	help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates, int board_size);
+
+/*
+**	Backtracking solver functions
+*/
+int 	help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
 int		solve_tet(char **empty_grid, int **shifted_coordinates, int board_size);
 int 	solve_driver(int fd);
 

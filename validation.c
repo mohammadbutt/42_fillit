@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/16 21:11:25 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 12:02:08 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -686,12 +686,12 @@ char **solve_tetro(char **empty_grid, int **shifted_coordinates, int board_size)
 //	}
 }
 */
-int help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates, int board_size)
+int help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size)
 {
 	if(collision(empty_grid, shifted_coordinates, board_size))
 	{
-		alpha_on_grid(empty_grid, shifted_coordinates);
-		if (solve_tet(empty_grid, **shifted_coordinates, board_size))
+		alpha_on_grid(shifted_coordinates, empty_grid);
+		if (solve_tet(empty_grid, shifted_coordinates_2, board_size)) // *shifted_coordinates
 		{
 			free(shifted_coordinates);
 			return(1);
@@ -709,7 +709,7 @@ int solve_tet(char **empty_grid, int **shifted_coordinates, int board_size)
 
 	x = 0;
 	y = 0;
-	temp_coord = (int *)malloc(sizeof(int) * 8);
+	temp_coord = (int *)malloc(sizeof(int) * 9); // malloc 9 for alpha_on_grid
 	if(!shifted_coordinates)
 	{
 		free(temp_coord);
@@ -719,12 +719,13 @@ int solve_tet(char **empty_grid, int **shifted_coordinates, int board_size)
 	{
 		while(x < board_size)
 		{
-			duplicate_coordinates(temp_coord, shifted_coordinates);
+			duplicate_coordinates(temp_coord, *shifted_coordinates);
 			shift_tetro(temp_coord, x, y);
 			if (help_solve(empty_grid, temp_coord, shifted_coordinates, board_size))
 				return(1);
 			x++;
 		}
+		x = 0;
 		y++;
 	}
 	free(temp_coord);
@@ -738,24 +739,27 @@ int solve_driver(fd)
 	int 	board_size;
 	char	**empty_grid;
 
-	temp = store_tet(fd, NULL); //dont need this
-	board_size = start_size(temp); // missing function
+//	temp = store_tet(fd, NULL); //dont need this
+//	board_size = start_size(temp); // missing function
 	shifted_coordinates = (shift_xy_coordinates(shifted_coordinates, 3, 3, 0));
 	empty_grid = ft_grid(board_size);
-	while(!solve_tet(empty_grid, shifted_coordinates, board_size));
+	while(!solve_tet(empty_grid, shifted_coordinates, board_size))
 	{
-		free_grid(grid, size); // dont have this function
+//		free_grid(empty_grid, board_size); // dont have this function
 		board_size++;
 		empty_grid = ft_grid(board_size);
 	}
 	ft_print(empty_grid);
+//	stck_free_coord(stack); // dont have this function
 	return(1);
 
 
 }
 
+
 //-------------------------MAIN--------------------------------
-int main (void)
+
+int main_21 (void)
 {
 	int fd;
 	char **characters1;
@@ -862,7 +866,7 @@ int main (void)
 	}
 	i = 0;
 	printf("\n\n");
-/*	
+
 	alpha_grid = alpha_on_grid(shifted_coordinates[0], empty_grid);
 
 	printf("%c\n", empty_grid[0][0]);
@@ -898,7 +902,7 @@ int main (void)
 	clear_tetro(test, shifted_coordinates[2]);
 
 	ft_print(test);
-*/
+
 
 //	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
 //	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
@@ -960,7 +964,7 @@ int main (void)
 	printf("\n-------Solving tetro---------\n");
 	board_size = 4;
 
-	solve_tetro(empty_grid, shifted_coordinates, board_size);
+//	solve_tetro(empty_grid, shifted_coordinates, board_size);
 
 //	place_next_piece(*shifted_coordinates, empty_grid, board_size, 0);
 //	fill_board(*shifted_coordinates, empty_grid, board_size, 0);
@@ -1025,19 +1029,28 @@ int main (void)
 	return(0);
 //	return(EXIT_SUCCESS);
 }
-/*
+
+
 int main (int argc, char **argv)
 {
 	int fd;
 	fd = 0;
 
 	if(argc != 2)
+	{
 		EXIT(USAGE);
+		exit(1);
+	}
 
 	fd = open(argv[1], O_RDONLY);
 
 	if(fd == -1)
 		ft_exit();
-	fill_board()
+	else if(fd > 0)
+	{
+		fd = open(argv[1], O_RDONLY);
+		solve_driver(fd);
+	}
+	close(fd);
 }
-*/
+

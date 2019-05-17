@@ -1,0 +1,46 @@
+int				place_next_piece(t_game *tetromino, t_uint8 i)
+
+{
+
+	t_uint64	piece_mask;
+
+	t_int8		row;
+
+	t_int8		col;
+
+
+
+	if (we are one after the last piece. If we have placed all the tetrominoes)
+
+		return (SUCCESS);
+
+
+
+	row = 0;
+
+	while (is piece within board in row - board collision)
+
+	{
+
+		col = 0;
+
+		while (is piece within board in column - board collision)
+
+			if (piece does not collide with another piece)
+
+			{
+				place_piece at row and col
+
+				if (place_next_piece(tetromino, i + 1) == SUCCESS)
+
+					return (SUCCESS);
+
+				remove_piece at row and col
+
+			}
+
+	}
+
+	return (FAILURE);
+
+}

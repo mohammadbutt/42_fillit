@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/15 20:31:47 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/16 21:11:25 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -431,14 +431,14 @@ void **ft_print(char **empty_grid)
 		write(1, "\n", 1);
 		i++;
 	}
-
 	return(0);
 }
 /*
 ** Function that will shift the tetromino by x and y. Adding 1 to x will move
 ** the tetromino to the right by 1 place. And adding 1 to y will move the
 ** the tetromino down by 1 place.
-** Tetrominoes will be shifted when the pieces collide with each other.
+** Tetrominoes will be shifted when the pieces collide with each other,
+** or go over board.
 */
 //int		*shift_tetro(int *current_position, int x, int y )
 int			*shift_tetro(int *shifted_coordinates, int x, int y)
@@ -545,7 +545,7 @@ void clear_tetro(char **empty_grid, int *shifted_coordinates)
 }
 
 /*
-** A function that duplicate coordinates before starting backtracking
+** A function that duplicates coordinates before starting backtracking
 */
 int		duplicate_coordinates(int *dest, int *shifted_coordinates)
 {
@@ -554,10 +554,204 @@ int		duplicate_coordinates(int *dest, int *shifted_coordinates)
 
 	while(i <= 7)
 	{
-		dest[i] = source[i];
+		dest[i] = shifted_coordinates[i];
 		i++;
 	}
-	return(0)
+	return(0);
+}
+
+/*
+** Functions and algorithms that solves the tetromino and places
+** tetrominoes in the smallest sqaure possible.
+** This is where a lot of the previously created functions will be used.
+** --------------------------- Backtracking-----------------------------
+*/
+//int place_next_piece(int *shifted_coordinates, char **empty_grid, int board_size, int i)
+/*
+int place_next_piece(int *shifted_coordinates, char ** empty_grid, int board_size)
+{
+	static int index;
+	index = 0;
+
+//	if(shifted_coordinates[index] == NULL)
+//		return(0);
+	printf("\nSolving tetro\n");
+	if(!*shifted_coordinates)	
+		return(EXIT_SUCCESS);
+//	while(collision(empty_grid, shifted_coordinates, board_size) == 0)
+	while(collision(empty_grid, shifted_coordinates, board_size) == EXIT_SUCCESS)
+	{
+		alpha_on_grid(shifted_coordinates, empty_grid);
+		ft_print(empty_grid);
+//		if(place_next_piece(shifted_coordinates,empty_grid, board_size, i+1) == 0)
+//			return(0);
+//		if(place_next_piece(shifted_coordinates, empty_grid, board_size, i+1) == EXIT_SUCCESS)
+//			return(EXIT_SUCCESS);
+		if(place_next_piece(&shifted_coordinates[index+1], empty_grid, board_size) == EXIT_SUCCESS)
+			return(EXIT_SUCCESS);
+		clear_tetro(empty_grid, shifted_coordinates);
+	}
+	return(1);
+}
+
+
+//int fill_board(int *shifted_coordinates, char **empty_grid, int board_size, int i)
+int fill_board(int *shifted_coordinates, char **empty_grid, int board_size)
+{
+//	while(place_next_piece(shifted_coordinates, empty_grid, board_size, i))
+//	while(place_next_piece(shifted_coordinates, empty_grid, board_size))
+	while(collision(empty_grid, shifted_coordinates, board_size) != EXIT_SUCCESS)
+	{
+//		if(place_next_piece(shifted_coordinates, empty_grid, board_size, i) == 0)
+//			break;
+//		if(place_next_piece(shifted_coordinates, empty_grid, board_size, i) == EXIT_SUCCESS)
+//			break;
+		if(place_next_piece(shifted_coordinates, empty_grid, board_size) == EXIT_SUCCESS)
+			break;
+		board_size++;
+	}
+	return(*shifted_coordinates);	
+//	return(board_size);
+}
+*/
+/*
+char **solve_tetro(char **empty_grid, int **shifted_coordinates, int board_size)
+{
+	int x;
+	int y;
+	int i;
+	int x2;
+	int y2;
+	int total_attempts;
+	int *dest;
+	
+	i = 0;
+	x2 = 0;
+	y2 = 0;
+
+	if(!x)
+		x = 0;
+	if(!y)
+		y = 0;
+
+	if(collision(empty_grid, shifted_coordinates[i+1], board_size) == 1)
+	{
+		while(x <= board_size)
+		{
+			duplicate_coordinates(dest, *shifted_coordinates);
+
+		//	shift_tetro(shifted_coordinates[i+1], x, y);
+			shift_tetro(shifted_coordinates[i+1], x ,y);
+			total_attempts++;
+			x++;
+			solve_tetro(empty_grid, &shifted_coordinates[i+1], board_size);
+		}
+		if(x == board_size && y == board_size)
+		{
+			clear_tetro(empty_grid, *shifted_coordinates);
+			x2++;
+			if(x2 > board_size)
+			{
+				x2 = 0;
+				y2++;
+			}
+			x = 0;
+			y = 0;
+//			if(x2 == board_size && y2 == board_size)
+//			{
+//			}
+			shift_tetro(*shifted_coordinates, x2, y2);
+		}
+		if(x > board_size)
+		{
+			x = 0;
+			total_attempts++;
+			y++;
+		}
+	}
+	if((collision(empty_grid, shifted_coordinates[i], board_size) == 0) && i <= 3)
+	{
+		alpha_on_grid(shifted_coordinates[i], empty_grid);
+		i++;
+		printf("\nCounts1\n");
+		solve_tetro(empty_grid, shifted_coordinates, board_size);
+	}
+	ft_print(empty_grid);
+	return(0);
+//		while(x > board_size)
+//		{
+//			shift_tetro(shifted_coordinates, x, y);
+
+//		}
+//	}
+}
+*/
+int help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates, int board_size)
+{
+	if(collision(empty_grid, shifted_coordinates, board_size))
+	{
+		alpha_on_grid(empty_grid, shifted_coordinates);
+		if (solve_tet(empty_grid, **shifted_coordinates, board_size))
+		{
+			free(shifted_coordinates);
+			return(1);
+		}
+		clear_tetro(empty_grid, shifted_coordinates);
+	}
+	return(0);
+}
+
+int solve_tet(char **empty_grid, int **shifted_coordinates, int board_size)
+{
+	int *temp_coord;
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	temp_coord = (int *)malloc(sizeof(int) * 8);
+	if(!shifted_coordinates)
+	{
+		free(temp_coord);
+		return(1);
+	}
+	while(y < board_size)
+	{
+		while(x < board_size)
+		{
+			duplicate_coordinates(temp_coord, shifted_coordinates);
+			shift_tetro(temp_coord, x, y);
+			if (help_solve(empty_grid, temp_coord, shifted_coordinates, board_size))
+				return(1);
+			x++;
+		}
+		y++;
+	}
+	free(temp_coord);
+	return(0);
+
+}
+int solve_driver(fd)
+{
+	int 	temp;
+	int 	**shifted_coordinates;
+	int 	board_size;
+	char	**empty_grid;
+
+	temp = store_tet(fd, NULL); //dont need this
+	board_size = start_size(temp); // missing function
+	shifted_coordinates = (shift_xy_coordinates(shifted_coordinates, 3, 3, 0));
+	empty_grid = ft_grid(board_size);
+	while(!solve_tet(empty_grid, shifted_coordinates, board_size));
+	{
+		free_grid(grid, size); // dont have this function
+		board_size++;
+		empty_grid = ft_grid(board_size);
+	}
+	ft_print(empty_grid);
+	return(1);
+
+
 }
 
 //-------------------------MAIN--------------------------------
@@ -668,32 +862,7 @@ int main (void)
 	}
 	i = 0;
 	printf("\n\n");
-/*
-	char c = 'a';
-	int j = 0;
-
-	while(i <= 3)
-	{
-		while(j <= 3)
-		{
-			empty_grid[i][j] = c;
-			c++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	i = 0;
-	while(i < board_size)
-	{
-//		ft_putstr(empty_grid[i]);
-//		ft_putstr("\n");
-		printf("%s", empty_grid[i]);
-		printf("\n");
-		i++;
-	}
-	printf("\n");
-*/
+/*	
 	alpha_grid = alpha_on_grid(shifted_coordinates[0], empty_grid);
 
 	printf("%c\n", empty_grid[0][0]);
@@ -702,13 +871,8 @@ int main (void)
 	printf("%c", empty_grid[2][1]);
 	printf("\n\n");
 	printf("---new test---\n");
-//	printf("%c", empty_grid[*swap_coord[0]][*swap_coord[1]]);
-//	printf("%c\n", empty_grid[*swap_coord[2]][*swap_coord[3]]);
-//	printf("%c", empty_grid[*swap_coord[4]][*swap_coord[5]]);
 
 	printf("\nalpha_grid\n\n");
-
-
 
 	printf("%s\n", alpha_grid[0]);
 	printf("%s\n", alpha_grid[1]);
@@ -725,13 +889,17 @@ int main (void)
 	char **test = alpha_on_grid(new_position, empty_grid);
 	new_position = shift_tetro(shifted_coordinates[1], 0, 3);
 	test = alpha_on_grid(new_position, empty_grid);
+
 	ft_print(test);
 
 	printf("board_size:|%d|\n", board_size);
 	printf("%d\n", box_collision(shifted_coordinates[1], board_size));
 
 	clear_tetro(test, shifted_coordinates[2]);
+
 	ft_print(test);
+*/
+
 //	printf("%c\n", empty_grid[swap_coord[2]][swap_coord[3]]);
 //	printf("%c\n", empty_grid[swap_coord[4]][swap_coord[5]]);
 //	printf("%c\n", empty_grid[swap_coord[6]][swap_coord[7]]);
@@ -771,10 +939,12 @@ int main (void)
 */
 	
 	// printing shifted coordinates from coord_to_struct function
+/*	
 	printf("---printing coodinates from coord_to_struct function---\n");
 	t_count = tetro_count(characters1);
 	t_tetro *pointer_2;
 	pointer_2 = coord_to_struct(shifted_coordinates, t_count);
+*/
 /*
 	int *pointer_3;
 	i = 0;
@@ -785,8 +955,18 @@ int main (void)
 		printf("%d\n", pointer_3[i]);
 		i++;
 	}
-*/
 	print_data_coord(pointer_2);
+*/
+	printf("\n-------Solving tetro---------\n");
+	board_size = 4;
+
+	solve_tetro(empty_grid, shifted_coordinates, board_size);
+
+//	place_next_piece(*shifted_coordinates, empty_grid, board_size, 0);
+//	fill_board(*shifted_coordinates, empty_grid, board_size, 0);
+//	place_next_piece(*shifted_coordinates, empty_grid, board_size);
+//	fill_board(*shifted_coordinates, empty_grid, board_size);
+
 //	print_data(pointer_2);
 //	print_data_coord(pointer_2);
 /*
@@ -843,5 +1023,21 @@ int main (void)
 	pointer
 */
 	return(0);
+//	return(EXIT_SUCCESS);
 }
+/*
+int main (int argc, char **argv)
+{
+	int fd;
+	fd = 0;
 
+	if(argc != 2)
+		EXIT(USAGE);
+
+	fd = open(argv[1], O_RDONLY);
+
+	if(fd == -1)
+		ft_exit();
+	fill_board()
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/17 19:49:29 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 20:11:45 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,10 @@ int is_it_valid(char **characters)
 */
 int initialize_xy_coordinates(int *i, int *j, int *k, int *l)
 {
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
+	*i = 0;
+	*j = 0;
+	*k = 0;
+	*l = 0;
 
 	return(0);
 }
@@ -183,12 +183,14 @@ int **xy_coordinates(char **characters, int i, int j, int k)
 
 	coordinates = (int **) malloc(sizeof(int *) * (27));
 //	coordinates[k] = (int *)malloc(sizeof(int) * (9));
-	while(characters[i])
+	while(characters[i])// != NULL)
 	{
 //		l = 0;
+//		printf("\nxy_coord:|%d|\n", i);
 		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 		while(characters[i][j] != '\0')
 		{
+//			printf("\nl in while:|%d|\n",l);
 			if(characters[i][j] == '#')// && j <= 20)
 			{
 				coordinates[k][l++] = j%5;
@@ -480,8 +482,8 @@ int box_collision(int *shifted_coordinates, int board_size)
 		(shifted_coordinates[i] >= max) && (max = shifted_coordinates[i]);
 		i++;
 	}
-	printf("\nx_max:|%d|\n", max);// this can be removed
-	printf("y_max:|%d|\n", max); // this can be removed
+//	printf("\nx_max:|%d|\n", max);// this can be removed
+//	printf("y_max:|%d|\n", max); // this can be removed
 
 	if(max >= board_size)
 		return(1);
@@ -847,16 +849,16 @@ int solve_driver_one(fd)
 */
 int help_solve(char **empty_grid, int *shifted_coordinates, t_tetro *stack, int board_size)
 {
-	printf("\n1help_solve\n");
+//	printf("\n1help_solve\n");
 //	if(!collision(empty_grid, shifted_coordinates, board_size))
 	if(collision(empty_grid, shifted_coordinates, board_size) == 0)
 	{
-		printf("\ninside if\n");
+//		printf("\ninside if\n");
 		alpha_on_grid(shifted_coordinates, empty_grid);
-		printf("\nafter alpha\n");
+//		printf("\nafter alpha\n");
 		if (solve_tet(empty_grid, stack->next, board_size))
 		{
-			printf("\nin if and if\n");
+//			printf("\nin if and if\n");
 			free(shifted_coordinates);
 			return(1);
 		}
@@ -875,7 +877,6 @@ int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 	y = -1;
 
 	shifted_coordinates = (int *)malloc(sizeof(int) * 9);
-	printf("\nsolve_tet\n");
 	if(!stack)
 	{
 		free(shifted_coordinates);
@@ -888,7 +889,6 @@ int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 		{
 			duplicate_coordinates(shifted_coordinates, stack->struct_tetro);
 			shift_tetro(shifted_coordinates, x, y);
-			printf("\nabc\n");
 			if (help_solve(empty_grid, shifted_coordinates, stack, board_size))
 				return(1);
 		}
@@ -899,7 +899,7 @@ int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 
 int solve_driver(int fd)
 {
-	printf("\nprintg solve_driver1\n");
+//	printf("\nprintg solve_driver1\n");
 	t_tetro	*tmp;
 	t_tetro	*stack;
 	char	**characters;
@@ -910,17 +910,17 @@ int solve_driver(int fd)
 	char	**empty_grid;
 
 	characters = ft_tetrominoes(fd);
-	printf("\nprinting solve_driver2\n");
+//	printf("\nprinting solve_driver2\n");
 	tet_count  = tetro_count(characters);
-	printf("\ntetro_count:|%d|\n", tet_count);	
-	printf("\n11\n");
+//	printf("\ntetro_count:|%d|\n", tet_count);	
+//	printf("\n11\n");
 	coordinates = xy_coordinates(characters, 0, 0, 0);
-	printf("\n2\n");
+//	printf("\n2\n");
 	shifted_coordinates = shift_xy_coordinates(coordinates, 3, 3, 0);
-	printf("\n3\n");
+//	printf("\n3\n");
 	stack = coord_to_struct(shifted_coordinates, tet_count);
-	printf("\ntet_count|%d|\n", tet_count);
-	printf("\nprinting solve_driver3\n");
+//	printf("\ntet_count|%d|\n", tet_count);
+//	printf("\nprinting solve_driver3\n");
 	empty_grid = ft_grid(board_size = 4);
 	while(!solve_tet(empty_grid, stack, board_size))
 	{
@@ -939,7 +939,7 @@ int main (int argc, char **argv)
 {
 	int fd;
 	fd = 0;
-	printf("---Enters main---\n");
+//	printf("---Enters main---\n");
 	if(argc != 2)
 	{
 		ft_putstr(USAGE);

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/17 11:45:41 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 18:52:15 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ char 	**solve_tetro(char **empty_grid, int **shifted_coordinates, int board_size
 /*
 **	Backtracking solver functions
 */
-int 	help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
-int		solve_tet(char **empty_grid, int **shifted_coordinates, int board_size);
-int 	solve_driver(int fd);
+
+//int 	help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
+//int		solve_tet(char **empty_grid, int **shifted_coordinates_2, int board_size);
+int 	solve_tet_one(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
+//int 	solve_driver(int fd);
+
 
 // -- 19 valid pieces in a single array
 
@@ -93,6 +96,9 @@ int			print_data_coord(t_tetro *struct_pointer);
 int			struct_element_count(t_tetro *head);
 //int			print_data_coord(t_tetro *struct_pointer);
 t_tetro		*tetro_to_struct(char **characters, int tetro_count);
-t_tetro		*coord_to_struct(int **shifted_coordinates, int tetro_count);
+t_tetro		*coord_to_struct(int **shifted_coordinates, int tetro_count);// Using this
 
+int		help_solve(char **empty_grid, int *shifted_coordinates, t_tetro *stack, int board_size);
+int		solve_tet(char **empty_grid, t_tetro *stack, int board_size);
+int		solve_driver(int fd);
 #endif

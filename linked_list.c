@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/17 19:49:33 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/18 16:38:00 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,35 @@ t_tetro *append(t_tetro *head, void *struct_tetro)
 
 	return(head);
 }
+/*
+** Taking coordinates of the shifted pieces that are currentlyin a 2D-array,
+** and storing them in a linked list structure
+*/
+t_tetro	*coord_to_struct(int **shifted_coordinates, int tetro_count)
+{
+	t_tetro *pointer_2;
+	int 	i;
+
+	i = 1;
+	pointer_2 = create(shifted_coordinates[0]);
+	while(i < tetro_count)
+	{
+		pointer_2 = append(pointer_2, shifted_coordinates[i]);
+		i++;
+	}
+	return(pointer_2);
+}
+
+/*
+**----------------------------------------------------------------------------
+**---------Extra linked list functions not used in the project----------------
+**---------------------------- For reference----------------------------------
+*/
 
 /*
 ** prints the tetrominoes that are stored in the linked list
 */
+
 void print_data(t_tetro *struct_pointer)
 {
 	while (struct_pointer)
@@ -64,7 +89,7 @@ void print_data(t_tetro *struct_pointer)
 }
 
 /*
-** DOES NOT WORK. STILL WORKING ON IT. Prints shifted coordinates
+** Prints shifted coordinates
 */
 
 int print_data_coord(t_tetro *struct_pointer)
@@ -93,8 +118,9 @@ int print_data_coord(t_tetro *struct_pointer)
 ** Created a function that counts the numbers of elements that are being
 ** stored in a linked list.
 */
+
 int struct_element_count(t_tetro *head)
-{
+{	
 	t_tetro *cursor;
 	cursor = head;
 	int number_of_elements;
@@ -119,8 +145,6 @@ t_tetro *tetro_to_struct(char **characters, int tetro_count)
 
 	i = 1;
 	pointer_2 = create(characters[0]);
-//	while(i <= 26 && characters[i])
-//	while(i <= 3)
 	while(i < tetro_count)
 	{
 		pointer_2 = append(pointer_2, characters[i]);
@@ -128,39 +152,3 @@ t_tetro *tetro_to_struct(char **characters, int tetro_count)
 	}
 	return(pointer_2);
 }
-
-/*
-** Taking coordinates of the shifted pieces that are currentlyin a 2D-array,
-** and storing them in a linked list structure
-*/
-t_tetro	*coord_to_struct(int **shifted_coordinates, int tetro_count)
-{
-	t_tetro *pointer_2;
-	int 	i;
-//	int 	j;//
-//	int 	*pointer;
-
-	i = 1;
-//	j = 0;//
-//	pointer = shifted_coordinates[0];
-//	pointer_2 = create(pointer);
-	pointer_2 = create(shifted_coordinates[0]);
-	while(i < tetro_count)
-	{
-		pointer_2 = append(pointer_2, shifted_coordinates[i]);
-		i++;
-	}
-
-	
-//	pointer = pointer_2->next->struct_tetro;//
-
-//	while(j < 8)//
-///	{//
-//		printf("%d\n", pointer[j]);//
-//		j++;//
-//	}//
-
-
-	return(pointer_2);
-}
-

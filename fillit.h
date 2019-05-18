@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 12:08:34 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/18 16:42:06 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,54 +29,31 @@
 /*
 ** Storing tetrominoes and validating
 */
-void 	ft_exit(void); // OK
-//int		ft_variable_reset(int *x_min, int *y_min, int *l);
-char	**ft_tetrominoes(int fd); // OK
-int		dots_and_hash(char **characters); // OK
-int		initialize_valid(int *i, int *j, int *hash); // OK
-int		is_it_valid(char **characters); // OK
-int		initialize_xy_coordinates(int *i, int *j, int *k, int *l); // OK
-int		**xy_coordinates(char **characters, int i, int j, int k); // OK
-int		ft_variable_reset(int *xmin, int *y_min, int *l); // OK
-int		**shift_xy_coordinates(int **coordinates, int x_min, int y_min, int k); // OK
+void 	ft_exit(void);
+char	**ft_tetrominoes(int fd);
+int		dots_and_hash(char **characters);
+int		initialize_hash_touch(int *i, int *j, int *hash);
+int		hash_touch(char **characters, int i, int j, int hash);
+int		is_it_valid(char **characters);
+int		initialize_xy_coord(int *i, int *j, int *k, int *l);
+int		**xy_coord(char **characters, int i, int j, int k);
+int		ft_variable_reset(int *xmin, int *y_min, int *l);
+int		**xy_min(int **coord, int k, int l, int x);
+int		**shift_xy_coord(int **coord, int x_min, int y_min, int k);
 
 /*
 ** Creating grid, placing tetrominoes in the form of alphabets
 ** on the board, clearing tetrominoes from grid, detecting collision
-**, and duplicating coordinates
+** and duplicating coordinates
 */
 int		tetro_count(char **characters);
 char	**ft_grid(int width);
-void	ft_swap(int *x, int *y);
-int		**swap_xy_coord(int **shifted_coordinates);
-char	**alpha_on_grid(int *shifted_coordinates, char **empty_grid);
-//void	**ft_print(int board_size, char **empty_grid);
+char	**alpha_on_grid(int *shifted_coord, char **empty_grid);
 void	**ft_print(char **empty_grid);
-//int		*xy_shift(int *shift, int x, int y);
-//int		*shift_tetro(int *current_position, int x, int y);
-int		*shift_tetro(int *shifted_coordinates, int x, int y);
-int		box_collision(int *shifted_coordinates, int board_size);
-int		tetro_collision(char **empty_grid, int *shifted_coordinates);
-int		collision(char **empty_grid, int *shifted_coordinates, int board_size);
-void	clear_tetro(char **empty_grid, int *shifted_coordinates);
-int		duplicate_coordinates(int *dest, int *shifted_coordinates);
-//int	place_next_piece(int *shifted_coordinates, char **empty_grid, int board_size, int i);
-int 	place_next_piece(int *shifted_coordinates, char **empty_grid, int board_size);
-//int	fill_board(int *shifted_coordinates, char **empty_grid, int board_size, int i);
-int		fill_board(int *shifted_cooridnates, char **empty_grid, int board_size);
-char 	**solve_tetro(char **empty_grid, int **shifted_coordinates, int board_size);
-
-/*
-**	Backtracking solver functions
-*/
-
-//int 	help_solve(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
-//int		solve_tet(char **empty_grid, int **shifted_coordinates_2, int board_size);
-int 	solve_tet_one(char **empty_grid, int *shifted_coordinates, int **shifted_coordinates_2, int board_size);
-//int 	solve_driver(int fd);
-
-
-// -- 19 valid pieces in a single array
+int		*shift_tetro(int *shifted_coord, int x, int y);
+int		collision(char **empty_grid, int *shifted_coord, int board_size);
+void	remove_tetro(char **empty_grid, int *shifted_coord);
+int		duplicate_coord(int *dest, int *shifted_coord);
 
 /*
 ** Put structures here and functions created for linked lists
@@ -84,21 +61,33 @@ int 	solve_tet_one(char **empty_grid, int *shifted_coordinates, int **shifted_co
 typedef struct s_tetro
 {
 	void 	*struct_tetro;
-//	int		*struct_coordinates;
-	char 	struct_c; 				/*carries alphabets*/
+	char 	struct_c;
 	struct 	s_tetro *next;
 }			t_tetro;
 
+/*
+** Backtracking functions with linked lists
+*/
+
+int	help_solve(char **grid, int *shifted_coord, t_tetro *stack, int board_size);
+int	solve_tet(char **grid, t_tetro *stack, int board_size);
+int	solve_driver2(int **shifted_coordinates, int tet_count);
+int	solve_driver1(int fd);
+
 t_tetro		*create(void *struct_tetro);
 t_tetro		*append(t_tetro *head, void *struct_tetro);
+t_tetro		*coord_to_struct(int **shifted_coord, int tetro_count);
+
+/*
+** --------------------------------------------------------------------------
+** ------------Extra linked list functions not used in the project-----------
+** ------------------------------For Reference-------------------------------
+*/
+
 void		print_data(t_tetro *struct_pointer);
 int			print_data_coord(t_tetro *struct_pointer);
 int			struct_element_count(t_tetro *head);
-//int			print_data_coord(t_tetro *struct_pointer);
+int			print_data_coord(t_tetro *struct_pointer);
 t_tetro		*tetro_to_struct(char **characters, int tetro_count);
-t_tetro		*coord_to_struct(int **shifted_coordinates, int tetro_count);// Using this
 
-int		help_solve(char **empty_grid, int *shifted_coordinates, t_tetro *stack, int board_size);
-int		solve_tet(char **empty_grid, t_tetro *stack, int board_size);
-int		solve_driver(int fd);
 #endif

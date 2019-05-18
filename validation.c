@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/17 20:11:45 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/17 20:24:49 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -849,16 +849,11 @@ int solve_driver_one(fd)
 */
 int help_solve(char **empty_grid, int *shifted_coordinates, t_tetro *stack, int board_size)
 {
-//	printf("\n1help_solve\n");
-//	if(!collision(empty_grid, shifted_coordinates, board_size))
 	if(collision(empty_grid, shifted_coordinates, board_size) == 0)
 	{
-//		printf("\ninside if\n");
 		alpha_on_grid(shifted_coordinates, empty_grid);
-//		printf("\nafter alpha\n");
-		if (solve_tet(empty_grid, stack->next, board_size))
+		if (solve_tet(empty_grid, stack->next, board_size) == 1)
 		{
-//			printf("\nin if and if\n");
 			free(shifted_coordinates);
 			return(1);
 		}
@@ -869,7 +864,6 @@ int help_solve(char **empty_grid, int *shifted_coordinates, t_tetro *stack, int 
 
 int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 {
-//	printf("\nprinting solve_tet\n");
 	int *shifted_coordinates;
 	int x;
 	int y;
@@ -889,7 +883,7 @@ int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 		{
 			duplicate_coordinates(shifted_coordinates, stack->struct_tetro);
 			shift_tetro(shifted_coordinates, x, y);
-			if (help_solve(empty_grid, shifted_coordinates, stack, board_size))
+			if (help_solve(empty_grid, shifted_coordinates, stack, board_size) == 1)
 				return(1);
 		}
 	}
@@ -899,7 +893,6 @@ int solve_tet(char **empty_grid, t_tetro *stack, int board_size)
 
 int solve_driver(int fd)
 {
-//	printf("\nprintg solve_driver1\n");
 	t_tetro	*tmp;
 	t_tetro	*stack;
 	char	**characters;
@@ -910,17 +903,10 @@ int solve_driver(int fd)
 	char	**empty_grid;
 
 	characters = ft_tetrominoes(fd);
-//	printf("\nprinting solve_driver2\n");
 	tet_count  = tetro_count(characters);
-//	printf("\ntetro_count:|%d|\n", tet_count);	
-//	printf("\n11\n");
 	coordinates = xy_coordinates(characters, 0, 0, 0);
-//	printf("\n2\n");
 	shifted_coordinates = shift_xy_coordinates(coordinates, 3, 3, 0);
-//	printf("\n3\n");
 	stack = coord_to_struct(shifted_coordinates, tet_count);
-//	printf("\ntet_count|%d|\n", tet_count);
-//	printf("\nprinting solve_driver3\n");
 	empty_grid = ft_grid(board_size = 4);
 	while(!solve_tet(empty_grid, stack, board_size))
 	{
@@ -928,8 +914,8 @@ int solve_driver(int fd)
 		board_size++;
 		empty_grid = ft_grid(board_size);
 	}
-	ft_print(empty_grid); // dont have function
-//	stck_free_coord(stack); // dont have function
+	ft_print(empty_grid);
+//	stck_free_coord(stack); // NEED THIS FUNCTION
 	return(1);
 
 }
@@ -939,7 +925,6 @@ int main (int argc, char **argv)
 {
 	int fd;
 	fd = 0;
-//	printf("---Enters main---\n");
 	if(argc != 2)
 	{
 		ft_putstr(USAGE);
@@ -950,11 +935,9 @@ int main (int argc, char **argv)
 
 	if(fd == -1)
 		ft_exit();
-//	else if(fd > 0)
-//	{
-//		fd = open(argv[1], O_RDONLY);
-		solve_driver(fd);
-//	}
+	solve_driver(fd);
 	close(fd);
+
+	return(0);
 }
 

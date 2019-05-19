@@ -6,23 +6,23 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:42:03 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 20:22:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/19 15:54:43 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void ft_putstr(char const *s)
+void	ft_putstr(char const *string)
 {
 	int i;
+
 	i = 0;
-	if(s[i])
-		while(s[i])
-			write(1, &s[i++], 1);
+	if (string[i])
+		while (string[i])
+			write(1, &string[i++], 1);
 }
 
-
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int fd;
 
@@ -39,4 +39,3 @@ int	main(int argc, char **argv)
 	close(fd);
 	return (0);
 }
-

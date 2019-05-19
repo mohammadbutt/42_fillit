@@ -6,7 +6,7 @@
 #    By: mbutt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 19:54:05 by mbutt             #+#    #+#              #
-#    Updated: 2019/05/18 21:08:51 by mbutt            ###   ########.fr        #
+#    Updated: 2019/05/19 14:40:25 by mbutt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME):	
 	$(CC) $(CFLAGS) $(C_FILES) #Creates .o file
-	ar rc $(NAME) $(O_FILES) #takes each .o file and creates a static library libft.a \ 
+	ar rc $(NAME) $(O_FILES) #takes each .o file and creates a static library libft.a
 
 clean:
 	rm -f $(O_FILES)

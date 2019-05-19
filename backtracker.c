@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:19:18 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 20:00:16 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/19 14:59:30 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	solve_tet(char **grid, t_tetro *stack, int board_size)
 
 int	solve_driver2(int **shifted_coordinates, int tet_count)
 {
-	t_tetro *tmp;
+//	t_tetro *tmp;
 	t_tetro *stack;
 	int		board_size;
 	char	**empty_grid;

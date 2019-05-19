@@ -6,13 +6,15 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 19:48:12 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/18 20:18:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
+# include <unistd.h>
+# include <stdio.h>
 # include <fcntl.h>
 # include <limits.h>
 # include "./libft/libft.h"
@@ -29,6 +31,7 @@
 /*
 ** Storing tetrominoes and validating
 */
+void	ft_putstr(char const *s);
 void 	ft_exit(void);
 char	**ft_tetrominoes(int fd);
 int		dots_and_hash(char **characters);

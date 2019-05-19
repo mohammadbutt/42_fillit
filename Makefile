@@ -6,16 +6,17 @@
 #    By: mbutt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/25 15:25:32 by mbutt             #+#    #+#              #
-#    Updated: 2019/05/18 20:00:34 by mbutt            ###   ########.fr        #
+#    Updated: 2019/05/18 21:08:46 by mbutt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I. -c
-C_FILES = ft_*.c
-O_FILES = *.o
-
+//CFLAGS = -Wall -Wextra -Werror -I. -c
+//C_FILES = *.c
+//O_FILES = *.o
+C_FILES = valid.c coordinate.c maintain1.c maintain2.c linked_list.c backtracker.c main.c
+O_FILES = valid.o coordinate.o maintain1.o maintain2.o linked_list.o backtracker.o main.o
 all: $(NAME)
 
 $(NAME):

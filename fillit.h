@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 16:42:06 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/18 19:48:12 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 void 	ft_exit(void);
 char	**ft_tetrominoes(int fd);
 int		dots_and_hash(char **characters);
-int		initialize_hash_touch(int *i, int *j, int *hash);
+int		initialize_with_zero(int *i, int *j, int *hash);
 int		hash_touch(char **characters, int i, int j, int hash);
 int		is_it_valid(char **characters);
 int		initialize_xy_coord(int *i, int *j, int *k, int *l);

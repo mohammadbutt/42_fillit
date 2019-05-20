@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:06:59 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 19:16:53 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/19 18:57:16 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,24 @@ char	**ft_grid(int width)
 	}
 	empty_grid[i] = NULL;
 	return (empty_grid);
+}
+
+/*
+** Function that frees the grid.
+*/
+
+void	free_grid(char **empty_grid)
+{
+	int i;
+
+	i = 0;
+	while (empty_grid[i])
+	{
+		ft_strdel(&empty_grid[i]);
+		i++;
+	}
+	ft_strdel((char **)empty_grid);
+//	free(empty_grid);
 }
 
 /*

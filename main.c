@@ -6,21 +6,11 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:42:03 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/19 15:54:43 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/19 19:05:25 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	ft_putstr(char const *string)
-{
-	int i;
-
-	i = 0;
-	if (string[i])
-		while (string[i])
-			write(1, &string[i++], 1);
-}
 
 int		main(int argc, char **argv)
 {

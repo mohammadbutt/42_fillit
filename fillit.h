@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/19 18:55:26 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 15:10:04 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@
 */
 void	ft_putstr(char const *s);
 void	ft_strdel(char **string);
+void	ft_memdel(void **char_int);
+char	*ft_strcpy(char *dst, const char *src);
+void	ft_bzero(char *string);
 /*
 **Storing tetrominoes and validating them
 */
 void	ft_exit(void);
-char	**ft_tetrominoes(int fd);
+char	**ft_tetrominoes(int fd, int bytes_read, int temp_bytes_read, int i);
 int		dots_and_hash(char **characters);
 int		initialize_with_zero(int *i, int *j, int *hash);
 int		hash_touch(char **characters, int i, int j, int hash);
@@ -65,7 +68,7 @@ char	**alpha_on_grid(int *shifted_coord, char **empty_grid);
 void	**ft_print(char **empty_grid);
 int		*shift_tetro(int *shifted_coord, int x, int y);
 int		collision(char **empty_grid, int *shifted_coord, int board_size);
-void	remove_tetro(char **empty_grid, int *shifted_coord);
+void	remove_tetro(int *shifted_coord, char **empty_grid);
 int		duplicate_coord(int *dest, int *shifted_coord);
 
 /*

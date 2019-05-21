@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:06:59 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/19 18:57:16 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 13:09:15 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,24 @@ char	**ft_grid(int width)
 */
 
 void	free_grid(char **empty_grid)
+//void	free_grid(char **empty_grid, int board_size)
 {
 	int i;
 
 	i = 0;
 	while (empty_grid[i])
+//	while (i < board_size)
 	{
-		ft_strdel(&empty_grid[i]);
+		free(empty_grid[i]);
+	//	ft_strdel(&empty_grid[i]);
 		i++;
 	}
-	ft_strdel((char **)empty_grid);
-//	free(empty_grid);
+//	ft_strdel((char **)empty_grid);
+	free(empty_grid);
 }
 
 /*
-** A function that duplicates coordinates before starting backtracking
+** A function that duplicates coordinates before backtracking starts
 */
 
 int		duplicate_coord(int *dest, int *shifted_coord)

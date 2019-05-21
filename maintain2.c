@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:18:08 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 19:53:42 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/20 14:57:06 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ int		*shift_tetro(int *shifted_coord, int x, int y)
 ** Functions that detect collision with the board size first and then pieces.
 ** Pieces cannot land on top of each other and the pieces cannot be placed
 ** outside the board/grid.
-** Functions return 0 if there's no collision, or 1 if it detects collision.
-** Function 1 - Collision with the pieces.
-** Function 2 - Collision with the board.
+** RETURN VALUES: 0 if there's no collision with another piece or the board
+** Returns 1 if it detects collision.
 */
 
 int		collision(char **empty_grid, int *shifted_coord, int board_size)
@@ -123,7 +122,7 @@ int		collision(char **empty_grid, int *shifted_coord, int board_size)
 ** in each iteration.
 */
 
-void	remove_tetro(char **empty_grid, int *shifted_coord)
+void	remove_tetro(int *shifted_coord, char **empty_grid)
 {
 	int i;
 	int x;

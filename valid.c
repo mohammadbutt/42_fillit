@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:38:32 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 19:49:01 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 15:26:23 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,31 @@
 ** First step in the project. ft_tetrominoes stores the pieces given by
 ** the user in a double pointer array. But it also checks if the first,
 ** second, third, and fourth lines end with a new line.
+** variable sd is just a temporary placeholder.
+** If values are directly stored, using read, into characters[i] then the
+** program will leak. Hence, values are first stored into a temporary
+** placeholder called sd, and then stored to characters.
 */
 
-char	**ft_tetrominoes(int fd)
+char	**ft_tetrominoes(int fd, int bytes_read, int temp_bytes_read, int i)
 {
-	int		bytes_read;
-	int		temp_bytes_read;
 	char	**characters;
-	int		i;
+	char	sd[21 + 1];
 
-	i = 0;
+	initialize_with_zero(&bytes_read, &temp_bytes_read, &i);
 	characters = (char **)malloc(sizeof(char *) * (27));
-	characters[i] = (char *)malloc(sizeof(char) * (21));
-	while ((bytes_read = read(fd, characters[i], 21)) >= 20)
+	while ((bytes_read = read(fd, sd, 21)) >= 20)
 	{
-		if (characters[i][4] != '\n' || characters[i][9] != '\n')
-			ft_exit();
-		if (characters[i][14] != '\n' || characters[i][19] != '\n')
+		if (sd[4] != '\n' || sd[9] != '\n' || sd[14] != '\n' || sd[19] != '\n')
 			ft_exit();
 		else
 		{
 			temp_bytes_read = bytes_read;
-			characters[i][20] = '\0';
-			characters[++i] = (char *)malloc(sizeof(char) * 21);
+			sd[20] = '\0';
+			characters[i] = (char *)malloc(sizeof(char) * (22));
+			ft_strcpy(characters[i], sd);
+			ft_bzero(sd);
+			i++;
 		}
 	}
 	characters[i] = NULL;
@@ -83,10 +85,7 @@ int		dots_and_hash(char **characters)
 }
 
 /*
-** i, j, and hash are placed within the function to save lines inside the
-** function.
-** It is important to set i, j, and hash at 0 in the main or wherever
-** this function gets called.
+** function initializes values to 0.
 */
 
 int		initialize_with_zero(int *i, int *j, int *hash)
@@ -101,6 +100,13 @@ int		initialize_with_zero(int *i, int *j, int *hash)
 ** Counts how many time a hashtag touches another. The count should be
 ** equal to 6 or 8.
 */
+/*
+** i, j, and hash are placed within the function to save lines inside the
+** function.
+** It is important to set i, j, and hash at 0 in the main or wherever
+** this function gets called.
+*/
+
 
 int		hash_touch(char **characters, int i, int j, int hash)
 {
@@ -138,6 +144,14 @@ int		is_it_valid(char **characters)
 {
 	dots_and_hash(characters);
 	hash_touch(characters, 0, 0, 0);
+//	printf("%s", characters[0]);
+
+//	if(dots_and_hash(characters) != 1)
+//		ft_exit();
+//	if(hash_touch(characters, 0, 0, 0) != 1)
+//		ft_exit();
+//	free_grid(characters);
+//	free(characters);
 	return (1);
 }
 

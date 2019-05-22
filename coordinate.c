@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:02:57 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 20:26:07 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 12:03:47 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,58 @@ int		**xy_min(int **coord, int k, int l, int x)
 }
 
 /*
+** Calculating x_min and y_min by creating 2 seperate function,
+** so there's no need to free it later.
+*/
+
+int		ft_x_min(int *coord)
+{
+	int l;
+	int x_min;
+
+	l = 0;
+	x_min = 3;
+
+	while (l <= 7)
+	{
+		if (coord[l] <= x_min)
+			x_min = coord[l];
+		l = l + 2;
+	}
+	return(x_min);
+}
+
+int ft_y_min(int *coord)
+{
+	int l;
+	int y_min;
+
+	l = 1;
+	y_min = 3;
+
+	while(l <= 7)
+	{
+		if(coord[l] <= y_min)
+			y_min = coord[l];
+		l = l + 2;
+	}
+//	printf("ft_y_min:|%d|\n", y_min);
+	return(y_min);
+}
+
+
+/*
 ** Coordinates are shifted to top left location. This is done by subtracting
 ** x_min and y_min from the original coordinates.
 */
 
-//int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
-int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
+int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
+//int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
 {
 	int		**shifted_coord;
 	char	c;
 	int		l;
-	int		k;
+//	int		k;
 	//	int		**min; // Adding this for leaks
 	
 	c = 'A';
@@ -129,9 +170,11 @@ int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
 		shifted_coord[k] = (int *)malloc(sizeof(int) * (9));
 		while (l <= 7)
 		{
-			min = xy_min(coord, 0, 0, 0);
-			x_min = min[k][0];
-			y_min = min[k][1];
+//			min = xy_min(coord, 0, 0, 0);
+//			x_min = min[k][0];
+//			y_min = min[k][1];
+			x_min = ft_x_min(coord[k]);
+			y_min = ft_y_min(coord[k]);
 //			x_min = xy_min(coord, 0, 0, 0)[k][0]; commenting for leaks. Original
 //			y_min = xy_min(coord, 0, 0, 0)[k][1]; commenting for leaks. Original
 			shifted_coord[k][l] = coord[k][l] - x_min;
@@ -139,6 +182,10 @@ int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
 			shifted_coord[k][l] = coord[k][l] - y_min;
 			l++;
 		}
+//		printf("k: |%d|\n", k);
+//		printf("l: |%d|\n", l);
+//		printf("x_min: |%d|\n", x_min);
+//		printf("y_min: |%d|\n", y_min);
 		shifted_coord[k][l] = c++;
 		k++;
 	}

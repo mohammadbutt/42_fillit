@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 20:19:14 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 12:11:29 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int		initialize_xy_coord(int *i, int *j, int *k, int *l);
 int		**xy_coord(char **characters, int i, int j, int k);
 int		ft_variable_reset(int *xmin, int *y_min, int *l);
 int		**xy_min(int **coord, int k, int l, int x);
-//int		**shift_xy_coord(int **coord, int x_min, int y_min, int k);
-int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min);
+int		ft_x_min(int *coord);
+int		ft_y_min(int *coord);
+int		**shift_xy_coord(int **coord, int x_min, int y_min, int k);
+//int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min);
 /*
 ** Creating grid, placing tetrominoes in the form of alphabets
 ** on the board, clearing tetrominoes from grid, detecting collision

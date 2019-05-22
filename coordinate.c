@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:02:57 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 12:03:47 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 13:19:56 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ int		**xy_coord(char **characters, int i, int j, int k)
 	int	**coordinates;
 
 	initialize_xy_coord(&i, &j, &k, &l);
-//	coordinates = (int **)malloc(sizeof(int *) * (27));
 	coordinates = (int **)malloc(sizeof(int *) * (26));
 	while (characters[i])
 	{
-//		coordinates[k] = (int *)malloc(sizeof(int) * (9));
 		coordinates[k] = (int *)malloc(sizeof(int) * (8));
 		while (characters[i][j] != '\0')
 		{
@@ -56,7 +54,6 @@ int		**xy_coord(char **characters, int i, int j, int k)
 		l = 0;
 		k++;
 	}
-//	free_2d_char(characters); // Adding for leaks
 	coordinates[k] = NULL;
 	return (coordinates);
 }
@@ -75,38 +72,6 @@ int		ft_variable_reset(int *x_min, int *y_min, int *l)
 }
 
 /*
-** Calculating x_min and y_min.
-** This function takes in a 2D-array, k, l, and x. k, l, and x are set to 0,
-** wherever the function gets called.
-** This function stores x on 0th element and y on 1st element of an array.
-*/
-
-int		**xy_min(int **coord, int k, int l, int x)
-{
-	int **min;
-	int y;
-
-	y = 1;
-	min = (int **)malloc(sizeof(int *) * (27));
-	while (coord[k] != NULL)
-	{
-		min[k] = (int *)malloc(sizeof(int) * 2);
-		ft_variable_reset(&min[k][x], &min[k][y], &l);
-		while (l <= 7)
-		{
-			if (coord[k][l] <= min[k][x])
-				min[k][x] = coord[k][l];
-			l++;
-			if (coord[k][l] <= min[k][y])
-				min[k][y] = coord[k][l];
-			l++;
-		}
-		k++;
-	}
-	return (min);
-}
-
-/*
 ** Calculating x_min and y_min by creating 2 seperate function,
 ** so there's no need to free it later.
 */
@@ -118,34 +83,30 @@ int		ft_x_min(int *coord)
 
 	l = 0;
 	x_min = 3;
-
 	while (l <= 7)
 	{
 		if (coord[l] <= x_min)
 			x_min = coord[l];
 		l = l + 2;
 	}
-	return(x_min);
+	return (x_min);
 }
 
-int ft_y_min(int *coord)
+int		ft_y_min(int *coord)
 {
 	int l;
 	int y_min;
 
 	l = 1;
 	y_min = 3;
-
-	while(l <= 7)
+	while (l <= 7)
 	{
-		if(coord[l] <= y_min)
+		if (coord[l] <= y_min)
 			y_min = coord[l];
 		l = l + 2;
 	}
-//	printf("ft_y_min:|%d|\n", y_min);
-	return(y_min);
+	return (y_min);
 }
-
 
 /*
 ** Coordinates are shifted to top left location. This is done by subtracting
@@ -153,14 +114,11 @@ int ft_y_min(int *coord)
 */
 
 int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
-//int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
 {
 	int		**shifted_coord;
 	char	c;
 	int		l;
-//	int		k;
-	//	int		**min; // Adding this for leaks
-	
+
 	c = 'A';
 	k = 0;
 	shifted_coord = (int **)malloc(sizeof(int *) * (27));
@@ -170,27 +128,16 @@ int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
 		shifted_coord[k] = (int *)malloc(sizeof(int) * (9));
 		while (l <= 7)
 		{
-//			min = xy_min(coord, 0, 0, 0);
-//			x_min = min[k][0];
-//			y_min = min[k][1];
 			x_min = ft_x_min(coord[k]);
 			y_min = ft_y_min(coord[k]);
-//			x_min = xy_min(coord, 0, 0, 0)[k][0]; commenting for leaks. Original
-//			y_min = xy_min(coord, 0, 0, 0)[k][1]; commenting for leaks. Original
 			shifted_coord[k][l] = coord[k][l] - x_min;
 			l++;
 			shifted_coord[k][l] = coord[k][l] - y_min;
 			l++;
 		}
-//		printf("k: |%d|\n", k);
-//		printf("l: |%d|\n", l);
-//		printf("x_min: |%d|\n", x_min);
-//		printf("y_min: |%d|\n", y_min);
 		shifted_coord[k][l] = c++;
 		k++;
 	}
-//	free_2d_int(coord);
-//	free_2d_int(min);
 	shifted_coord[k] = NULL;
 	return (shifted_coord);
 }

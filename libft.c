@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:39:06 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 16:26:37 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 13:02:27 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_strdel(char **string)
 ** still be accessed if freed with free(3).
 */
 
-void ft_memdel(void **address)
+void	ft_memdel(void **address)
 {
-	if(address)
+	if (address)
 	{
 		free(*address);
 		*address = NULL;
@@ -83,16 +83,16 @@ char	*ft_strcpy(char *dst, const char *src)
 ** to store different values. For example, if a variable called placeholder was
 ** used to temporarily store some value, which is then stored to a different
 ** variable, then once placeholder is done storing the values onto the new
-** variable, values for placeholder will be set to 0, so characters from previous
-** value will be completely removed.
+** variable, values for placeholder will be set to 0, so characters from
+** previous value will be completely removed.
 */
 
-void ft_bzero(char *string)
+void	ft_bzero(char *string)
 {
 	int i;
 
 	i = 0;
-	while(string[i]!= '\0')
+	while (string[i] != '\0')
 	{
 		string[i] = 0;
 		i++;

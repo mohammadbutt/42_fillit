@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 17:37:00 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 17:46:01 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 13:02:53 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	free_2d_int(int **coordinates)
 	int i;
 
 	i = 0;
-
 	if (coordinates)
 		while (coordinates[i])
 		{

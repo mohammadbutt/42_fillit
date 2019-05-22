@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:38:32 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 15:26:23 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 12:53:16 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int		initialize_with_zero(int *i, int *j, int *hash)
 ** this function gets called.
 */
 
-
 int		hash_touch(char **characters, int i, int j, int hash)
 {
 	initialize_with_zero(&i, &j, &hash);
@@ -144,14 +143,6 @@ int		is_it_valid(char **characters)
 {
 	dots_and_hash(characters);
 	hash_touch(characters, 0, 0, 0);
-//	printf("%s", characters[0]);
-
-//	if(dots_and_hash(characters) != 1)
-//		ft_exit();
-//	if(hash_touch(characters, 0, 0, 0) != 1)
-//		ft_exit();
-//	free_grid(characters);
-//	free(characters);
 	return (1);
 }
 

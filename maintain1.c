@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:06:59 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 19:58:47 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 12:55:35 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,13 @@ void	ft_exit(void)
 ** in a 2D-array.
 */
 
-//int		tetro_count(char **coordinates)// Initially
 int		tetro_count(char **characters)
 {
 	int i;
 
 	i = 0;
-//	if (coordinates[i])
-//		while (coordinates[i] != NULL)
-//			i++;
 	if (characters)
-		while(characters[i])
+		while (characters[i])
 			i++;
 	return (i);
 }

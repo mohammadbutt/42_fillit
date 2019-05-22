@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:42:03 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 13:43:01 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 14:22:22 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int		main(int argc, char **argv)
 	if (fd == -1)
 		ft_exit();
 	solve_driver1(fd);
-
-	while(1);
 	close(fd);
 	return (0);
 }

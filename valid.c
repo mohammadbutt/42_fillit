@@ -6,11 +6,24 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:38:32 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 12:53:16 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 14:14:48 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Function that initializes variables to 0.
+*/
+
+int		initialize_with_zero(int *a, int *b, int *c, int *d)
+{
+	*a = 0;
+	*b = 0;
+	*c = 0;
+	*d = 0;
+	return (0);
+}
 
 /*
 ** First step in the project. ft_tetrominoes stores the pieces given by
@@ -19,7 +32,8 @@
 ** variable sd is just a temporary placeholder.
 ** If values are directly stored, using read, into characters[i] then the
 ** program will leak. Hence, values are first stored into a temporary
-** placeholder called sd, and then stored to characters.
+** placeholder called sd, and then stored to a 2d array called characters
+** that was malloced.
 */
 
 char	**ft_tetrominoes(int fd, int bytes_read, int temp_bytes_read, int i)
@@ -27,7 +41,7 @@ char	**ft_tetrominoes(int fd, int bytes_read, int temp_bytes_read, int i)
 	char	**characters;
 	char	sd[21 + 1];
 
-	initialize_with_zero(&bytes_read, &temp_bytes_read, &i);
+	initialize_with_zero(&bytes_read, &temp_bytes_read, &i, &i);
 	characters = (char **)malloc(sizeof(char *) * (27));
 	while ((bytes_read = read(fd, sd, 21)) >= 20)
 	{
@@ -85,18 +99,6 @@ int		dots_and_hash(char **characters)
 }
 
 /*
-** function initializes values to 0.
-*/
-
-int		initialize_with_zero(int *i, int *j, int *hash)
-{
-	*i = 0;
-	*j = 0;
-	*hash = 0;
-	return (0);
-}
-
-/*
 ** Counts how many time a hashtag touches another. The count should be
 ** equal to 6 or 8.
 */
@@ -109,7 +111,7 @@ int		initialize_with_zero(int *i, int *j, int *hash)
 
 int		hash_touch(char **characters, int i, int j, int hash)
 {
-	initialize_with_zero(&i, &j, &hash);
+	initialize_with_zero(&i, &j, &hash, &hash);
 	while (characters[i])
 	{
 		while (j < 20)

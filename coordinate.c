@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:02:57 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 13:19:56 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 14:21:56 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,12 @@
 ** x = 0 and y 3.
 */
 
-int		initialize_xy_coord(int *i, int *j, int *k, int *l)
-{
-	*i = 0;
-	*j = 0;
-	*k = 0;
-	*l = 0;
-	return (0);
-}
-
 int		**xy_coord(char **characters, int i, int j, int k)
 {
 	int	l;
 	int	**coordinates;
 
-	initialize_xy_coord(&i, &j, &k, &l);
+	initialize_with_zero(&i, &j, &k, &l);
 	coordinates = (int **)malloc(sizeof(int *) * (26));
 	while (characters[i])
 	{

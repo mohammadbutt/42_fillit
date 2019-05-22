@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 15:31:22 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 13:34:58 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 14:33:13 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,16 @@ void	ft_bzero(char *string);
 **Storing tetrominoes and validating them
 */
 void	ft_exit(void);
+int		initialize_with_zero(int *a, int *b, int *c, int *d);
 char	**ft_tetrominoes(int fd, int bytes_read, int temp_bytes_read, int i);
 int		dots_and_hash(char **characters);
-int		initialize_with_zero(int *i, int *j, int *hash);
 int		hash_touch(char **characters, int i, int j, int hash);
 int		is_it_valid(char **characters);
-int		initialize_xy_coord(int *i, int *j, int *k, int *l);
 int		**xy_coord(char **characters, int i, int j, int k);
 int		ft_variable_reset(int *xmin, int *y_min, int *l);
 int		ft_x_min(int *coord);
 int		ft_y_min(int *coord);
 int		**shift_xy_coord(int **coord, int x_min, int y_min, int k);
-//int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min);
 /*
 ** Creating grid, placing tetrominoes in the form of alphabets
 ** on the board, clearing tetrominoes from grid, detecting collision

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:18:08 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/20 14:57:06 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 15:01:10 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ char	**alpha_on_grid(int *shifted_coord, char **empty_grid)
 	int		x;
 	int		y;
 
-	i = 0;
-	j = 0;
-	x = 0;
-	y = 0;
+	initialize_with_zero(&i, &j, &x, &y);
 	while (i <= 7)
 	{
 		x = shifted_coord[i];
@@ -96,7 +93,7 @@ int		collision(char **empty_grid, int *shifted_coord, int board_size)
 	int y;
 
 	max = 0;
-	initialize_with_zero(&i, &x, &y);
+	initialize_with_zero(&i, &x, &y, &y);
 	while (i <= 7)
 	{
 		(shifted_coord[i] >= max) && (max = shifted_coord[i]);
@@ -128,7 +125,7 @@ void	remove_tetro(int *shifted_coord, char **empty_grid)
 	int x;
 	int y;
 
-	initialize_with_zero(&i, &x, &y);
+	initialize_with_zero(&i, &x, &y, &y);
 	while (i <= 7)
 	{
 		x = shifted_coord[i];

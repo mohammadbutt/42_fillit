@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:19:18 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 13:42:57 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 15:01:33 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int		help_solve(char **grid, int *shifted_coord, t_tetro *stack, int board)
 	if (collision(grid, shifted_coord, board) == 0)
 	{
 		alpha_on_grid(shifted_coord, grid);
+//		ft_print(grid); /////////////// REMOVE AFTER
+//		sleep(1);   ////////////// REMOVE AFTER
+//		ft_putstr("\n"); ////////// REMOVE AFTER
 		if (solve_tet(grid, stack->next, board) == 1)
 		{
 			free(shifted_coord);
@@ -69,16 +72,12 @@ int		solve_driver2(int **shifted_coordinates, int tet_count)
 	char	**empty_grid;
 	t_tetro *stack;
 
-	//t_tetro *temp;
-	board_size = 4;
+	board_size = 2;
 	stack = coord_to_struct(shifted_coordinates, tet_count);
-//	free_2d_int(shifted_coordinates);
 	empty_grid = ft_grid(board_size);
 	while ((solve_tet(empty_grid, stack, board_size)) == 0)
 	{
-	//	free_grid(empty_grid, board_size); // Function in maintain1.c
-//		free_grid(empty_grid); // Function in maintain1.c
-		free_2d_char(empty_grid); // Function in free_function.c
+		free_2d_char(empty_grid);
 		board_size++;
 		empty_grid = ft_grid(board_size);
 	}
@@ -88,7 +87,7 @@ int		solve_driver2(int **shifted_coordinates, int tet_count)
 	free(shifted_coordinates);
 	return (1);
 }
-//int		dot_and_hash(char **characters);
+
 int		solve_driver1(int fd)
 {
 	char	**characters;
@@ -96,17 +95,15 @@ int		solve_driver1(int fd)
 	int		**coordinates;
 	int		**shifted_coordinates;
 	int		**min;
-	characters = ft_tetrominoes(fd, 0, 0, 0); 	// no leaks
-	is_it_valid(characters); 					// no leaks
-	tet_count = tetro_count(characters);		// no leaks
-	printf("%d\n", tet_count);					// no leaks
-	coordinates = xy_coord(characters, 0, 0, 0);// Maybe ok -free coord at end
+
+	characters = ft_tetrominoes(fd, 0, 0, 0);
+	is_it_valid(characters);
+	tet_count = tetro_count(characters);
+	coordinates = xy_coord(characters, 0, 0, 0);
 	free_2d_char(characters);
 	shifted_coordinates = shift_xy_coord(coordinates, 3, 3, 0);
 	free_2d_int(coordinates);
 	return (solve_driver2(shifted_coordinates, tet_count));
-//	return(tet_count);
-//	return(1);
 }
 
 /*

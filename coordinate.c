@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:02:57 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 13:06:39 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 20:26:07 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int		**xy_coord(char **characters, int i, int j, int k)
 	int	**coordinates;
 
 	initialize_xy_coord(&i, &j, &k, &l);
-	coordinates = (int **)malloc(sizeof(int *) * (27));
+//	coordinates = (int **)malloc(sizeof(int *) * (27));
+	coordinates = (int **)malloc(sizeof(int *) * (26));
 	while (characters[i])
 	{
-		coordinates[k] = (int *)malloc(sizeof(int) * (9));
+//		coordinates[k] = (int *)malloc(sizeof(int) * (9));
+		coordinates[k] = (int *)malloc(sizeof(int) * (8));
 		while (characters[i][j] != '\0')
 		{
 			if (characters[i][j] == '#')
@@ -54,6 +56,7 @@ int		**xy_coord(char **characters, int i, int j, int k)
 		l = 0;
 		k++;
 	}
+//	free_2d_char(characters); // Adding for leaks
 	coordinates[k] = NULL;
 	return (coordinates);
 }
@@ -108,13 +111,17 @@ int		**xy_min(int **coord, int k, int l, int x)
 ** x_min and y_min from the original coordinates.
 */
 
-int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
+//int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
+int		**shift_xy_coord(int **coord, int **min, int x_min, int y_min)
 {
+	int		**shifted_coord;
 	char	c;
 	int		l;
-	int		**shifted_coord;
-
+	int		k;
+	//	int		**min; // Adding this for leaks
+	
 	c = 'A';
+	k = 0;
 	shifted_coord = (int **)malloc(sizeof(int *) * (27));
 	while (coord[k] != NULL)
 	{
@@ -122,8 +129,11 @@ int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
 		shifted_coord[k] = (int *)malloc(sizeof(int) * (9));
 		while (l <= 7)
 		{
-			x_min = xy_min(coord, 0, 0, 0)[k][0];
-			y_min = xy_min(coord, 0, 0, 0)[k][1];
+			min = xy_min(coord, 0, 0, 0);
+			x_min = min[k][0];
+			y_min = min[k][1];
+//			x_min = xy_min(coord, 0, 0, 0)[k][0]; commenting for leaks. Original
+//			y_min = xy_min(coord, 0, 0, 0)[k][1]; commenting for leaks. Original
 			shifted_coord[k][l] = coord[k][l] - x_min;
 			l++;
 			shifted_coord[k][l] = coord[k][l] - y_min;
@@ -132,6 +142,8 @@ int		**shift_xy_coord(int **coord, int x_min, int y_min, int k)
 		shifted_coord[k][l] = c++;
 		k++;
 	}
+//	free_2d_int(coord);
+//	free_2d_int(min);
 	shifted_coord[k] = NULL;
 	return (shifted_coord);
 }

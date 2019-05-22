@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:06:59 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 13:09:15 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 19:58:47 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ void	ft_exit(void)
 ** in a 2D-array.
 */
 
-int		tetro_count(char **coordinates)
+//int		tetro_count(char **coordinates)// Initially
+int		tetro_count(char **characters)
 {
 	int i;
 
 	i = 0;
-	if (coordinates[i])
-		while (coordinates[i] != NULL)
+//	if (coordinates[i])
+//		while (coordinates[i] != NULL)
+//			i++;
+	if (characters)
+		while(characters[i])
 			i++;
 	return (i);
 }
@@ -67,27 +71,6 @@ char	**ft_grid(int width)
 	}
 	empty_grid[i] = NULL;
 	return (empty_grid);
-}
-
-/*
-** Function that frees the grid.
-*/
-
-void	free_grid(char **empty_grid)
-//void	free_grid(char **empty_grid, int board_size)
-{
-	int i;
-
-	i = 0;
-	while (empty_grid[i])
-//	while (i < board_size)
-	{
-		free(empty_grid[i]);
-	//	ft_strdel(&empty_grid[i]);
-		i++;
-	}
-//	ft_strdel((char **)empty_grid);
-	free(empty_grid);
 }
 
 /*

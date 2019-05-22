@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 14:21:30 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 20:03:13 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/21 20:20:05 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ int **xy_min(int **coord, int k, int l, int x)
 ** x_min and y_min are calucluated first and then subtracted from
 ** the original coordinates.
 */
-/*
+
 int **shift_xy_coord(int **coord, int x_min, int y_min, int k)
 {
 	char c;
@@ -268,7 +268,7 @@ int **shift_xy_coord(int **coord, int x_min, int y_min, int k)
 	shifted_coord[k] = NULL;
 	return(shifted_coord);
 }
-*/
+
 /*
 ** Function that counts the number of tetrominoes that are stored
 ** in a 2D-array.

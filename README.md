@@ -1,4 +1,5 @@
-# Project Status - In Progress
+# Project Status - Done
+# Working on readme
 # Fillit - An Algorithm to put tetrominoes in a smallest square possible
 
 # Compiling the program

@@ -100,7 +100,7 @@ To get the x coordinate, we take nth position of a tetromino and do modulo 5. To
 
 Below on the right is what the tranformation will look like once we convert the hastags into coordinates:
 
-<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/snapshots/hashes_to_corords_1.png">
+<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
 <table>
   <tr>
     <td>x = 0, y = 0</td>

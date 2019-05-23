@@ -112,7 +112,7 @@ Below on the right is what the tranformation will look like once we convert the 
 </table>
 
 <video width="320" height="240" controls>
-  <source src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" type="video/mov">
+  <source src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" type="video/mp4">
 </video>
 
 # Resources:

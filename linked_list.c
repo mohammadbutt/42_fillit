@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/21 13:23:25 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 19:10:14 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_tetro		*create(void *struct_tetro)
 	new_node = (t_tetro *)malloc(sizeof(t_tetro));
 	if (new_node == NULL)
 	{
-		printf("Error creating a new node.\n");
 		ft_exit();
 	}
 	new_node->struct_tetro = struct_tetro;

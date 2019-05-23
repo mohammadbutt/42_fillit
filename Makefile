@@ -6,14 +6,13 @@
 #    By: mbutt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/25 15:25:32 by mbutt             #+#    #+#              #
-#    Updated: 2019/05/20 20:28:15 by mbutt            ###   ########.fr        #
+#    Updated: 2019/05/22 18:26:09 by mbutt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc
-#CFLAGS = -Wall -Wextra -Werror -I. -c
-CFLAGS = -I. -c
+CFLAGS = -Wall -Wextra -Werror -I. -c
 C_FILES = *.c
 O_FILES = *.o
 

@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 13:59:01 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/18 16:49:37 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 19:09:24 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void print_data(t_tetro *struct_pointer)
 }
 
 /*
-** Prints shifted coordinates
+** Prints shifted coordinates. Function uses printf.
+** ft_putnbr can be used to print numbers instead.
 */
 
 int print_data_coord(t_tetro *struct_pointer)
@@ -113,7 +114,6 @@ int print_data_coord(t_tetro *struct_pointer)
 	}
 	return(0);
 }
-
 
 /*
 ** Created a function that counts the numbers of elements that are being

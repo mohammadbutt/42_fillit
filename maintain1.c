@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:06:59 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 14:18:48 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 16:17:15 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	ft_exit(void)
 {
-	ft_putstr("Error\n");
+	ft_putstr("error\n");
 	exit(EXIT_FAILURE);
 }
 

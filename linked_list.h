@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 18:35:21 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/19 18:52:34 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/05/22 19:16:46 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_tetro
 }					t_tetro;
 
 /*
-** Linked list functions
+** linkedlist.c functions
 */
 
 t_tetro				*create(void *struct_tetro);
@@ -34,9 +34,9 @@ t_tetro				*append(t_tetro *head, void *struct_tetro);
 t_tetro				*coord_to_struct(int **shifted_coord, int tetro_count);
 
 /*
-** --------------------------------------------------------------------------
-** ------------Extra linked list functions not used in the project-----------
-** ------------------------------For Reference-------------------------------
+** ----------------------------------------------------------------------------
+** ------------Extra linked list functions not used in the project-------------
+** ------------------------------For Reference---------------------------------
 */
 
 void				print_data(t_tetro *struct_pointer);

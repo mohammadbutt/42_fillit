@@ -111,9 +111,8 @@ Below on the right is what the tranformation will look like once we convert the 
   </tr>
 </table>
 
-<video width="320" height="240" controls>
-  <source src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" type="video/mp4">
-</video>
+<video src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" width="320" height="200" controls preload></video>
+
 
 # Resources:
 1. [C Tutorials on Linked List](http://www.zentut.com/c-tutorial/c-linked-list/)

@@ -111,6 +111,10 @@ Below on the right is what the tranformation will look like once we convert the 
   </tr>
 </table>
 
+<video width="320" height="240" controls>
+  <source src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" type="video/mov">
+</video>
+
 # Resources:
 1. [C Tutorials on Linked List](http://www.zentut.com/c-tutorial/c-linked-list/)
 2. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)

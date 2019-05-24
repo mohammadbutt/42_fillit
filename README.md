@@ -1,6 +1,5 @@
-# Project Status - Done
-# Working on readme
-# Fillit - An Algorithm to put tetrominoes in a smallest square possible
+# Fillit - An Algorithm that puts tetrominoes in a smallest square possible
+![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
 # Cloning the repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
@@ -121,7 +120,6 @@ Below on the right is what the tranformation will look like once we convert the 
 </table>
 
 <video src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" width="320" height="200" controls preload></video>
-![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
 # Resources:
 1. [C Tutorials on Linked List](http://www.zentut.com/c-tutorial/c-linked-list/)

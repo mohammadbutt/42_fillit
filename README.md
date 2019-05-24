@@ -3,7 +3,7 @@
 # Fillit - An Algorithm to put tetrominoes in a smallest square possible
 
 # Cloning the repository
-``` https://github.com/mohammadbutt/42_fillit.git ```
+```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
 
 # Installation and compiling the program
 ```

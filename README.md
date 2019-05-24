@@ -5,7 +5,7 @@
 # Cloning the repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
 
-# Installation and compiling the program
+# Installing
 ```
 make all
 ./fillit tests/corrects/valid_19

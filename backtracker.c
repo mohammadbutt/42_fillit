@@ -6,7 +6,7 @@
 /*   By: mbutt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:19:18 by mbutt             #+#    #+#             */
-/*   Updated: 2019/05/22 20:39:27 by mbutt            ###   ########.fr       */
+/*   Updated: 2019/06/05 11:13:52 by mbutt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		help_solve(char **grid, int *shifted_coord, t_tetro *stack, int board)
 	if (collision(grid, shifted_coord, board) == 0)
 	{
 		alpha_on_grid(shifted_coord, grid);
-		ft_print(grid); /*prints grid*/
-		sleep(1);  /*adds a pause*/
-		ft_putstr("\n"); /*adds a newline*/
+//		ft_print(grid); /*prints grid*/
+//		sleep(1);  /*adds a pause*/
+//		ft_putstr("\n"); /*adds a newline*/
 		if (solve_tet(grid, stack->next, board) == 1)
 		{
 			free(shifted_coord);

@@ -3,7 +3,6 @@
 ### Allowed C functions - close(2), exit(3), free(3), malloc(3), open(2), read(2), write(2).
 
 
-![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
 # Cloning the repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
@@ -58,6 +57,8 @@ Above is a valid piece. Below is an invalid piece because the last line has a sp
 - [X] 17. Backtracking / recursive backtracking/ dancing links(Knuth's X Algorithm). This is when the size of the board will be increased.
 - [ ] 18. Need to check for memory leaks
 ---
+![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
+
 # How to read the code.
 Reading big programs can get a bit challenging. I have summed up some point below that can assisst in reading the code.
 

@@ -1,5 +1,6 @@
 # README to be updated soon.
 # Fillit - An Algorithm that puts tetrominoes in a smallest square possible
+### Allowed C functions - exit(3), open(2), close(2), write(2), read(2), malloc(3), free(3).
 ![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
 # Cloning the repository

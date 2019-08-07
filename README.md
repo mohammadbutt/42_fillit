@@ -9,7 +9,7 @@ Allowed C functions(3) - exit(3), free(3), malloc(3).
 # Cloning repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
 
-# Installing
+# Installing fillit
 ```
 make all
 ./fillit tests/corrects/valid_19

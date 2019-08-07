@@ -45,6 +45,29 @@ Then after subtracting x_min and y_min from each tetromino, it will tranform the
 ....
 ```
 
+### Backtracking
+Backtracking works recursively to place the tetrominoes onto the board. There are some conditions that backtracker looks at. One, a piece cannot go over the board. What that means is that if a board is of size 2 by 2 and the tetromino is a vertical line, then the board size will have to be increased. Below is an exmaple of the board represented by dots and tetromino represented by hashes and how it will increase each time.
+```
+..#
+..#
+  #
+  #
+```
+
+```
+...#
+...#
+...#
+   #
+```
+```
+...#
+...#
+...#
+...#
+```
+One more condition that the backtracker has to look at is that both pieces cannot land on top of each other. If they do then the tetrominoes will be shifted by 1 to the right until the tetrominos cannot be placed any more on that line and then the tetromino will shift 1 down and will start off at the left most position. Tetromino will keep on shifting as long as it collides with the other piece. If there is no more space left on the board to place the existing tetrominoes, then all pieces will be removed and a new board will created, the size will be increased by 1, and the backtracker will start off again by placing the first tetromino until it can place all pieces onto the map.
+
 # Brainstorming
 - [X] 1. Open the file
 - [X] 2. Read the file

@@ -13,7 +13,9 @@ make all
 ```
 
 # Compiling the program
-``` gcc validation.c -I. ./libft/libft.a ```
+```
+gcc validation.c -I. ./libft/libft.a
+```
 # Brainstorming
 - [X] 1. Open the file
 - [X] 2. Read the file

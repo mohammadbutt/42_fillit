@@ -20,6 +20,10 @@ make all
 gcc validation.c -I. ./libft/libft.a
 ```
 
+# Demo
+
+![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
+
 # Project Summary
 
 ### Validation - [Source Code](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/valid.c)

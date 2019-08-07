@@ -1,6 +1,6 @@
 # Fillit - An Algorithm to put tetrominoes in a smallest square possible
 
-#### Project file:[fillit](https://github.com/mohammadbutt/42_fillit/blob/master/doc.fillit.en.pdf)
+#### Project file: [fillit](https://github.com/mohammadbutt/42_fillit/blob/master/doc.fillit.en.pdf)
 
 Allowed C functions(2) - close(2), open(2), read(2), write(2).
 

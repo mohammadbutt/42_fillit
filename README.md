@@ -22,12 +22,12 @@ gcc validation.c -I. ./libft/libft.a
 
 # Project Summary
 
-### Validation - [Source Code](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/valid.c)
+### Validation - Source Code : [valid.c] (https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/valid.c)
 Program starts by reading the file and each time it reads 20 characters because a tetromino placed on a 4 by 4 grid + 1 for the new line will take 20 characters of space. Program checks to determine if the 4th, 9th, 14th, and 19th element of a tetromino are new lines or not. If they are not then the program exits. If there are new lines then the program stores the string.
 
 After the program has read and stored the file, strings are further evaluated to ensure that there are 12 dots and 4 hashes. If there are 12 dots and 4 hashes then the program moves to the last stage of validation. If a tetromino is valid and all of the hashes touch each other 6 or 8 times, it means thats a valid tetromino. Source code [valid](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/valid.c) has further explanation and methadology for each step.
 
-### Turning hashes into x and y coordinates - [Source Code](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/coordinate.c)
+### Turning hashes into x and y coordinates - Source Code: [coordinate.c] (https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/coordinate.c)
 Once the tetrominoes are stored in a 2d char arrary, the hashes are converted into x and y coordinates in a 2D int array. In order to get the x and y, nth place is modulo by 5 which gives x, and the same nth place is divided by 5 which gives the y.
 x_min and y_min are caluclated for each tetromino because x_min and y_min are used to shift the tetrominoes to the top left corner. So if a tetromino looked like following:
 ```

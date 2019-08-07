@@ -128,8 +128,4 @@ One more condition that the backtracker has to look at is that both pieces canno
 2. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 3. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
 4. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
-5. [Bitwise calculator](https://www.binaryconvert.com/convert_unsigned_short.html)
-6. [Another Bitwise calculator](http://bitwisecmd.com/)
-7. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
-
-
+5. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)

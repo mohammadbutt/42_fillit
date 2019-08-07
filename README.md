@@ -15,11 +15,6 @@ make all
 ./fillit tests/corrects/valid_19
 ```
 
-# Compiling the program
-```
-gcc validation.c -I. ./libft/libft.a
-```
-
 # Demo
 
 ![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)

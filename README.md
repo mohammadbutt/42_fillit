@@ -74,53 +74,6 @@ One more condition that the backtracker has to look at is that both pieces canno
 ---
 ![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
-<table>
-  <tr>
-    <td>#</td>
-    <td>#</td>
-    <td>#</td>
-    <td>#</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>o</td>
-    <td>\n</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td>x = 0, y = 0</td>
-    <td>x = 1, y = 0</td>
-    <td>x = 2, y = 0</td>
-    <td>x = 3, y = 0</td>
-    <td>\n</td>
-  </tr>
-</table>
-
 <video src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" width="320" height="200" controls preload></video>
 
 # Resources:

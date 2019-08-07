@@ -6,7 +6,7 @@ Allowed C functions(2) - close(2), open(2), read(2), write(2).
 
 Allowed C functions(3) - exit(3), free(3), malloc(3).
 
-# Cloning the repository
+# Cloning repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
 
 # Installing

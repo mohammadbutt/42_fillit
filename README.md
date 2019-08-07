@@ -76,8 +76,6 @@ Backtracking works recursively to place the tetrominoes onto the board. There ar
 One more condition that the backtracker has to look at is that both pieces cannot land on top of each other. If they do then the tetrominoes will be shifted by 1 to the right until the tetrominos cannot be placed any more on that line and then the tetromino will shift 1 down and will start off at the left most position. Tetromino will keep on shifting as long as it collides with the other piece. If there is no more space left on the board to place the existing tetrominoes, then all pieces will be removed and a new board will created, the size will be increased by 1, and the backtracker will start off again by placing the first tetromino until it can place all pieces onto the map.
 
 ---
-![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
-
 <video src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" width="320" height="200" controls preload></video>
 
 # Resources:

@@ -29,6 +29,8 @@ After the program has read and stored the file, strings are further evaluated to
 
 ### Turning hashes into x and y coordinates - [Source Code](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/coordinate.c)
 Once the tetrominoes are stored in a 2d char arrary, the hashes are converted into x and y coordinates in a 2D int array. In order to get the x and y, nth place is modulo by 5 which gives x, and the same nth place is divided by 5 which gives the y.
+Below on the right is what the tranformation will look like once we convert the hastags into coordinates:
+<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
 x_min and y_min are caluclated for each tetromino because x_min and y_min are used to shift the tetrominoes to the top left corner. So if a tetromino looked like following:
 ```
 ....
@@ -107,9 +109,7 @@ One more condition that the backtracker has to look at is that both pieces canno
     <td>\n</td>
   </tr>
 </table>
-Below on the right is what the tranformation will look like once we convert the hastags into coordinates:
 
-<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
 <table>
   <tr>
     <td>x = 0, y = 0</td>

@@ -40,14 +40,13 @@ Tetrominoes | {x, y} coordinates
 ....        | 
 ....        |
 ....        |
-####        | {0, 3} {1, 3,} {2, 3} {3, 3}
+####        | {0, 3} {1, 3} {2, 3} {3, 3}
 
 ....        |
 .#..        | {1, 1}
 .#..        | {1, 2}
 .##.        | {1, 3} {2, 3}
 ```
-##<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
 x_min and y_min are caluclated for each tetromino because x_min and y_min are used to shift the tetrominoes to the top left corner. So if a tetromino looked like following:
 ```
 ....

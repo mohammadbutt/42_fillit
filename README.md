@@ -29,8 +29,25 @@ After the program has read and stored the file, strings are further evaluated to
 ### Turning hashes into x and y coordinates - [Source Code](https://github.com/mohammadbutt/42_fillit/blob/513846b6841171d2d37894244bbde4f594c7f0b5/coordinate.c)
 Once the tetrominoes are stored in a 2d char arrary, the hashes are converted into x and y coordinates in a 2D int array. In order to get the x and y, nth place is modulo by 5 which gives x, and the same nth place is divided by 5 which gives the y.
 
-Below on the right is what the tranformation will look like once we convert the hastags into coordinates:
-<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
+Below on the left is how the tetrominoes are stored in a 2D char array. On the right, tetrominoes are converted into x and y coordinates: is what the tranformation will look like once we convert the hastags into coordinates:
+```
+Tetrominoes | {x, y} coordinates
+....        |
+.##.        | {1, 1} {2, 1}
+.##.        | {1, 2} {2, 2}
+....        |
+            |
+....        | 
+....        |
+....        |
+####        | {0, 3} {1, 3,} {2, 3} {3, 3}
+            |
+....        |
+.#..        | {1, 1}
+.#..        | {1, 2}
+.##.        | {1, 3} {2, 3}
+```
+##<img src= "https://github.com/mohammadbutt/42_fillit/blob/master/media/hashes_to_corords_1.png">
 x_min and y_min are caluclated for each tetromino because x_min and y_min are used to shift the tetrominoes to the top left corner. So if a tetromino looked like following:
 ```
 ....

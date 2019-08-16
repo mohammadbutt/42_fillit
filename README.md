@@ -95,3 +95,4 @@ One more condition that the backtracker has to look at is that both pieces canno
 3. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)
 4. [Tetris Collision Detection](https://gamedevelopment.tutsplus.com/tutorials/implementing-tetris-collision-detection--gamedev-852)
 5. [Data Types - Oracle](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+6. [Bitwise Calculator](http://bitwisecmd.com/)

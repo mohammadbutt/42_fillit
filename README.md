@@ -6,16 +6,24 @@ Allowed C functions(2) - close(2), open(2), read(2), write(2).
 
 Allowed C functions(3) - exit(3), free(3), malloc(3).
 
-# Cloning repository
+---
+# Table of Contents
+* [Cloning Repository](#coloning-repository)
+* [Installing Fillit](#installing-fillit)
+* [Program Demo](#program-demo)
+* [Project Summary](#project-summary)
+* [Resources And References](#resources-and-references)
+
+# Cloning Repository
 ```git clone https://github.com/mohammadbutt/42_fillit.git fillit```
 
-# Installing fillit
+# Installing Fillit
 ```
 make all
 ./fillit tests/corrects/valid_19
 ```
 
-# Demo
+# Program Demo
 
 ![](https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p_30fps.gif)
 
@@ -89,7 +97,7 @@ One more condition that the backtracker has to look at is that both pieces canno
 ---
 <video src="https://github.com/mohammadbutt/42_fillit/blob/master/media/fillit_1080p.mov" width="320" height="200" controls preload></video>
 
-# Resources:
+# Resources and References:
 1. [C Tutorials on Linked List](http://www.zentut.com/c-tutorial/c-linked-list/)
 2. [19 Valid Tetrominoes - Wolfram](http://mathworld.wolfram.com/Tetromino.html)
 3. [Empty Tetromines grid](https://gfredericks.com/things/polyominoes)

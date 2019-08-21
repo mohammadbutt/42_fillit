@@ -12,7 +12,7 @@ Allowed C functions(3) - exit(3), free(3), malloc(3).
 * [Installing Fillit](#installing-fillit)
 * [Program Demo](#program-demo)
 * [Project Summary](#project-summary)
-  *[Validation](#validation---[source-code])
+  *[Validation](#validation---source-code]
 * [Resources And References](#resources-and-references)
 
 # Cloning Repository
